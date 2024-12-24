@@ -5,6 +5,17 @@ import {
   AiFillInstagram,
 } from "react-icons/ai";
 import { FaFacebook, FaLinkedinIn } from "react-icons/fa";
+import {
+  GitHub,
+  LinkedIn,
+  Telegram,
+  Twitter,
+  WhatsApp,
+  Instagram,
+  Facebook,
+  Name,
+  typedArray,
+} from "../../data/data";
 import { FiDownload } from "react-icons/fi";
 import { FaPlay } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
@@ -22,11 +33,11 @@ const Hero = () => {
               data-aos="fade-up"
               className=" text-5xl font-bold sm:text-[2rem]"
             >
-              Hello, I'm Rupesh
+              Hello, I'm {Name}
             </h2>
             <TypeAnimation
               data-aos="fade-up"
-              sequence={["Web Developer", 2000, "Freelancer", 2000, ""]}
+              sequence={typedArray}
               speed={30}
               wrapper="h2"
               repeat={Infinity}
@@ -64,33 +75,30 @@ const Hero = () => {
               className=" flex gap-5"
             >
               <li>
-                <a href="https://github.com/rupeshdev18" target="_blank">
+                <a href={GitHub} target="_blank">
                   {" "}
                   <AiFillGithub className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125" />{" "}
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.linkedin.com/in/rupesh-yadav18092002"
-                  target="_blank"
-                >
+                <a href={LinkedIn} target="_blank">
                   <FaLinkedinIn className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125 " />
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/11_rupesh_1" target="_blank">
+                <a href={Instagram} target="_blank">
                   {" "}
                   <AiFillInstagram className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href={Facebook}>
                   {" "}
                   <FaFacebook className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
                 </a>
               </li>
               <li>
-                <a href="https://x.com/rupesh1800" target="_blank">
+                <a href={Twitter} target="_blank">
                   {" "}
                   <AiFillTwitterCircle className=" h-[1.8rem] w-[1.8rem] text-xl hover:scale-125  " />{" "}
                 </a>

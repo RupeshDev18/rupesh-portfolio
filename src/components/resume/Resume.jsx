@@ -1,58 +1,9 @@
 import React, { useState } from "react";
-
+import { experiences, educations } from "../../data/data";
 const Resume = () => {
   // State to manage the current section for Experience and Education
   const [activeExperience, setActiveExperience] = useState(0);
   const [activeEducation, setActiveEducation] = useState(0);
-
-  // Dummy data for Experience and Education
-  const experiences = [
-    {
-      title: "Backend Intern",
-      company: "Infotech",
-      period: "April 2023 - May 2023",
-      description:
-        "Developed and implemented 5 APIs using Node.js to support various web applications, improving data retrieval speed by 15% and enhancing overall application performance. \
-        Utilized PostgreSQL to optimize data storage and retrieval processes, achieving a 15% reduction in query response times and enhancing overall application performance.",
-    },
-    {
-      title: "Frontend Developer",
-      company: "Axelor Pvt Ltd",
-      period: "Jan 2024 - July 2024",
-      description:
-        "Created reusable frontend components using Axelor Open Suite with Reactjs, improving load times by 5%.\
-        Assisted cross-functional teams in delivering high-quality solutions, contributing to a 15% improvement in project efficiency.",
-    },
-    {
-      title: "Fullstack Developer",
-      company: "Holbox Ai",
-      period: "July 2024 - Present",
-      description:
-        "Developed a comprehensive ERP system from the ground up, resulting in a 10% increase in operational efficiency and reducing manual processes. \
-        Collaborated with cross-functional teams to deliver high-quality solutions, achieving a 15% reduction in project delivery time.",
-    },
-  ];
-
-  const educations = [
-    {
-      title: "B.Tech, Computer Science",
-      school: "Parul Institute of Technology",
-      period: "Year 2020 - Year 2024",
-      description: "Secured 8.86 CGPA",
-    },
-    {
-      title: "Higher Secondary School, Science",
-      school: "Rosary High School",
-      period: "Year 2018 - Year 2020",
-      description: "Secured 72% and 85%ile in PCM in GHSEB Board",
-    },
-    {
-      title: "Secondary School",
-      school: "Rosary High School",
-      period: "Year 2018",
-      description: "Secured 88% and 98.48%ile  in GSEB Board",
-    },
-  ];
 
   // Function to handle dot click and change active section for Experience
   const handleExperienceDotClick = (index) => {

@@ -2,6 +2,7 @@ import React from "react";
 import { FaTelegramPlane } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { RiInstagramFill } from "react-icons/ri";
+import { Instagram, Telegram, WhatsApp } from "../../data/data";
 
 const Footer = () => {
   return (
@@ -14,7 +15,7 @@ const Footer = () => {
           <a
             data-aos="fade-up"
             data-aos-duration="1000"
-            href="https://t.me/9428511055"
+            href={Telegram}
             target="_blank"
             className="box font-medium text-white   flex items-center justify-center flex-col"
           >
@@ -24,7 +25,7 @@ const Footer = () => {
           <a
             data-aos="fade-up"
             data-aos-duration="1200"
-            href="https://wa.me/9313289033"
+            href={WhatsApp}
             target="_blank"
             className="box font-medium text-white  flex items-center justify-center flex-col"
           >
@@ -34,7 +35,7 @@ const Footer = () => {
           <a
             data-aos="fade-up"
             data-aos-duration="1400"
-            href="https://www.instagram.com/11_rupesh_1"
+            href={Instagram}
             target="_blank"
             className="box font-medium text-white  flex items-center justify-center flex-col"
           >

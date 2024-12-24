@@ -1,6 +1,7 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { RiSendPlaneFill } from "react-icons/ri";
+import { Name } from "../../data/data";
 
 const Contact = () => {
   return (
@@ -51,7 +52,7 @@ const Contact = () => {
             <input
               className="px-3 shadow-[0_0_16px_0px_rgba(0,0,0,0.1)] p-2 rounded-lg w-full"
               type="text"
-              placeholder="e.g. Rupesh"
+              placeholder={Name}
               name=""
             />
             <textarea
