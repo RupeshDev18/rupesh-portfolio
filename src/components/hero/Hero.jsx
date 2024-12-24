@@ -21,7 +21,8 @@ import { FaPlay } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import resumePDF from "../../assets/Resume.pdf";
 // import profileImg from "../../assets/profile.png";
-import profileImg from "../../assets/profilepicp.png";
+// import profileImg from "../../assets/profilepicp.png";
+import profileImg from "../../assets/profilepicp.webp";
 
 const Hero = () => {
   return (
