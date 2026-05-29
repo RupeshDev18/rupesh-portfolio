@@ -32,7 +32,7 @@ const NavBar = ({ darkMode, toggleDarkMode }) => {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrollPosition > 0
-          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-md py-4 border-b border-gray-150 dark:border-slate-900"
+          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-md py-4 border-b border-gray-200 dark:border-slate-900"
           : "bg-transparent py-6"
       }`}
       initial={{ y: -100 }}
@@ -119,7 +119,7 @@ const NavBar = ({ darkMode, toggleDarkMode }) => {
 
       {isOpen && (
         <motion.div
-          className="md:hidden bg-gray-50/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-850"
+          className="md:hidden bg-gray-50/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}

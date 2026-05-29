@@ -50,14 +50,14 @@ const Hero = ({ darkMode }) => {
           </motion.h2>
 
           {/* Typewriter Effect */}
-          <motion.div className="h-12" variants={itemVariants}>
+          <motion.div className="min-h-[4.5rem] sm:min-h-[3rem] md:h-12 flex items-center" variants={itemVariants}>
             <Typewriter
               options={{
                 strings: portfolioData.typewriterKeywords,
                 autoStart: true,
                 loop: true,
-                wrapperClassName: "text-teal-600 dark:text-cyan-400 text-4xl font-extrabold sm:text-3xl",
-                cursorClassName: "text-teal-600 dark:text-cyan-400 text-4xl font-extrabold sm:text-3xl",
+                wrapperClassName: "text-teal-600 dark:text-cyan-400 text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight",
+                cursorClassName: "text-teal-600 dark:text-cyan-400 text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight",
               }}
             />
           </motion.div>

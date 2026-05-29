@@ -27,10 +27,10 @@ const Footer = ({ darkMode }) => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><a href="#home" className="hover:text-teal-450 transition-colors duration-300">Home</a></li>
-              <li><a href="#about" className="hover:text-teal-450 transition-colors duration-300">About</a></li>
-              <li><a href="#projects" className="hover:text-teal-450 transition-colors duration-300">Projects</a></li>
-              <li><a href="#blog" className="hover:text-teal-450 transition-colors duration-300">Blog</a></li>
+              <li><a href="#home" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">Home</a></li>
+              <li><a href="#about" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">About</a></li>
+              <li><a href="#projects" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">Projects</a></li>
+              <li><a href="#blog" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">Blog</a></li>
             </ul>
           </motion.div>
 
