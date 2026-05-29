@@ -39,13 +39,13 @@ To get started with this portfolio website locally, follow these steps:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/rupeshdev18/animated-portfolio-website.git
+   git clone https://github.com/rupeshdev18/rupesh-portfolio.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd animated-portfolio-website
+   cd rupesh-portfolio
    ```
 3. Install the dependencies:
 
