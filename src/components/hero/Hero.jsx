@@ -153,10 +153,10 @@ const Hero = ({ darkMode }) => {
             <img
               src={profileImg}
               alt="Rupesh Yadav"
-              className="h-[350px] md:h-[480px] w-auto object-contain select-none pointer-events-none z-10"
+              className="h-[350px] md:h-[480px] w-auto object-contain select-none pointer-events-none z-10 dark:mix-blend-screen"
             />
-            {/* Dark Mode Gradient overlay directly on top of the image to blend it */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent dark:from-slate-950 dark:via-slate-950/70 dark:to-transparent z-20 pointer-events-none"></div>
+            {/* Smooth bottom fade to blend the image into the background */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-transparent dark:from-slate-950 dark:to-transparent z-20 pointer-events-none"></div>
 
             {/* Rotating Badge */}
             <div className="absolute bottom-6 right-0 md:right-[-20px] z-20 cursor-pointer">
