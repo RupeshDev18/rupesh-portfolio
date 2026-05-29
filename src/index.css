@@ -79,3 +79,20 @@ html.dark ::-webkit-scrollbar-thumb:hover {
     @apply transition-all duration-300 ease-in-out;
   }
 }
+
+/* Browser Autofill Overrides (Light & Dark Theme Blending) */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #111827 !important; /* matches gray-900 */
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+html.dark input:-webkit-autofill,
+html.dark textarea:-webkit-autofill,
+html.dark select:-webkit-autofill {
+  -webkit-text-fill-color: #f9fafb !important; /* matches gray-50 */
+  -webkit-box-shadow: 0 0 0px 1000px #020617 inset !important; /* matches slate-950 */
+  transition: background-color 5000s ease-in-out 0s;
+}

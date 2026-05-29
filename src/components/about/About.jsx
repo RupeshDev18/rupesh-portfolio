@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutImg from "../../assets/profile.png";
 
 const About = ({ darkMode }) => {
   const stats = [
@@ -34,22 +33,59 @@ const About = ({ darkMode }) => {
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 items-center">
-          {/* Profile Photo cutout with tilt animation */}
+          {/* macOS Terminal Bio Container */}
           <motion.div
-            className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800/80 aspect-square max-w-sm mx-auto group cursor-pointer"
+            className="w-full max-w-md mx-auto rounded-xl overflow-hidden border border-gray-200 dark:border-teal-500/20 bg-slate-900 shadow-2xl font-mono text-sm text-gray-100"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02, rotate: 1 }}
+            whileHover={{ y: -5 }}
           >
-            <img
-              src={aboutImg}
-              alt="About Rupesh"
-              className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
-            />
-            {/* Elegant vignette overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            {/* Window Header */}
+            <div className="flex items-center justify-between px-4 py-3 bg-slate-800 border-b border-slate-700 select-none">
+              <div className="flex items-center space-x-2">
+                <span className="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
+                <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block"></span>
+                <span className="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
+              </div>
+              <span className="text-xs text-gray-400 font-semibold">rupesh@macbook-pro:~</span>
+            </div>
+            {/* Terminal Content */}
+            <div className="p-5 space-y-4 text-left">
+              <div>
+                <span className="text-teal-400 font-bold">~</span> <span className="text-cyan-400">neofetch</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-xs text-gray-300 border-t border-slate-800 pt-3">
+                <div className="col-span-1 text-teal-400 font-extrabold flex flex-col justify-center leading-tight">
+                  <span>  /\  </span>
+                  <span> /  \ </span>
+                  <span>/____\</span>
+                  <span>AWS_SA</span>
+                </div>
+                <div className="col-span-2 space-y-1">
+                  <p><span className="text-cyan-400 font-bold">OS</span>: macOS / Linux</p>
+                  <p><span className="text-cyan-400 font-bold">Shell</span>: zsh / bash</p>
+                  <p><span className="text-cyan-400 font-bold">Stack</span>: MERN / FastAPI / AWS</p>
+                  <p><span className="text-cyan-400 font-bold">Focus</span>: Multi-Tenant SaaS</p>
+                </div>
+              </div>
+              <div className="border-t border-slate-800 pt-3">
+                <span className="text-teal-400 font-bold">~</span> <span className="text-cyan-400">cat core-values.json</span>
+                <pre className="text-xs text-teal-300 mt-2 overflow-x-auto">
+{`{
+  "isolation": "Robust Row-Level Security",
+  "scalability": "Event-Driven Microservices",
+  "security": "JWT Rotation & Secure RBAC",
+  "velocity": "Playwright E2E Automation"
+}`}
+                </pre>
+              </div>
+              <div className="border-t border-slate-800 pt-3 flex items-center gap-2">
+                <span className="text-teal-400 font-bold">~</span>
+                <span className="w-2 h-4 bg-teal-500 animate-[ping_1.5s_infinite] inline-block"></span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Description paragraphs */}
