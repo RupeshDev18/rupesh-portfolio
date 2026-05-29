@@ -16,24 +16,29 @@ const Skills = ({ darkMode }) => {
           {skillCategories.map((category, catIdx) => (
             <motion.div key={catIdx} className="p-6 bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg border border-gray-200 dark:border-teal-500/20 hover:border-teal-400 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all duration-300">
               <h3 className="text-xl font-bold mb-6 text-teal-600 dark:text-cyan-400">{category.category}</h3>
-              <div className="space-y-4">
-                {category.skills.map((skill, idx) => (
-                  <div key={idx} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="font-medium text-gray-800 dark:text-gray-200">{skill.name}</span>
-                      <span className="text-teal-600 dark:text-cyan-400 font-bold">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-gray-200 dark:bg-slate-950 rounded-full overflow-hidden border border-transparent dark:border-teal-950/40">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-teal-500 to-blue-500"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
-                      ></motion.div>
-                    </div>
-                  </div>
-                ))}
+              <div className="flex flex-wrap gap-3">
+                {category.skills.map((skill, idx) => {
+                  const isExpert = skill.level >= 90;
+                  const isAdvanced = skill.level >= 85 && skill.level < 90;
+                  const tag = isExpert ? "Core" : isAdvanced ? "Advanced" : "Specialist";
+                  
+                  return (
+                    <motion.div
+                      key={idx}
+                      className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-950 rounded-lg border border-gray-150 dark:border-teal-950/40 shadow-sm text-gray-850 dark:text-gray-200 cursor-default"
+                      whileHover={{ scale: 1.05, y: -2, borderColor: "#0d9488" }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    >
+                      <span className={`w-2 h-2 rounded-full inline-block ${
+                        isExpert ? "bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" : "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                      }`}></span>
+                      <span className="font-semibold text-sm">{skill.name}</span>
+                      <span className="text-[10px] uppercase font-bold text-gray-450 dark:text-slate-500 bg-gray-100 dark:bg-slate-900 px-1.5 py-0.5 rounded ml-1">
+                        {tag}
+                      </span>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           ))}
