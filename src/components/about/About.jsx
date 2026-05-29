@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 const About = ({ darkMode }) => {
   const stats = [
-    { number: 50, label: "Projects Completed", suffix: "+" },
-    { number: 100, label: "Happy Clients", suffix: "+" },
-    { number: 3, label: "Years Experience", suffix: "+" },
-    { number: 15, label: "Technologies", suffix: "+" },
+    { number: 20, label: "Projects Completed", suffix: "+" },
+    { number: 10, label: "Happy Clients", suffix: "+" },
+    { number: 2, label: "Years Experience", suffix: "+" },
+    { number: 10, label: "Technologies", suffix: "+" },
   ];
 
   return (
