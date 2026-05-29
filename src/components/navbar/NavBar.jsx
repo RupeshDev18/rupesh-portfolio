@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 import { Link } from "react-scroll";
 import { useLocation, Link as RouterLink } from "react-router-dom";
+import portfolioData from "../../data/data.json";
 
 const NavBar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +45,7 @@ const NavBar = ({ darkMode, toggleDarkMode }) => {
             className="text-3xl font-extrabold text-black dark:text-white cursor-pointer select-none"
             whileHover={{ scale: 1.05 }}
           >
-            Rupesh
+            {portfolioData.name.split(' ')[0]}
           </motion.div>
         </RouterLink>
 

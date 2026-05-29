@@ -8,7 +8,8 @@ import Typewriter from "typewriter-effect";
 import resumePDF from "../../assets/Resume.pdf";
 import profileImg from "../../assets/profilepic2.webp";
 import circleImg from "../../assets/Full Stack Developer2.png";
-import { GitHub, LinkedIn, Instagram, Twitter, Facebook, Name } from "../../data/data";
+import { GitHub, LinkedIn, Instagram, Twitter, Facebook } from "../../data/data";
+import portfolioData from "../../data/data.json";
 
 const Hero = ({ darkMode }) => {
   const containerVariants = {
@@ -45,14 +46,14 @@ const Hero = ({ darkMode }) => {
             className="text-5xl md:text-6xl font-black text-black dark:text-white leading-tight"
             variants={itemVariants}
           >
-            Hello, I'm {Name}
+            Hello, I'm {portfolioData.name}
           </motion.h2>
 
           {/* Typewriter Effect */}
           <motion.div className="h-12" variants={itemVariants}>
             <Typewriter
               options={{
-                strings: ["Web Developer", "Freelancer", "UI/UX Designer"],
+                strings: portfolioData.typewriterKeywords,
                 autoStart: true,
                 loop: true,
                 wrapperClassName: "text-teal-600 dark:text-cyan-400 text-4xl font-extrabold sm:text-3xl",
@@ -65,7 +66,7 @@ const Hero = ({ darkMode }) => {
             className="text-lg md:text-xl font-semibold text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed"
             variants={itemVariants}
           >
-            MERN Stack Developer | Final-year CSE Student | Crafting innovative web solutions for your digital needs.
+            {portfolioData.summary}
           </motion.p>
 
           {/* Action Buttons */}

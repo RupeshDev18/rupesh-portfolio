@@ -1,37 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import portfolioData from "../../data/data.json";
 
 const Experience = ({ darkMode }) => {
-  const experiences = [
-    {
-      title: "Senior Full-Stack Developer",
-      company: "Tech Startup Inc.",
-      period: "2023 - Present",
-      description: "Led development of MERN stack applications, implemented CI/CD pipelines, and mentored junior developers.",
-      skills: ["React", "Node.js", "MongoDB", "Docker", "AWS"],
-    },
-    {
-      title: "Full-Stack Developer",
-      company: "Digital Solutions Ltd.",
-      period: "2022 - 2023",
-      description: "Developed and maintained multiple React applications, implemented REST APIs, and optimized database queries.",
-      skills: ["React", "Express.js", "PostgreSQL", "Redux"],
-    },
-    {
-      title: "Frontend Developer",
-      company: "Creative Agency Co.",
-      period: "2021 - 2022",
-      description: "Built responsive UI components, implemented animations, and improved performance metrics by 40%.",
-      skills: ["React", "Tailwind CSS", "JavaScript", "Figma"],
-    },
-    {
-      title: "Junior Web Developer",
-      company: "Start-up Hub",
-      period: "2020 - 2021",
-      description: "Started with HTML, CSS, JavaScript. Built static websites and learned full-stack development basics.",
-      skills: ["HTML/CSS", "JavaScript", "Bootstrap", "Git"],
-    },
-  ];
+  const experiences = portfolioData.experiences;
 
   return (
     <section id="experience" className="py-20 px-6 bg-gradient-to-b from-teal-50/10 via-white to-blue-50/10 dark:from-slate-950 dark:via-blue-950/15 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import portfolioData from "../../data/data.json";
 
 const Contact = ({ darkMode }) => {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
@@ -17,9 +18,9 @@ const Contact = ({ darkMode }) => {
   };
 
   const contactInfo = [
-    { icon: <FiMail className="text-2xl" />, title: "Email", info: "rupesh@example.com", link: "mailto:rupesh@example.com" },
-    { icon: <FiPhone className="text-2xl" />, title: "Phone", info: "+91 931 328 9033", link: "tel:+919313289033" },
-    { icon: <FiMapPin className="text-2xl" />, title: "Location", info: "India", link: "#" },
+    { icon: <FiMail className="text-2xl" />, title: "Email", info: portfolioData.email, link: portfolioData.socials.email },
+    { icon: <FiPhone className="text-2xl" />, title: "Phone", info: portfolioData.phone, link: `tel:${portfolioData.phone.replace(/[^0-9+]/g, '')}` },
+    { icon: <FiMapPin className="text-2xl" />, title: "Location", info: portfolioData.location, link: "#" },
   ];
 
   return (

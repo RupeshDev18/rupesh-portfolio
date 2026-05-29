@@ -1,58 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import portfolioData from "../../data/data.json";
 
 const Projects = ({ darkMode }) => {
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description: "Full-stack MERN e-commerce with payment integration and admin dashboard.",
-      image: "🛍️",
-      tags: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "AI Chat Application",
-      description: "Real-time chat with AI integration and analytics using Socket.io.",
-      image: "💬",
-      tags: ["React", "Express", "Socket.io", "TensorFlow", "MongoDB"],
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "Project Management Tool",
-      description: "Collaborative platform with drag-drop interface and team features.",
-      image: "📊",
-      tags: ["React", "Firebase", "Tailwind", "Framer Motion"],
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "ML Prediction App",
-      description: "Machine learning application for predictive analytics.",
-      image: "🤖",
-      tags: ["Python", "TensorFlow", "React", "Flask", "Pandas"],
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for multiple social media accounts.",
-      image: "📱",
-      tags: ["React", "Node.js", "Chart.js", "PostgreSQL"],
-      github: "#",
-      live: "#",
-    },
-    {
-      title: "Personal Blog Platform",
-      description: "Serverless blog with MDX support and SEO optimization.",
-      image: "📝",
-      tags: ["Next.js", "MDX", "Vercel", "Tailwind CSS"],
-      github: "#",
-      live: "#",
-    },
-  ];
+  const projects = portfolioData.projects;
 
   return (
     <section id="projects" className="py-20 px-6 bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950">

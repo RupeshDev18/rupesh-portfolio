@@ -1,15 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiTwitter, FiMail } from "react-icons/fi";
+import portfolioData from "../../data/data.json";
 
 const Footer = ({ darkMode }) => {
   const currentYear = new Date().getFullYear();
 
   const socials = [
-    { icon: <FiGithub />, label: "GitHub", link: "https://github.com/RupeshDev18" },
-    { icon: <FiLinkedin />, label: "LinkedIn", link: "https://linkedin.com/in/rupesh-yadav18092002" },
-    { icon: <FiTwitter />, label: "Twitter", link: "https://twitter.com/rupesh1800" },
-    { icon: <FiMail />, label: "Email", link: "mailto:rupesh@example.com" },
+    { icon: <FiGithub />, label: "GitHub", link: portfolioData.socials.github },
+    { icon: <FiLinkedin />, label: "LinkedIn", link: portfolioData.socials.linkedin },
+    { icon: <FiTwitter />, label: "Twitter", link: portfolioData.socials.twitter },
+    { icon: <FiMail />, label: "Email", link: portfolioData.socials.email },
   ];
 
   return (
@@ -18,9 +19,9 @@ const Footer = ({ darkMode }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <h3 className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-              Rupesh Yadav
+              {portfolioData.name}
             </h3>
-            <p className="text-gray-400 text-sm">Full-Stack Developer | AI/ML Enthusiast | Open Source Contributor</p>
+            <p className="text-gray-400 text-sm">Full-Stack SaaS Engineer | AWS Certified Solutions Architect</p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>

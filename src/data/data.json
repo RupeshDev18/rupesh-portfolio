@@ -1,0 +1,156 @@
+{
+  "name": "Rupesh Yadav",
+  "phone": "+91 93132 89033",
+  "email": "rupesh.dev2002@gmail.com",
+  "location": "India",
+  "summary": "AWS Certified Solutions Architect building scalable applications with React, Node.js, FastAPI, and AWS.",
+  "typewriterKeywords": [
+    "Full Stack Engineer",
+    "AWS Certified Solutions Architect",
+    "Backend Engineer"
+  ],
+  "socials": {
+    "github": "https://github.com/rupeshdev18",
+    "linkedin": "https://linkedin.com/in/rupesh-developer",
+    "twitter": "https://twitter.com/rupesh1800",
+    "instagram": "https://www.instagram.com/11_rupesh_1",
+    "email": "mailto:rupesh.dev2002@gmail.com"
+  },
+  "skillCategories": [
+    {
+      "category": "Frontend",
+      "skills": [
+        { "name": "React.js", "level": 95 },
+        { "name": "Next.js", "level": 92 },
+        { "name": "Tailwind CSS", "level": 95 },
+        { "name": "Shadcn UI", "level": 90 },
+        { "name": "HTML5 & CSS3", "level": 95 },
+        { "name": "TypeScript", "level": 88 }
+      ]
+    },
+    {
+      "category": "Backend",
+      "skills": [
+        { "name": "Node.js", "level": 92 },
+        { "name": "FastAPI", "level": 90 },
+        { "name": "NestJS", "level": 85 },
+        { "name": "Prisma & Knex.js", "level": 88 },
+        { "name": "REST & gRPC APIs", "level": 90 },
+        { "name": "Event-driven Services", "level": 88 }
+      ]
+    },
+    {
+      "category": "Cloud & DevOps",
+      "skills": [
+        { "name": "AWS (EC2, Lambda, S3, CloudFront)", "level": 90 },
+        { "name": "Docker", "level": 85 },
+        { "name": "CI/CD Pipelines", "level": 88 },
+        { "name": "IAM & Security", "level": 85 }
+      ]
+    },
+    {
+      "category": "Databases & AI",
+      "skills": [
+        { "name": "PostgreSQL", "level": 90 },
+        { "name": "SQLite & MongoDB", "level": 88 },
+        { "name": "LLM Integrations (OpenAI, Bedrock)", "level": 88 },
+        { "name": "Embeddings & Prompt Workflows", "level": 85 }
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "title": "Software Engineer",
+      "company": "Tecunique",
+      "period": "Nov 2025 – Present",
+      "location": "Vadodara, Gujarat",
+      "description": "Designed and implemented enterprise-grade Jira plugin using Atlassian Forge, enabling reliable processing of 60K+ issues despite strict API rate limits through batching, retries, and resumable recovery. Architected core authentication and organization management for multi-tenant fintech SaaS platform, including tenant onboarding, RBAC, 2FA, password recovery, and secure access and refresh token rotation. Developed Playwright end-to-end tests covering authentication and tenant lifecycle, achieving 87% branch coverage.",
+      "skills": ["Atlassian Forge", "React.js", "Node.js", "FastAPI", "PostgreSQL", "Playwright", "Axios Interceptors", "Multi-tenant SaaS"]
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "HolboxAI",
+      "period": "Jul 2024 – Oct 2025",
+      "location": "Ahmedabad, Gujarat",
+      "description": "Engineered 11 proof-of-concept POC modules across HR, finance, inventory, and procurement, validating product-market fit. Built production-grade Resume Scraper (Lobby Network) automating job listings ingestion, resume parsing, and ML-based job-to-candidate matching with 40% auto-fill efficiency. Designed BrickoSys multi-tenant inventory system with schema-based tenant isolation, reducing manual tracking by 42%.",
+      "skills": ["Next.js", "Node.js", "Prisma", "Python", "Docker", "PostgreSQL", "Workday API", "CI/CD Pipelines"]
+    },
+    {
+      "title": "React Developer",
+      "company": "Axelor Technologies India Pvt Ltd",
+      "period": "Jan 2024 – Jul 2024",
+      "location": "Surat, Gujarat",
+      "description": "Developed and customized frontend modules for Axelor Open Suite CRM, improving lead management workflows and UI consistency within low-code framework. Refactored shared React components to reduce duplication and improve maintainability, cutting redundant UI code by approximately 20%.",
+      "skills": ["React.js", "JavaScript", "Axelor Open Suite", "CRM Modules", "Component Optimization"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "ClearDays: Enterprise Multi-Tenant HRMS",
+      "description": "Designed scalable multi-tenant architecture using shared-database schema with row-level security supporting 200+ organizations. Architected hybrid RBAC and ABAC permission system with Redis caching achieving sub-100ms P99 latency.",
+      "image": "🏢",
+      "tags": ["React 19", "Node.js", "PostgreSQL", "Redis", "RBAC/ABAC", "JWT Security"],
+      "github": "https://github.com/rupeshdev18/cleardays",
+      "live": "#"
+    },
+    {
+      "title": "Lobby Network: Job Search Platform",
+      "description": "Developed job platform that scrapes listings from Workday and portals, performs stop-word removal and stemming, and matches jobs to candidates using parsed resume data. Auto-fills applications with 40% efficiency.",
+      "image": "💼",
+      "tags": ["Next.js", "Node.js", "MongoDB", "Python", "Web Scraping", "Resume Parsing"],
+      "github": "https://github.com/rupeshdev18/lobby-network",
+      "live": "#"
+    },
+    {
+      "title": "AI Email Assistant",
+      "description": "Developed Gmail add-on using OpenAI APIs to generate context-aware replies with tone customization. Added speech-based input via Web Speech API and deployed backend inference on AWS Lambda.",
+      "image": "✉️",
+      "tags": ["Next.js", "Google Apps Script", "OpenAI API", "AWS Lambda", "Web Speech API"],
+      "github": "https://github.com/rupeshdev18/ai-email-assistant",
+      "live": "#"
+    },
+    {
+      "title": "BrickoSys: Inventory & Warehouse MS",
+      "description": "Built multi-tenant inventory system for Lego parts with modular APIs for stock tracking, order picking, and warehouse management. Schema-based partitioning reduced manual tracking by 42%.",
+      "image": "🧱",
+      "tags": ["React", "Node.js", "PostgreSQL", "AWS S3/EC2", "Tenant Isolation", "Order Optimization"],
+      "github": "https://github.com/rupeshdev18/brickosys",
+      "live": "#"
+    },
+    {
+      "title": "E-Commerce Platform",
+      "description": "Full-stack MERN e-commerce with Stripe payment integration, admin analytics dashboard, inventory management, and secure JWT session handling.",
+      "image": "🛍️",
+      "tags": ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
+      "github": "#",
+      "live": "#"
+    },
+    {
+      "title": "AI Chat Application",
+      "description": "Real-time chat with OpenAI integration, semantic conversation indexing, vector embeddings search, and instant message routing using Socket.io.",
+      "image": "💬",
+      "tags": ["React", "Express", "Socket.io", "TensorFlow", "MongoDB"],
+      "github": "#",
+      "live": "#"
+    }
+  ],
+  "education": [
+    {
+      "title": "B.Tech in Computer Science and Engineering",
+      "school": "Parul Institute of Technology",
+      "period": "Oct 2020 – Jun 2024",
+      "location": "Vadodara, Gujarat",
+      "description": "Secured CGPA: 8.86 out of 10"
+    }
+  ],
+  "achievements": [
+    {
+      "title": "AWS Certified Solutions Architect - Associate",
+      "description": "Validated expertise in designing distributed, scalable, and secure systems on AWS cloud platforms."
+    },
+    {
+      "title": "GATE 2024 (CSE)",
+      "description": "Achieved All India Rank 7700 (Top 8 percent Nationwide in Computer Science & Information Technology)."
+    }
+  ]
+}
