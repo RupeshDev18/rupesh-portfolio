@@ -1,79 +1,131 @@
-import React from "react";
-import { BsArrowRight } from "react-icons/bs";
-import { RiSendPlaneFill } from "react-icons/ri";
-import { Name } from "../../data/data";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import portfolioData from "../../data/data.json";
 
-const Contact = () => {
+const Contact = ({ darkMode }) => {
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  };
+
+  const contactInfo = [
+    { icon: <FiMail className="text-2xl" />, title: "Email", info: portfolioData.email, link: portfolioData.socials.email },
+    { icon: <FiPhone className="text-2xl" />, title: "Phone", info: portfolioData.phone, link: `tel:${portfolioData.phone.replace(/[^0-9+]/g, '')}` },
+    { icon: <FiMapPin className="text-2xl" />, title: "Location", info: portfolioData.location, link: "#" },
+  ];
+
   return (
-    <div id="contact" className="container m-auto mt-16">
-      {/* heading */}
-      <div
-        // data-aos="fade-up"
-        className="relative mb-5"
-      >
-        <h3 className=" text-3xl font-black text-gray-400 sm:text-2xl">
-          Contact
-        </h3>
-        <span className="h-[1.1px] right-0 absolute w-[92%] bg-gray-300 block"></span>
-      </div>
+    <section id="contact" className="py-20 px-6 bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950">
+      <div className="max-w-6xl mx-auto">
+        <motion.h2 className="text-4xl md:text-5xl font-bold mb-4 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+          Get In <span className="text-teal-600 dark:text-cyan-400">Touch</span>
+        </motion.h2>
 
-      {/* card*/}
-      <div className="card-wrapper w-[90%] sm:w-[100%] mx-auto mt-5 flex items-center justify-center sm:flex-col">
-        <div className="left w-[70%] flex-1 flex items-center justify-center sm:flex-col sm:w-full">
-          <div className="flex-3 w-1/2 gap-3 flex items-end justify-end  flex-col sm:w-3/4">
-            <div data-aos="zoom-in">
-              <h1 className="text-5xl font-bold sm:text-3xl">You Need</h1>
-              <h3 className="text-xl sm:text-lg">
-                Beautiful design for your website leave a request
-              </h3>
+        <motion.p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
+          Have a project in mind? Reach out and let's create something amazing!
+        </motion.p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {contactInfo.map((info, idx) => (
+            <motion.a
+              key={idx}
+              href={info.link}
+              className="p-6 bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg text-center border border-gray-150 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:bg-teal-50/50 dark:hover:bg-teal-950/20 hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="text-teal-600 dark:text-cyan-400 mb-4 flex justify-center">{info.icon}</div>
+              <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">{info.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400">{info.info}</p>
+            </motion.a>
+          ))}
+        </div>
+
+        <motion.div
+          className="max-w-2xl mx-auto bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md p-8 rounded-lg border border-gray-150 dark:border-teal-500/20 shadow-md"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-slate-800 bg-white dark:bg-slate-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:focus:ring-cyan-400/20 focus:border-teal-500 dark:focus:border-cyan-400 text-gray-900 dark:text-white"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-slate-800 bg-white dark:bg-slate-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:focus:ring-cyan-400/20 focus:border-teal-500 dark:focus:border-cyan-400 text-gray-900 dark:text-white"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
             </div>
-          </div>
-          <div className=" flex p-5 items-center justify-center ">
-            <button
-              data-aos="zoom-in"
-              className=" text-yellow-500 font-extrabold text-3xl p-2 rounded-lg shadow-[0_0_10px_1px_rgba(0,0,0,0.1)] "
-            >
-              <BsArrowRight className=" md:rotate-90" />
-            </button>
-          </div>
-        </div>
-        <div className="right flex-1">
-          <form
-            data-aos="zoom-in"
-            className="flex justify-center items-center flex-col gap-5 w-[70%] md:w-[100%] sm:w-[95%] mx-auto"
-            action="mailto:ry993494787@gmail.com"
-          >
-            <input
-              className="px-3 shadow-[0_0_16px_0px_rgba(0,0,0,0.1)] p-2 rounded-lg w-full"
-              type="email"
-              placeholder="e.g. example@email.com"
-              name=""
-            />
-            <input
-              className="px-3 shadow-[0_0_16px_0px_rgba(0,0,0,0.1)] p-2 rounded-lg w-full"
-              type="text"
-              placeholder={Name}
-              name=""
-            />
-            <textarea
-              className="px-3 shadow-[0_0_16px_0px_rgba(0,0,0,0.1)] p-2 rounded-lg w-full"
-              rows="4"
-              cols="50"
-              placeholder="Write your message"
-              name=""
-              id=""
-            />
-            <button
-              className="bg-yellow-500 w-full text-white font-semibold  p-2 rounded-lg flex items-center justify-center space-x-1"
+
+            <div>
+              <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Subject</label>
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-slate-800 bg-white dark:bg-slate-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:focus:ring-cyan-400/20 focus:border-teal-500 dark:focus:border-cyan-400 text-gray-900 dark:text-white"
+                placeholder="Subject"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="5"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-slate-800 bg-white dark:bg-slate-950 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500/20 dark:focus:ring-cyan-400/20 focus:border-teal-500 dark:focus:border-cyan-400 resize-none text-gray-900 dark:text-white"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+
+            <motion.button
               type="submit"
+              className="w-full px-8 py-3 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600 hover:from-teal-650 hover:to-blue-755 text-white font-extrabold rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(13,148,136,0.3)] transition-all uppercase tracking-wider text-sm"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span>Send</span>
-              <RiSendPlaneFill />
-            </button>
+              Send Message
+            </motion.button>
           </form>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -40,7 +40,7 @@ const Resume = () => {
             data-aos="zoom-in"
             className="w-full p-5 py-12 sm:py-8 sm:w-full sm:p-2"
           >
-            <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-yellow-500">
+            <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-teal-650 dark:text-cyan-400">
               Experience
             </legend>
 
@@ -48,18 +48,18 @@ const Resume = () => {
             <div className="relative">
               {/* Design */}
               <div className="design flex absolute left-[-150px] top-1/2 items-center rotate-[90deg] sm:left-[-160px]">
-                <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
+                <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
                 <div className="line w-[230px] bg-gray-300 h-[2px] sm:w-[250px]"></div>
-                <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
+                <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
               </div>
-              <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg">
+              <div className="flex flex-col gap-1 sm:gap-1 border-2 border-teal-500/30 dark:border-teal-500/20 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(13,148,136,0.05)] p-3 rounded-lg bg-white dark:bg-slate-900/60">
                 <h1 className="text-[1.4rem] font-semibold sm:text-xl">
                   {experiences[activeExperience].title}
                 </h1>
                 <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">
                   {experiences[activeExperience].company}
                 </span>
-                <span className="text-[.9rem] font-semibold text-yellow-500 sm:text-base">
+                <span className="text-[.9rem] font-semibold text-teal-600 dark:text-cyan-400 sm:text-base">
                   {experiences[activeExperience].period}
                 </span>
                 <p className="text-[.9rem] text-justify break-words text-gray-500">
@@ -74,7 +74,7 @@ const Resume = () => {
               <button
                 key={index}
                 className={`mx-2 w-3 h-3 rounded-full ${
-                  index === activeExperience ? "bg-yellow-500" : "bg-gray-300"
+                  index === activeExperience ? "bg-teal-500" : "bg-gray-300 dark:bg-slate-700"
                 }`}
                 onClick={() => handleExperienceDotClick(index)}
               ></button>
@@ -88,7 +88,7 @@ const Resume = () => {
             data-aos="zoom-in"
             className="w-full p-5 py-12 sm:py-8 sm:w-full sm:p-2"
           >
-            <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-yellow-500">
+            <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-teal-650 dark:text-cyan-400">
               Education
             </legend>
 
@@ -96,18 +96,18 @@ const Resume = () => {
             <div className="relative">
               {/* Design */}
               <div className="design flex absolute left-[-150px] top-1/2 items-center rotate-[90deg] sm:left-[-160px]">
-                <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
+                <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
                 <div className="line w-[230px] bg-gray-300 h-[2px] sm:w-[250px]"></div>
-                <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-yellow-500"></div>
+                <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
               </div>
-              <div className="flex flex-col gap-1 sm:gap-1 border-2 border-yellow-400 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg">
+              <div className="flex flex-col gap-1 sm:gap-1 border-2 border-teal-500/30 dark:border-teal-500/20 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(13,148,136,0.05)] p-3 rounded-lg bg-white dark:bg-slate-900/60">
                 <h1 className="text-[1.4rem] font-semibold sm:text-xl">
                   {educations[activeEducation].title}
                 </h1>
                 <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">
                   {educations[activeEducation].school}
                 </span>
-                <span className="text-[.9rem] font-semibold text-yellow-500 sm:text-base">
+                <span className="text-[.9rem] font-semibold text-teal-600 dark:text-cyan-400 sm:text-base">
                   {educations[activeEducation].period}
                 </span>
                 <p className="text-[.9rem] text-justify text-gray-500">
@@ -123,7 +123,7 @@ const Resume = () => {
               <button
                 key={index}
                 className={`mx-2 w-3 h-3 rounded-full ${
-                  index === activeEducation ? "bg-yellow-500" : "bg-gray-300"
+                  index === activeEducation ? "bg-teal-500" : "bg-gray-300 dark:bg-slate-700"
                 }`}
                 onClick={() => handleEducationDotClick(index)}
               ></button>
