@@ -24,7 +24,7 @@ const Contact = ({ darkMode }) => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-6 bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950">
+    <section id="contact" className="py-20 px-6 bg-white dark:bg-slate-950 dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950">
       <div className="max-w-6xl mx-auto">
         <motion.h2 className="text-4xl md:text-5xl font-bold mb-4 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
           Get In <span className="text-teal-600 dark:text-cyan-400">Touch</span>

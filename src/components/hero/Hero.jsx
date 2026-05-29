@@ -32,7 +32,7 @@ const Hero = ({ darkMode }) => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-200 to-blue-200 dark:from-slate-950 dark:via-teal-950/20 dark:to-blue-950/30 relative overflow-hidden pt-24 px-6 md:px-12"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-200 to-blue-200 dark:bg-slate-950 dark:bg-gradient-to-r dark:from-slate-950 dark:via-teal-950/20 dark:to-blue-950/30 relative overflow-hidden pt-24 px-6 md:px-12"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10 pt-10 md:pt-0">
         {/* Left Column (Details & Typography) */}

@@ -6,7 +6,7 @@ import { blogPosts } from "../../data/blogData";
 
 const Blog = ({ darkMode }) => {
   return (
-    <section id="blog" className="py-20 px-6 bg-gradient-to-br from-blue-50/20 via-white to-emerald-50/10 dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900">
+    <section id="blog" className="py-20 px-6 bg-gradient-to-br from-blue-50/20 via-white to-emerald-50/10 dark:bg-slate-950 dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900">
       <div className="max-w-6xl mx-auto">
         <motion.h2 className="text-4xl md:text-5xl font-bold mb-12 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
           Latest <span className="text-teal-600 dark:text-cyan-400">Blog Posts</span>

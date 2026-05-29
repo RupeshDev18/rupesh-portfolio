@@ -11,7 +11,7 @@ const About = ({ darkMode }) => {
   ];
 
   return (
-    <section id="about" className="py-24 px-6 bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900 overflow-hidden">
+    <section id="about" className="py-24 px-6 bg-gradient-to-br from-green-50 via-white to-blue-50 dark:bg-slate-950 dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-4xl md:text-5xl font-black mb-4 text-center text-gray-900 dark:text-white"
