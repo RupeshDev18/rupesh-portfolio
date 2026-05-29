@@ -7,4 +7,12 @@ export default defineConfig({
     hostname: 'https://rupesh-portfolio-tk3v.onrender.com',
     exclude: ["/googleaaa5db7019bf9846"],
   }), react()],
+  server: {
+    port: 5173,
+    open: true,
+  },
+  build: {
+    outDir: "dist",
+    sourcemap: false,
+  },
 });

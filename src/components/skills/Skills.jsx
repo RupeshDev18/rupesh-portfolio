@@ -1,169 +1,89 @@
 import React from "react";
-import ProgressBar from "../../chip/ProgressBar";
-import SkillBox from "../../chip/SkillBox";
-
-import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io";
-
-import {
-  SiJavascript,
-  SiTailwindcss,
-  SiMongodb,
-  SiExpress,
-  SiPython,
-  SiNextdotjs,
-} from "react-icons/si";
-import { GrCode } from "react-icons/gr";
-import { FaReact } from "react-icons/fa";
-import { IoLogoNodejs } from "react-icons/io";
-
-import { SiDjango } from "react-icons/si";
+import { motion } from "framer-motion";
 
 const Skills = ({ darkMode }) => {
+  const skillCategories = [
+    {
+      category: "Frontend",
+      skills: [
+        { name: "React.js", level: 95 },
+        { name: "Next.js", level: 90 },
+        { name: "Tailwind CSS", level: 95 },
+        { name: "JavaScript/ES6+", level: 95 },
+        { name: "TypeScript", level: 85 },
+        { name: "Redux", level: 88 },
+      ],
+    },
+    {
+      category: "Backend",
+      skills: [
+        { name: "Node.js", level: 92 },
+        { name: "Express.js", level: 90 },
+        { name: "MongoDB", level: 88 },
+        { name: "PostgreSQL", level: 82 },
+        { name: "Firebase", level: 85 },
+        { name: "REST APIs", level: 92 },
+      ],
+    },
+    {
+      category: "DevOps & Tools",
+      skills: [
+        { name: "Docker", level: 80 },
+        { name: "GitHub", level: 95 },
+        { name: "Git", level: 95 },
+        { name: "AWS", level: 75 },
+        { name: "CI/CD", level: 80 },
+        { name: "Linux", level: 85 },
+      ],
+    },
+    {
+      category: "AI/ML",
+      skills: [
+        { name: "Python", level: 88 },
+        { name: "TensorFlow", level: 78 },
+        { name: "Machine Learning", level: 80 },
+        { name: "Data Analysis", level: 82 },
+        { name: "Pandas", level: 85 },
+        { name: "Scikit-learn", level: 80 },
+      ],
+    },
+  ];
+
   return (
-    <div id="skills">
-      <div className=" container m-auto  mt-16">
-        {/* heading */}
-        <div data-aos="fade-up" className="relative mb-5">
-          <h3 className=" text-3xl font-black text-gray-400 sm:text-2xl">
-            My Skills
-          </h3>
-          <span className="h-[1.1px] right-0 absolute w-[90%] bg-gray-300 block"></span>
-        </div>
-        {/* content*/}
-        <div className="flex md:flex-col ">
-          <div className="left flex-1 w-full">
-            <p
-              data-aos="fade-up"
-              className=" text-gray-700 font-medium w-[100%]"
-            >
-              Here are my skills.
-            </p>
-            {/* left box */}
-            <div
-              data-aos="zoom-in"
-              className="progress flex items-center h-[100%] justify-end md:justify-center"
-            >
-              <div className=" flex flex-col gap-6  w-3/4  my-5 md:w-[90%]">
-                <ProgressBar logo={<IoLogoHtml5 />} name={"HTML"} value={95} />
-                <ProgressBar logo={<IoLogoCss3 />} name={"CSS"} value={80} />
-                <ProgressBar
-                  logo={<SiJavascript />}
-                  name={"Javascript"}
-                  value={85}
-                />
-                <ProgressBar logo={<FaReact />} name={"React Js"} value={80} />
-                <ProgressBar
-                  logo={<SiTailwindcss />}
-                  name={"Tailwind CSS"}
-                  value={80}
-                />
+    <section id="skills" className="py-20 px-6 bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950">
+      <div className="max-w-6xl mx-auto">
+        <motion.h2 className="text-4xl md:text-5xl font-bold mb-12 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+          My <span className="text-teal-600 dark:text-cyan-400">Skills</span>
+        </motion.h2>
+
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true }}>
+          {skillCategories.map((category, catIdx) => (
+            <motion.div key={catIdx} className="p-6 bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg border border-gray-200 dark:border-teal-500/20 hover:border-teal-400 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all duration-300">
+              <h3 className="text-xl font-bold mb-6 text-teal-600 dark:text-cyan-400">{category.category}</h3>
+              <div className="space-y-4">
+                {category.skills.map((skill, idx) => (
+                  <div key={idx} className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="font-medium text-gray-800 dark:text-gray-200">{skill.name}</span>
+                      <span className="text-teal-600 dark:text-cyan-400 font-bold">{skill.level}%</span>
+                    </div>
+                    <div className="h-2 bg-gray-200 dark:bg-slate-950 rounded-full overflow-hidden border border-transparent dark:border-teal-950/40">
+                      <motion.div
+                        className="h-full bg-gradient-to-r from-teal-500 to-blue-500"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                      ></motion.div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
-          {/* right box */}
-          <div className="right relative flex-1 flex flex-wrap p-5 gap-10 items-center justify-center sm:w-full">
-            <div className="first2 flex flex-col gap-10">
-              <SkillBox
-                logo={<IoLogoNodejs />}
-                black={"white"}
-                white={"black"}
-                skill={"Node Js"}
-              />
-              <SkillBox
-                logo={<SiMongodb />}
-                black={"white"}
-                white={"black"}
-                skill={"MongoDB"}
-              />
-              <SkillBox
-                logo={<SiDjango />}
-                black={"white"}
-                white={"black"}
-                skill={"Django"}
-              />
-            </div>
-            <div className="last2 flex flex-col gap-10">
-              <SkillBox
-                logo={<SiExpress />}
-                black={"black"}
-                white={"white"}
-                skill={"Express Js"}
-              />
-              <SkillBox
-                className=""
-                logo={<GrCode />}
-                black={"black"}
-                white={"white"}
-                skill={"Java"}
-              />
-              <SkillBox
-                className=""
-                logo={
-                  <SiNextdotjs className=" text-white bg-black rounded-full h-fit border-white overflow-hidden" />
-                }
-                black={"black"}
-                white={"white"}
-                skill={"Next Js"}
-              />
-              <SkillBox
-                className=""
-                logo={
-                  <SiPython className=" text-white bg-black rounded-full h-fit border-white overflow-hidden" />
-                }
-                black={"black"}
-                white={"white"}
-                skill={"Python"}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* icons */}
-        {/* <div
-          data-aos="fade-up"
-          data-aos-duration="1200"
-          className=" container m-auto flex items-center justify-center mt-8 gap-8 md:gap-5"
-        >
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios-filled/50/null/c-plus-plus-logo.png"
-          />
-
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/color/48/null/python--v1.png"
-          />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios/50/null/react-native--v1.png"
-          />
-
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/color/48/null/sass.png"
-            />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios-filled/50/null/git.png"
-            />
-            <img
-              className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-              src="https://img.icons8.com/windows/50/null/sass--v1.png"
-            />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/color/48/null/c-plus-plus-logo.png"
-          />
-          <img
-            className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]"
-            src="https://img.icons8.com/ios-filled/50/null/python.png"
-          />
-          <img className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]" src="https://img.icons8.com/color/48/null/javascript--v1.png"/>
-          <img className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]" src="https://img.icons8.com/color/48/null/nodejs.png"/>
-          <img className="w-[40px] h-[40px] md:w-[35px] md:h-[35px]" src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/null/external-mongodb-a-cross-platform-document-oriented-database-program-logo-shadow-tal-revivo.png"/>
-        </div> */}
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

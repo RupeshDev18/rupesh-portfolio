@@ -1,41 +1,25 @@
-/** @type {import('tailwindcss').Config}*/
 module.exports = {
-  darkMode: "class",
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: 'class',
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx}",
+  ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1535px",
-        xl: "1279px",
-        lg: "1023px",
-        sm: "639px",
-        md: "767px",
-      },
-      maxWidth: "100%",
-    },
-
-    screens: {
-      "2xl": { max: "1535px" },
-      // => @media (max-width: 1535px) { ... }
-
-      xl: { max: "1279px" },
-      // => @media (max-width: 1279px) { ... }
-
-      lg: { max: "1023px" },
-      // => @media (max-width: 1023px) { ... }
-
-      md: { max: "836px" },
-      // => @media (max-width: 767px) { ... }
-
-      sm: { max: "639px" },
-      // => @media (max-width: 639px) { ... }
-      exsm: { max: "380px" },
-    },
     extend: {
       colors: {
-        "text-yellow-500": "#ffc312",
+        primary: '#f6c400',
+        secondary: '#ff6b6b',
+      },
+      animation: {
+        blob: 'blob 7s infinite',
+      },
+      keyframes: {
+        blob: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '25%': { transform: 'translate(20px, -50px) scale(1.1)' },
+          '50%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '75%': { transform: 'translate(50px, 50px) scale(1.05)' },
+        },
       },
     },
   },
