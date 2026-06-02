@@ -4,8 +4,7 @@ import ViteSitemap from 'vite-plugin-sitemap';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [ViteSitemap({
-    hostname: 'https://rupesh-portfolio-tk3v.onrender.com',
-    exclude: ["/googleaaa5db7019bf9846"],
+    hostname: 'https://rupesh-yadav.fun',
   }), react()],
   server: {
     port: 5173,
