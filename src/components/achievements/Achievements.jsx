@@ -37,7 +37,7 @@ const Achievements = () => {
                 {item.icon === "aws" ? <FaAws /> : <FaTrophy />}
               </div>
               <div>
-                <h3 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white mb-2 leading-tight">
+                <h3 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white mb-2 leading-tight whitespace-pre-line">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm md:text-base">
@@ -67,6 +67,11 @@ const Achievements = () => {
                 <div className="absolute top-4 right-6 text-6xl text-teal-100 dark:text-teal-900/30 font-serif leading-none select-none">
                   "
                 </div>
+                {test.badge && (
+                  <div className="inline-block px-3 py-1 mb-4 rounded-full bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold uppercase tracking-wide">
+                    {test.badge}
+                  </div>
+                )}
                 <p className="text-gray-700 dark:text-gray-300 italic mb-6 relative z-10 leading-relaxed">
                   "{test.text}"
                 </p>

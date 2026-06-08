@@ -6,7 +6,7 @@
   "summary": "AWS Certified Solutions Architect building scalable applications with React, Node.js, FastAPI, and AWS.",
   "typewriterKeywords": [
     "AWS Certified Solutions Architect",
-    "Multi-Tenant SaaS Specialist",
+    "Software Engineer",
     "Full Stack Engineer"
   ],
   "socials": {
@@ -158,7 +158,7 @@
   ],
   "achievements": [
     {
-      "title": "AWS Certified Solutions Architect - Associate",
+      "title": "AWS Certified Solutions Architect Associate\nExpires Jan 2028",
       "description": "Validated expertise in designing distributed, scalable, and secure systems on AWS cloud platforms.",
       "icon": "aws"
     },
@@ -170,11 +170,13 @@
   ],
   "testimonials": [
     {
+      "badge": "Manager Recommendation",
       "name": "Mehul Brahmvar",
       "role": "Full-Stack Developer | .NET Core | Angular",
       "text": "I have worked with Rupesh Yadav, and I’m consistently impressed by his strong full-stack development skills. He not only writes clean, efficient, and scalable code, but also has an excellent ability to understand business requirements and translate them into practical technical solutions. His ownership, problem-solving mindset, and attention to detail make him a valuable asset to any team. I highly recommend him to anyone looking for a dependable and skilled developer."
     },
     {
+      "badge": "Technical Lead Recommendation",
       "name": "PARVEZ MIR",
       "role": "Sr. Fullstack Engineer @ Summertown AI",
       "text": "I’ve had the opportunity to work with Rupesh Yadav, who is contributing as a Fullstack Developer in my team. His responsibilities span across designing and developing scalable backend APIs, managing databases, and building responsive frontends. Rupesh is skilled in modern web technologies, quick to learn, and delivers reliable, high-quality solutions while collaborating effectively with the team."

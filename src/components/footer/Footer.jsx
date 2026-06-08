@@ -21,7 +21,11 @@ const Footer = () => {
             <h3 className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
               {portfolioData.name}
             </h3>
-            <p className="text-gray-400 text-sm">Full-Stack SaaS Engineer | AWS Certified Solutions Architect</p>
+            <ul className="text-gray-400 text-sm space-y-2 mt-4">
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span> AWS Certified Solutions Architect</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span> GATE 2024 AIR 7700</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span> Available for Full Stack / Backend Roles</li>
+            </ul>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
