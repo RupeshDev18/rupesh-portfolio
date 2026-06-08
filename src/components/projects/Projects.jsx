@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
 import portfolioData from "../../data/data.json";
 
 const Projects = ({ darkMode }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
   const projects = portfolioData.projects;
 
   return (
@@ -17,11 +18,17 @@ const Projects = ({ darkMode }) => {
         <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true }}>
           {projects.map((project, idx) => (
             <motion.div key={idx} className="group bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg overflow-hidden border border-gray-100 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:shadow-xl dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] transition-all duration-300" whileHover={{ y: -10 }}>
-              <div className="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center text-6xl overflow-hidden relative">
+              <div 
+                className="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center text-6xl overflow-hidden relative cursor-pointer group/img"
+                onClick={() => project.imagePath && setSelectedImage(new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href)}
+              >
                 {project.imagePath ? (
-                  <a href={new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href} target="_blank" rel="noopener noreferrer" className="w-full h-full block cursor-pointer" title="Click to view full image">
+                  <>
                     <img src={new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href} alt={project.title} className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
-                  </a>
+                    <div className="absolute inset-0 bg-black/20 group-hover/img:bg-black/10 transition-colors duration-300 z-20 pointer-events-none flex items-center justify-center opacity-0 group-hover/img:opacity-100">
+                      <span className="bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm font-bold shadow-lg">Enlarge</span>
+                    </div>
+                  </>
                 ) : (
                   project.image
                 )}
@@ -64,6 +71,33 @@ const Projects = ({ darkMode }) => {
           ))}
         </motion.div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className="relative max-w-6xl w-full max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 text-white hover:text-teal-400 text-4xl font-black p-2 drop-shadow-md z-[110]"
+            >
+              &times;
+            </button>
+            <div className="w-full h-[85vh] rounded-xl overflow-hidden shadow-2xl bg-black">
+              <img src={selectedImage} alt="Project Preview" className="w-full h-full object-contain" />
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };

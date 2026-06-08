@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link as RouterLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiGithub, FiExternalLink, FiCheckCircle } from "react-icons/fi";
@@ -7,7 +7,9 @@ import portfolioData from "../data/data.json";
 const ProjectDetail = ({ darkMode }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const project = portfolioData.projects.find((p) => p.id === id);
+  const imageSrc = project?.imagePath ? new URL(`../assets/projects/${project.imagePath}`, import.meta.url).href : null;
 
   // Scroll to top and re-render mermaid diagram
   useEffect(() => {
@@ -80,15 +82,18 @@ const ProjectDetail = ({ darkMode }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="h-64 md:h-96 rounded-2xl bg-gradient-to-br from-teal-500 via-blue-500 to-purple-600 flex items-center justify-center text-8xl md:text-9xl shadow-2xl mb-12 overflow-hidden relative group">
-            {project.imagePath ? (
-              <a href={new URL(`../assets/projects/${project.imagePath}`, import.meta.url).href} target="_blank" rel="noopener noreferrer" className="w-full h-full z-10 cursor-pointer block" title="Click to view full image">
-                <img src={new URL(`../assets/projects/${project.imagePath}`, import.meta.url).href} alt={project.title} className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500" />
-              </a>
+          <div 
+            className="h-64 md:h-96 rounded-2xl bg-gradient-to-br from-teal-500 via-blue-500 to-purple-600 flex items-center justify-center text-8xl md:text-9xl shadow-2xl mb-12 overflow-hidden relative group cursor-pointer"
+            onClick={() => imageSrc && setIsModalOpen(true)}
+          >
+            {imageSrc ? (
+              <img src={imageSrc} alt={project.title} className="w-full h-full object-cover object-top z-10 transform group-hover:scale-105 transition-transform duration-500" />
             ) : (
               <span className="z-10 filter drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500">{project.image}</span>
             )}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300 z-20 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300 z-20 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100">
+              {imageSrc && <span className="bg-black/50 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm font-bold shadow-lg">Click to Enlarge</span>}
+            </div>
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight text-gray-900 dark:text-white">
@@ -162,6 +167,33 @@ const ProjectDetail = ({ darkMode }) => {
           </div>
         </motion.article>
       </div>
+
+      {/* Image Modal */}
+      {isModalOpen && imageSrc && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className="relative max-w-6xl w-full max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute -top-12 right-0 text-white hover:text-teal-400 text-4xl font-black p-2 drop-shadow-md z-[60]"
+            >
+              &times;
+            </button>
+            <div className="w-full h-[85vh] rounded-xl overflow-hidden shadow-2xl bg-black">
+              <img src={imageSrc} alt={project.title} className="w-full h-full object-contain" />
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };
