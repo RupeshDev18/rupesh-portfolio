@@ -17,7 +17,7 @@ const Projects = ({ darkMode }) => {
 
         <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true }}>
           {projects.map((project, idx) => (
-            <motion.div key={idx} className="group bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg overflow-hidden border border-gray-100 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:shadow-xl dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] transition-all duration-300" whileHover={{ y: -10 }}>
+            <motion.div key={idx} className="group flex flex-col h-full bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg overflow-hidden border border-gray-100 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:shadow-xl dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] transition-all duration-300" whileHover={{ y: -10 }}>
               <div 
                 className="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center text-6xl overflow-hidden relative cursor-pointer group/img"
                 onClick={() => project.imagePath && setSelectedImage(new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href)}
@@ -34,7 +34,7 @@ const Projects = ({ darkMode }) => {
                 )}
               </div>
 
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{project.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{project.description}</p>
 
@@ -46,7 +46,7 @@ const Projects = ({ darkMode }) => {
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-4 mt-auto pt-2">
                   {project.challenge ? (
                     <Link to={`/project/${project.id}`} className="flex items-center gap-2 px-6 py-2 w-full justify-center bg-teal-600 hover:bg-teal-700 text-white rounded text-sm font-bold transition-all shadow-md hover:shadow-lg">
                       View Case Study <FiArrowRight />

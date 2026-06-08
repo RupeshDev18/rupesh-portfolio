@@ -145,24 +145,6 @@
       "tags": ["Next.js", "Google Apps Script", "OpenAI API", "AWS Lambda", "Web Speech API"],
       "github": "https://github.com/rupeshdev18/ai-email-assistant",
       "live": "#"
-    },
-    {
-      "id": "ecommerce-platform",
-      "title": "E-Commerce Platform",
-      "description": "Full-stack MERN e-commerce with Stripe payment integration, admin analytics dashboard, inventory management, and secure JWT session handling.",
-      "image": "🛍️",
-      "tags": ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
-      "github": "#",
-      "live": "#"
-    },
-    {
-      "id": "ai-chat-application",
-      "title": "AI Chat Application",
-      "description": "Real-time chat with OpenAI integration, semantic conversation indexing, vector embeddings search, and instant message routing using Socket.io.",
-      "image": "💬",
-      "tags": ["React", "Express", "Socket.io", "TensorFlow", "MongoDB"],
-      "github": "#",
-      "live": "#"
     }
   ],
   "education": [
