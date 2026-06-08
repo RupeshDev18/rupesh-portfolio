@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 const About = ({ darkMode }) => {
   const stats = [
-    { number: 20, label: "Projects Completed", suffix: "+" },
-    { number: 10, label: "Happy Clients", suffix: "+" },
-    { number: 2, label: "Years Experience", suffix: "+" },
-    { number: 10, label: "Technologies", suffix: "+" },
+    { number: "60K", label: "Issues Processed", suffix: "+" },
+    { number: "87", label: "Branch Coverage", suffix: "%" },
+    { number: "11", label: "Production POCs", suffix: "" },
+    { number: "AWS", label: "Certified SAA", suffix: "" },
   ];
 
   return (
@@ -96,14 +96,26 @@ const About = ({ darkMode }) => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-semibold">
-              I started my coding journey and fell in love with building beautiful, scalable web applications.
-            </p>
-            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-semibold">
-              My expertise spans the **MERN Stack** (MongoDB, Express, React, Node.js) with a strong focus on responsive user interfaces, elegant micro-interactions, and visual excellence.
-            </p>
-            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-semibold">
-              I am highly passionate about **AI/ML integration**, open-source contributions, and crafting high-performance, modern digital products.
+            <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-2">Who I Am</h3>
+            <ul className="space-y-3 mb-6">
+              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+                <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Full Stack Engineer
+              </li>
+              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+                <span className="w-2 h-2 bg-teal-500 rounded-full"></span> AWS Certified Solutions Architect
+              </li>
+              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+                <span className="w-2 h-2 bg-teal-500 rounded-full"></span> React + Node.js
+              </li>
+              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+                <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Multi-Tenant SaaS Specialist
+              </li>
+              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+                <span className="w-2 h-2 bg-teal-500 rounded-full"></span> PostgreSQL & AWS
+              </li>
+            </ul>
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-semibold">
+              I specialize in architecting scalable backend systems and high-performance frontends that process thousands of records efficiently and securely.
             </p>
           </motion.div>
         </div>

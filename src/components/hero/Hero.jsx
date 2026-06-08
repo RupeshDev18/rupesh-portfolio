@@ -42,11 +42,17 @@ const Hero = ({ darkMode }) => {
           initial="hidden"
           animate="visible"
         >
+          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-[-1rem]">
+            <span className="px-3 py-1 bg-[#ff9900]/10 text-[#ff9900] border border-[#ff9900]/50 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#ff9900] rounded-full animate-pulse"></span>
+              AWS Certified Solutions Architect
+            </span>
+          </motion.div>
           <motion.h2
             className="text-5xl md:text-6xl font-black text-black dark:text-white leading-tight"
             variants={itemVariants}
           >
-            Hello, I'm {portfolioData.name}
+            Hi, I'm {portfolioData.name.split(' ')[0]}
           </motion.h2>
 
           {/* Typewriter Effect */}
@@ -72,17 +78,17 @@ const Hero = ({ darkMode }) => {
           {/* Action Buttons */}
           <motion.div className="flex flex-wrap gap-4 mt-2" variants={itemVariants}>
             <a
-              href="#contact"
-              className="bg-black dark:bg-white text-white dark:text-black px-10 py-3 rounded-lg font-bold hover:bg-teal-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-black transition-all shadow-md text-center inline-block"
-            >
-              Hire Me
-            </a>
-            <a
               href={resumePDF}
-              className="flex items-center justify-center gap-2 bg-white dark:bg-gray-800 border border-black dark:border-gray-700 text-black dark:text-white px-8 py-3 rounded-lg font-bold hover:bg-teal-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-black transition-all shadow-sm"
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white px-8 py-3 rounded-lg font-extrabold hover:shadow-[0_0_20px_rgba(20,184,166,0.4)] transition-all transform hover:-translate-y-1"
               download
             >
-              Resume <FiDownload className="text-lg" />
+              Download Resume <FiDownload className="text-xl" />
+            </a>
+            <a
+              href="#contact"
+              className="bg-transparent text-black dark:text-white border-2 border-black dark:border-white px-10 py-3 rounded-lg font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all text-center inline-block"
+            >
+              Contact Me
             </a>
           </motion.div>
 

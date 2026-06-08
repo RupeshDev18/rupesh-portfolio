@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
 import Hero from "../components/hero/Hero";
 import About from "../components/about/About";
+import Achievements from "../components/achievements/Achievements";
 import Skills from "../components/skills/Skills";
 import Projects from "../components/projects/Projects";
 import Experience from "../components/experience/Experience";
@@ -31,6 +32,7 @@ const Home = ({ darkMode }) => {
     <div>
       <Hero darkMode={darkMode} />
       <About darkMode={darkMode} />
+      <Achievements />
       <Skills darkMode={darkMode} />
       <Experience darkMode={darkMode} />
       <Projects darkMode={darkMode} />

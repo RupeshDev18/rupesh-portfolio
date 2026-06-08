@@ -28,9 +28,10 @@ const Experience = ({ darkMode }) => {
 
                 <p className="text-gray-700 dark:text-gray-300 mb-4">{exp.description}</p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {exp.skills.map((skill, i) => (
-                    <span key={i} className="px-3 py-1 bg-teal-50 dark:bg-teal-950/30 text-teal-800 dark:text-teal-300 rounded-full text-xs font-semibold">
+                    <span key={i} className="px-3 py-1.5 bg-teal-50 dark:bg-teal-950/40 text-teal-800 dark:text-teal-300 rounded text-xs font-bold uppercase tracking-wide border border-teal-200 dark:border-teal-500/30 shadow-sm flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-pulse"></span>
                       {skill}
                     </span>
                   ))}

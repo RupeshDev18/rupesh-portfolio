@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import BlogPost from "./pages/BlogPost";
+import ProjectDetail from "./pages/ProjectDetail";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
 
@@ -94,6 +95,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home darkMode={darkMode} />} />
               <Route path="/blog/:id" element={<BlogPost darkMode={darkMode} />} />
+              <Route path="/project/:id" element={<ProjectDetail darkMode={darkMode} />} />
             </Routes>
           </div>
           <Footer darkMode={darkMode} />
