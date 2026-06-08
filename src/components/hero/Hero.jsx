@@ -43,8 +43,8 @@ const Hero = ({ darkMode }) => {
           animate="visible"
         >
           <motion.div variants={itemVariants} className="flex items-center gap-2 mb-[-1rem]">
-            <span className="px-3 py-1 bg-[#ff9900]/10 text-[#ff9900] border border-[#ff9900]/50 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#ff9900] rounded-full animate-pulse"></span>
+            <span className="px-3 py-1.5 bg-teal-100 dark:bg-[#ff9900]/10 text-teal-800 dark:text-[#ff9900] border border-teal-300 dark:border-[#ff9900]/50 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-2 shadow-sm dark:shadow-none">
+              <span className="w-2 h-2 bg-teal-600 dark:bg-[#ff9900] rounded-full animate-pulse"></span>
               AWS Certified Solutions Architect
             </span>
           </motion.div>

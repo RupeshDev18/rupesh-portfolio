@@ -91,7 +91,7 @@ By combining Exponential Backoff + Jitter with persistent cursor tracking, the s
     content: `
 Building a multi-tenant SaaS application requires making a fundamental architectural decision early on: **How do we isolate tenant data?**
 
-When architecting the **ClearDays Enterprise HRMS**, which supports over 200 distinct organizations, data leakage was absolutely unacceptable. Here is a breakdown of the database architecture I implemented.
+When architecting the **SiloamHR Enterprise HRMS**, which supports over 200 distinct organizations, data leakage was absolutely unacceptable. Here is a breakdown of the database architecture I implemented.
 
 ## The Three Multi-Tenancy Models
 
@@ -99,7 +99,7 @@ When architecting the **ClearDays Enterprise HRMS**, which supports over 200 dis
 2. **Schema per Tenant**: Good balance. One database, but each tenant gets their own schema.
 3. **Shared Database, Shared Schema**: The most cost-effective and scalable, but the riskiest for data leakage. Every table has a \`tenant_id\` column.
 
-For ClearDays, I chose a hybrid approach heavily relying on the **Shared Database** model, secured by PostgreSQL's powerful **Row-Level Security (RLS)**.
+For SiloamHR, I chose a hybrid approach heavily relying on the **Shared Database** model, secured by PostgreSQL's powerful **Row-Level Security (RLS)**.
 
 ## Implementing Row-Level Security (RLS)
 

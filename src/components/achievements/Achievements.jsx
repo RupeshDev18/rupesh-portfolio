@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiAward, FiCloud, FiMessageSquare } from "react-icons/fi";
+import { FiMessageSquare } from "react-icons/fi";
+import { FaAws, FaTrophy } from "react-icons/fa";
 import portfolioData from "../../data/data.json";
 
 const Achievements = () => {
@@ -24,20 +25,22 @@ const Achievements = () => {
           {achievements.map((item, idx) => (
             <motion.div
               key={idx}
-              className="flex items-start gap-6 p-8 rounded-2xl bg-gradient-to-br from-teal-50 to-blue-50 dark:from-slate-900/80 dark:to-teal-950/20 border border-teal-100 dark:border-teal-500/20 shadow-lg hover:shadow-xl transition-all"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-8 rounded-2xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all relative overflow-hidden group"
               initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center rounded-full bg-white dark:bg-slate-950 shadow-md text-teal-600 dark:text-cyan-400 text-3xl">
-                {item.icon === "aws" ? <FiCloud /> : <FiAward />}
+              <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${item.icon === 'aws' ? 'bg-[#ff9900]' : 'bg-teal-500'}`}></div>
+              
+              <div className={`flex-shrink-0 w-16 h-16 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-slate-800 shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 text-4xl ${item.icon === 'aws' ? 'text-[#ff9900]' : 'text-teal-500'}`}>
+                {item.icon === "aws" ? <FaAws /> : <FaTrophy />}
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                <h3 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white mb-2 leading-tight">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm md:text-base">
                   {item.description}
                 </p>
               </div>

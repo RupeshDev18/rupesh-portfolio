@@ -87,9 +87,10 @@
   "projects": [
     {
       "id": "cleardays-hrms",
-      "title": "ClearDays: Enterprise Multi-Tenant HRMS",
+      "title": "SiloamHR: Enterprise Multi-Tenant HRMS",
       "description": "Designed scalable multi-tenant architecture using shared-database schema with row-level security supporting 200+ organizations. Architected hybrid RBAC and ABAC permission system with Redis caching achieving sub-100ms P99 latency.",
       "image": "🏢",
+      "imagePath": "siloamHR.png",
       "tags": ["React 19", "Node.js", "PostgreSQL", "Redis", "RBAC/ABAC", "AWS"],
       "github": "https://github.com/rupeshdev18/cleardays",
       "live": "https://hr-portal-web-nd7c.onrender.com",
@@ -124,6 +125,7 @@
       "title": "BrickoSys: Inventory & Warehouse MS",
       "description": "Built multi-tenant inventory system for Lego parts with modular APIs for stock tracking, order picking, and warehouse management. Schema-based partitioning reduced manual tracking by 42%.",
       "image": "🧱",
+      "imagePath": "brickosys.png",
       "tags": ["React", "Node.js", "PostgreSQL", "AWS S3", "Tenant Isolation"],
       "github": "https://github.com/rupeshdev18/brickosys",
       "live": "#",

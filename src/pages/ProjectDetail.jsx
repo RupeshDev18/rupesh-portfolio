@@ -81,8 +81,14 @@ const ProjectDetail = ({ darkMode }) => {
           transition={{ duration: 0.6 }}
         >
           <div className="h-64 md:h-96 rounded-2xl bg-gradient-to-br from-teal-500 via-blue-500 to-purple-600 flex items-center justify-center text-8xl md:text-9xl shadow-2xl mb-12 overflow-hidden relative group">
-            <span className="z-10 filter drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500">{project.image}</span>
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+            {project.imagePath ? (
+              <a href={new URL(`../assets/projects/${project.imagePath}`, import.meta.url).href} target="_blank" rel="noopener noreferrer" className="w-full h-full z-10 cursor-pointer block" title="Click to view full image">
+                <img src={new URL(`../assets/projects/${project.imagePath}`, import.meta.url).href} alt={project.title} className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500" />
+              </a>
+            ) : (
+              <span className="z-10 filter drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500">{project.image}</span>
+            )}
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300 z-20 pointer-events-none"></div>
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight text-gray-900 dark:text-white">
