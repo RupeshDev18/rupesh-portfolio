@@ -1,18 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { Suspense } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, Suspense, lazy } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import BlogPost from "./pages/BlogPost";
-import ProjectDetail from "./pages/ProjectDetail";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
 
+// Lazy load page components
+const Home = lazy(() => import("./pages/Home"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+
+const LoadingSpinner = () => (
+  <motion.div
+    key="loading"
+    className="h-screen w-full flex items-center justify-center bg-white dark:bg-slate-950"
+    initial={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    <motion.div
+      className="flex space-x-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {[0, 1, 2].map((i) => (
+        <motion.div
+          key={i}
+          className="w-3 h-3 bg-teal-500 rounded-full"
+          animate={{ y: [0, -10, 0] }}
+          transition={{
+            duration: 0.6,
+            delay: i * 0.1,
+            repeat: Infinity,
+          }}
+        />
+      ))}
+    </motion.div>
+  </motion.div>
+);
+
 const App = () => {
   const [loading, setLoading] = useState(true);
-  const [darkMode, setDarkMode] = useState(() => {
-    return document.documentElement.classList.contains("dark");
-  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,87 +49,31 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
-  };
-
   return (
-    <Suspense
-      fallback={
-        <div className="h-screen w-full flex items-center justify-center bg-white dark:bg-slate-950">
-          <motion.div
-            className="flex space-x-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={i}
-                className="w-3 h-3 bg-teal-500 rounded-full"
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.1,
-                  repeat: Infinity,
-                }}
-              />
-            ))}
-          </motion.div>
-        </div>
-      }
-    >
+    <AnimatePresence mode="wait">
       {loading ? (
-        <motion.div
-          className="h-screen w-full flex items-center justify-center bg-white dark:bg-slate-950"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.div
-            className="flex space-x-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={i}
-                className="w-3 h-3 bg-teal-500 rounded-full"
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.1,
-                  repeat: Infinity,
-                }}
-              />
-            ))}
-          </motion.div>
-        </motion.div>
+        <LoadingSpinner />
       ) : (
-        <div className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-50 min-h-screen transition-colors duration-300 flex flex-col justify-between">
-          <NavBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <motion.div 
+          key="content" 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-50 min-h-screen transition-colors duration-300 flex flex-col justify-between"
+        >
+          <NavBar />
           <div className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home darkMode={darkMode} />} />
-              <Route path="/blog/:id" element={<BlogPost darkMode={darkMode} />} />
-              <Route path="/project/:id" element={<ProjectDetail darkMode={darkMode} />} />
-            </Routes>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/project/:id" element={<ProjectDetail />} />
+              </Routes>
+            </Suspense>
           </div>
-          <Footer darkMode={darkMode} />
-        </div>
+          <Footer />
+        </motion.div>
       )}
-    </Suspense>
+    </AnimatePresence>
   );
 };
 

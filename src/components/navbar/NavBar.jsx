@@ -4,8 +4,10 @@ import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 import { Link } from "react-scroll";
 import { useLocation, Link as RouterLink } from "react-router-dom";
 import portfolioData from "../../data/data.json";
+import { useTheme } from "../../context/ThemeContext";
 
-const NavBar = ({ darkMode, toggleDarkMode }) => {
+const NavBar = () => {
+  const { darkMode, toggleDarkMode } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const location = useLocation();

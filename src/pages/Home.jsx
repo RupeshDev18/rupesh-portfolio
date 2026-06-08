@@ -9,8 +9,9 @@ import Projects from "../components/projects/Projects";
 import Experience from "../components/experience/Experience";
 import Blog from "../components/blog/Blog";
 import Contact from "../components/contact/Contact";
+import SEO from "../components/seo/SEO";
 
-const Home = ({ darkMode }) => {
+const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -30,14 +31,15 @@ const Home = ({ darkMode }) => {
 
   return (
     <div>
-      <Hero darkMode={darkMode} />
-      <About darkMode={darkMode} />
+      <SEO />
+      <Hero />
+      <About />
       <Achievements />
-      <Skills darkMode={darkMode} />
-      <Experience darkMode={darkMode} />
-      <Projects darkMode={darkMode} />
-      <Blog darkMode={darkMode} />
-      <Contact darkMode={darkMode} />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Blog />
+      <Contact />
     </div>
   );
 };

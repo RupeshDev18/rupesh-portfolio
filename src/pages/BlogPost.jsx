@@ -3,8 +3,9 @@ import { useParams, Link as RouterLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiCalendar, FiClock, FiShare2, FiBookmark } from "react-icons/fi";
 import { blogPosts } from "../data/blogData";
+import SEO from "../components/seo/SEO";
 
-const BlogPost = ({ darkMode }) => {
+const BlogPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const post = blogPosts.find((p) => p.id === id);
@@ -123,6 +124,10 @@ const BlogPost = ({ darkMode }) => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 pt-28 pb-20 px-6">
+      <SEO 
+        title={post.title} 
+        description={post.content.substring(0, 160) + "..."}
+      />
       <div className="max-w-3xl mx-auto">
         {/* Back Link */}
         <motion.div

@@ -3,8 +3,9 @@ import { useParams, Link as RouterLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiGithub, FiExternalLink, FiCheckCircle } from "react-icons/fi";
 import portfolioData from "../data/data.json";
+import SEO from "../components/seo/SEO";
 
-const ProjectDetail = ({ darkMode }) => {
+const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,6 +49,10 @@ const ProjectDetail = ({ darkMode }) => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 pt-28 pb-20 px-6">
+      <SEO 
+        title={project.title} 
+        description={project.description || project.challenge}
+      />
       <div className="max-w-4xl mx-auto">
         {/* Back Link */}
         <motion.div

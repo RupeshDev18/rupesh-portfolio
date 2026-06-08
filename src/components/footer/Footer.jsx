@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiTwitter, FiMail } from "react-icons/fi";
 import portfolioData from "../../data/data.json";
 
-const Footer = ({ darkMode }) => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socials = [
