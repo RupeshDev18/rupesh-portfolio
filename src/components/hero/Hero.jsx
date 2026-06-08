@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { AiFillTwitterCircle, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedinIn, FaPlay } from "react-icons/fa";
-import { FiDownload, FiArrowDown } from "react-icons/fi";
+import { FiDownload, FiArrowDown, FiEye } from "react-icons/fi";
 import { Link } from "react-scroll";
 import Typewriter from "typewriter-effect";
 import resumePDF from "../../assets/Resume.pdf";
@@ -12,6 +12,7 @@ import { GitHub, LinkedIn, Instagram, Twitter, Facebook } from "../../data/data"
 import portfolioData from "../../data/data.json";
 
 const Hero = ({ darkMode }) => {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -76,20 +77,36 @@ const Hero = ({ darkMode }) => {
           </motion.p>
 
           {/* Action Buttons */}
-          <motion.div className="flex flex-wrap gap-4 mt-2" variants={itemVariants}>
-            <a
-              href={resumePDF}
-              className="flex items-center justify-center gap-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white px-8 py-3 rounded-lg font-extrabold hover:shadow-[0_0_20px_rgba(20,184,166,0.4)] transition-all transform hover:-translate-y-1"
-              download
+          <motion.div className="flex flex-wrap items-center gap-3" variants={itemVariants}>
+            <motion.button
+              onClick={() => setIsResumeModalOpen(true)}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2.5 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white rounded-lg font-bold text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)] hover:shadow-[0_0_25px_rgba(20,184,166,0.5)] transition-all flex items-center gap-2"
             >
-              Download Resume <FiDownload className="text-xl" />
-            </a>
-            <a
+              View Resume <FiEye />
+            </motion.button>
+            <motion.a
+              href={resumePDF}
+              download="Resume.pdf"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-5 py-2.5 bg-gray-900 dark:bg-slate-800 text-white rounded-lg font-bold text-sm hover:bg-gray-800 dark:hover:bg-slate-700 transition-all flex items-center gap-2 shadow-md"
+              title="Download PDF"
+            >
+              Download <FiDownload />
+            </motion.a>
+            <motion.a
               href="#contact"
-              className="bg-transparent text-black dark:text-white border-2 border-black dark:border-white px-10 py-3 rounded-lg font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all text-center inline-block"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-gray-300 dark:border-teal-500/50 text-gray-900 dark:text-white rounded-lg font-bold text-sm hover:bg-gray-50 dark:hover:bg-teal-900/20 transition-all flex items-center gap-2"
             >
               Contact Me
-            </a>
+            </motion.a>
           </motion.div>
 
           {/* Outline Circular Social Links */}
@@ -191,6 +208,38 @@ const Hero = ({ darkMode }) => {
           </motion.div>
         </Link>
       </div>
+
+      {/* Resume Modal */}
+      {isResumeModalOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={() => setIsResumeModalOpen(false)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className="relative max-w-5xl w-full h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setIsResumeModalOpen(false)}
+              className="absolute -top-12 right-0 text-white hover:text-teal-400 text-4xl font-black p-2 drop-shadow-md z-[110]"
+            >
+              &times;
+            </button>
+            <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl bg-white dark:bg-slate-900 border border-slate-700">
+              <iframe 
+                src={resumePDF} 
+                title="Resume PDF"
+                className="w-full h-full"
+                frameBorder="0"
+              />
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
