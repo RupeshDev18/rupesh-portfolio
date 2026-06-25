@@ -4,6 +4,7 @@ import { scroller } from "react-scroll";
 import Hero from "../components/hero/Hero";
 import About from "../components/about/About";
 import Achievements from "../components/achievements/Achievements";
+import Recommendations from "../components/recommendations/Recommendations";
 import Skills from "../components/skills/Skills";
 import Projects from "../components/projects/Projects";
 import Experience from "../components/experience/Experience";
@@ -35,6 +36,7 @@ const Home = () => {
       <Hero />
       <About />
       <Achievements />
+      <Recommendations />
       <Skills />
       <Experience />
       <Projects />

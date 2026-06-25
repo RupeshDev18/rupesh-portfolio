@@ -48,7 +48,7 @@ const Hero = ({ darkMode }) => {
             </span>
           </motion.div>
           <motion.h2
-            className="text-5xl md:text-6xl font-black text-black dark:text-white leading-tight"
+            className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 leading-tight"
             variants={itemVariants}
           >
             Hi, I'm {portfolioData.name.split(' ')[0]}

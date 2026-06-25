@@ -13,7 +13,7 @@ const About = ({ darkMode }) => {
     <section id="about" className="py-24 px-6 bg-gradient-to-br from-green-50 via-white to-blue-50 dark:bg-slate-950 dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.h2
-          className="text-4xl md:text-5xl font-black mb-4 text-center text-gray-900 dark:text-white"
+          className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-800 dark:text-gray-100"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -73,7 +73,7 @@ const About = ({ darkMode }) => {
               <div className="border-t border-slate-800 pt-3">
                 <span className="text-teal-400 font-bold">~</span> <span className="text-cyan-400">cat core-values.json</span>
                 <pre className="text-xs text-teal-300 mt-2 overflow-x-auto">
-{`{
+                  {`{
   "isolation": "Robust Row-Level Security",
   "scalability": "Event-Driven Microservices",
   "security": "JWT Rotation & Secure RBAC",
@@ -96,7 +96,7 @@ const About = ({ darkMode }) => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-2">Who I Am</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Who I Am</h3>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Full Stack Engineer

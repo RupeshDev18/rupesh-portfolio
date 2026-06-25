@@ -12,9 +12,26 @@ const Skills = ({ darkMode }) => {
           My <span className="text-teal-600 dark:text-cyan-400">Skills</span>
         </motion.h2>
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-8" 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+          }}
+        >
           {skillCategories.map((category, catIdx) => (
-            <motion.div key={catIdx} className="p-6 bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg border border-gray-200 dark:border-teal-500/20 hover:border-teal-400 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all duration-300">
+            <motion.div 
+              key={catIdx} 
+              className="p-6 bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg border border-gray-200 dark:border-teal-500/20 hover:border-teal-400 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all duration-300"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 50 } }
+              }}
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
               <h3 className="text-xl font-bold mb-6 text-teal-600 dark:text-cyan-400">{category.category}</h3>
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, idx) => {

@@ -12,9 +12,26 @@ const Blog = ({ darkMode }) => {
           Latest <span className="text-teal-600 dark:text-cyan-400">Blog Posts</span>
         </motion.h2>
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+          }}
+        >
           {blogPosts.map((post, idx) => (
-            <motion.article key={idx} className="bg-white dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg overflow-hidden border border-gray-150 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] flex flex-col transition-all duration-300" whileHover={{ y: -5 }}>
+            <motion.article 
+              key={idx} 
+              className="bg-white dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg overflow-hidden border border-gray-150 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] flex flex-col transition-all duration-300" 
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 50 } }
+              }}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
               <Link to={`/blog/${post.id}`}>
                 <div className="h-40 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center text-5xl cursor-pointer select-none">
                   {post.image}
