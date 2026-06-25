@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { AiFillTwitterCircle, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedinIn, FaPlay } from "react-icons/fa";
-import { FiDownload, FiArrowDown, FiEye } from "react-icons/fi";
-import { Link } from "react-scroll";
+import { FiEye } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
 import resumePDF from "../../assets/Resume.pdf";
 import profileImg from "../../assets/profilepic2.webp";
@@ -87,7 +86,7 @@ const Hero = ({ darkMode }) => {
             >
               View Resume <FiEye />
             </motion.button>
-            <motion.a
+            {/* <motion.a
               href={resumePDF}
               download="Resume.pdf"
               variants={itemVariants}
@@ -97,7 +96,7 @@ const Hero = ({ darkMode }) => {
               title="Download PDF"
             >
               Download <FiDownload />
-            </motion.a>
+            </motion.a> */}
             <motion.a
               href="#contact"
               variants={itemVariants}
@@ -183,7 +182,7 @@ const Hero = ({ darkMode }) => {
 
             {/* Rotating Badge */}
             <div className="absolute bottom-6 right-0 md:right-[-20px] z-20 cursor-pointer">
-              <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center">
+              <div className="relative  bottom-[-25px] w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
                 <img
                   src={circleImg}
                   alt="Full Stack Developer Badge"
@@ -197,6 +196,7 @@ const Hero = ({ darkMode }) => {
       </div>
 
       {/* Down Bouncy Arrow */}
+      {/*
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
         <Link to="skills" smooth={true} duration={500} offset={-80}>
           <motion.div
@@ -208,10 +208,11 @@ const Hero = ({ darkMode }) => {
           </motion.div>
         </Link>
       </div>
+      */}
 
       {/* Resume Modal */}
       {isResumeModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
           onClick={() => setIsResumeModalOpen(false)}
         >
@@ -223,15 +224,15 @@ const Hero = ({ darkMode }) => {
             className="relative max-w-5xl w-full h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={() => setIsResumeModalOpen(false)}
               className="absolute -top-12 right-0 text-white hover:text-teal-400 text-4xl font-black p-2 drop-shadow-md z-[110]"
             >
               &times;
             </button>
             <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl bg-white dark:bg-slate-900 border border-slate-700">
-              <iframe 
-                src={resumePDF} 
+              <iframe
+                src={resumePDF}
                 title="Resume PDF"
                 className="w-full h-full"
                 frameBorder="0"
