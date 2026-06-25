@@ -6,7 +6,7 @@ const Experience = ({ darkMode }) => {
   const experiences = portfolioData.experiences;
 
   return (
-    <section id="experience" className="py-20 px-6 bg-gradient-to-b from-teal-50/10 via-white to-blue-50/10 dark:bg-slate-950 dark:bg-gradient-to-b dark:from-slate-950 dark:via-blue-950/15 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900">
+    <section id="experience" className="py-20 px-6 bg-gradient-to-b from-teal-50/10 via-white to-blue-50/10 dark:bg-slate-950 dark:bg-gradient-to-b dark:from-slate-950 dark:via-blue-950/15 dark:to-slate-950">
       <div className="max-w-4xl mx-auto">
         <motion.h2 className="text-[36px] font-bold mb-12 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
           Work <span className="text-teal-600 dark:text-cyan-400">Experience</span>

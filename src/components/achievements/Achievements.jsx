@@ -8,7 +8,7 @@ const Achievements = () => {
   const { achievements } = portfolioData;
 
   return (
-    <section id="achievements" className="py-24 px-6 bg-white dark:bg-slate-950 border-t border-gray-150 dark:border-slate-900">
+    <section id="achievements" className="py-24 px-6 bg-white dark:bg-slate-950">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-[36px] font-bold mb-16 text-center text-gray-800 dark:text-gray-100"

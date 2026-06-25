@@ -26,7 +26,7 @@ const Recommendations = () => {
   };
 
   return (
-    <section id="recommendations" className="py-24 px-6 bg-gradient-to-br from-gray-50 to-white dark:bg-slate-900 dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-950 border-t border-gray-150 dark:border-slate-800">
+    <section id="recommendations" className="py-24 px-6 bg-gradient-to-br from-gray-50 to-white dark:bg-slate-900 dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-950">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
