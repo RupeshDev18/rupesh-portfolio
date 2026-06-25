@@ -36,18 +36,21 @@ const Projects = ({ darkMode }) => {
               whileHover={{ y: -10, scale: 1.02 }}
             >
               <div 
-                className="h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center text-6xl overflow-hidden relative cursor-pointer group/img"
+                className={`h-48 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center overflow-hidden relative ${project.imagePath ? 'cursor-pointer group/img' : ''}`}
                 onClick={() => project.imagePath && setSelectedImage(new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href)}
               >
-                {project.imagePath ? (
+                {/* Client Project Badge */}
+                <div className="absolute top-3 right-3 z-30 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-xl flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Client Project
+                </div>
+
+                {project.imagePath && (
                   <>
                     <img src={new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href} alt={project.title} className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-black/20 group-hover/img:bg-black/10 transition-colors duration-300 z-20 pointer-events-none flex items-center justify-center opacity-0 group-hover/img:opacity-100">
                       <span className="bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm font-bold shadow-lg">Enlarge</span>
                     </div>
                   </>
-                ) : (
-                  project.image
                 )}
               </div>
 

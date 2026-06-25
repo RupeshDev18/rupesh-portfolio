@@ -45,7 +45,11 @@ const Experience = ({ darkMode }) => {
                   <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap ml-4">{exp.period}</span>
                 </div>
 
-                <p className="text-gray-700 dark:text-gray-300 mb-4">{exp.description}</p>
+                <ul className="list-disc list-outside ml-5 text-gray-700 dark:text-gray-300 mb-6 space-y-2">
+                  {exp.highlights?.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
 
                 <div className="flex flex-wrap gap-3">
                   {exp.skills.map((skill, i) => (

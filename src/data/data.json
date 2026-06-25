@@ -64,7 +64,11 @@
       "company": "Tecunique",
       "period": "Nov 2025 – Present",
       "location": "Vadodara, Gujarat",
-      "description": "Designed and implemented enterprise-grade Jira plugin using Atlassian Forge, enabling reliable processing of 60K+ issues despite strict API rate limits through batching, retries, and resumable recovery. Architected core authentication and organization management for multi-tenant fintech SaaS platform, including tenant onboarding, RBAC, 2FA, password recovery, and secure access and refresh token rotation. Developed Playwright end-to-end tests covering authentication and tenant lifecycle, achieving 87% branch coverage.",
+      "highlights": [
+        "Built Jira plugin processing 60K+ issues",
+        "Architected fintech SaaS platform",
+        "Achieved 87% Playwright coverage"
+      ],
       "skills": ["60K+ Issues Processed", "87% Test Coverage", "Multi-Tenant SaaS", "RBAC / ABAC", "AWS Deployment"]
     },
     {
@@ -72,7 +76,11 @@
       "company": "HolboxAI",
       "period": "Jul 2024 – Oct 2025",
       "location": "Ahmedabad, Gujarat",
-      "description": "Engineered 11 proof-of-concept POC modules across HR, finance, inventory, and procurement, validating product-market fit. Built production-grade Resume Scraper (Lobby Network) automating job listings ingestion, resume parsing, and ML-based job-to-candidate matching with 40% auto-fill efficiency. Designed BrickoSys multi-tenant inventory system with schema-based tenant isolation, reducing manual tracking by 42%.",
+      "highlights": [
+        "Engineered 11 proof-of-concept modules across HR, finance, and inventory",
+        "Built Resume Scraper automating job-to-candidate matching with 40% efficiency",
+        "Designed BrickoSys multi-tenant inventory system reducing manual tracking by 42%"
+      ],
       "skills": ["11 Production POCs", "42% Manual Work Reduced", "ML Resume Parsing", "Schema Isolation"]
     },
     {
@@ -80,7 +88,11 @@
       "company": "Axelor Technologies India Pvt Ltd",
       "period": "Jan 2024 – Jul 2024",
       "location": "Surat, Gujarat",
-      "description": "Developed and customized frontend modules for Axelor Open Suite CRM, improving lead management workflows and UI consistency within low-code framework. Refactored shared React components to reduce duplication and improve maintainability, cutting redundant UI code by approximately 20%.",
+      "highlights": [
+        "Developed and customized frontend modules for Axelor Open Suite CRM",
+        "Refactored shared React components to improve maintainability",
+        "Cut redundant UI code by approximately 20%"
+      ],
       "skills": ["20% UI Code Reduced", "CRM Workflows", "Component Architecture"]
     }
   ],
@@ -89,7 +101,6 @@
       "id": "cleardays-hrms",
       "title": "SiloamHR: Enterprise Multi-Tenant HRMS",
       "description": "Designed scalable multi-tenant architecture using shared-database schema with row-level security supporting 200+ organizations. Architected hybrid RBAC and ABAC permission system with Redis caching achieving sub-100ms P99 latency.",
-      "image": "🏢",
       "imagePath": "siloamHR.png",
       "tags": ["React 19", "Node.js", "PostgreSQL", "Redis", "RBAC/ABAC", "AWS"],
       "github": "https://github.com/rupeshdev18/cleardays",
@@ -107,7 +118,6 @@
       "id": "lobby-network",
       "title": "Lobby Network: Job Search Platform",
       "description": "Developed job platform that scrapes listings from Workday and portals, performs stop-word removal and stemming, and matches jobs to candidates using parsed resume data. Auto-fills applications with 40% efficiency.",
-      "image": "💼",
       "tags": ["Next.js", "Node.js", "Python", "Web Scraping", "Resume Parsing"],
       "github": "https://github.com/rupeshdev18/lobby-network",
       "live": "#",
@@ -124,7 +134,6 @@
       "id": "brickosys-inventory",
       "title": "BrickoSys: Inventory & Warehouse MS",
       "description": "Built multi-tenant inventory system for Lego parts with modular APIs for stock tracking, order picking, and warehouse management. Schema-based partitioning reduced manual tracking by 42%.",
-      "image": "🧱",
       "imagePath": "brickosys.png",
       "tags": ["React", "Node.js", "PostgreSQL", "AWS S3", "Tenant Isolation"],
       "github": "https://github.com/rupeshdev18/brickosys",
@@ -141,7 +150,6 @@
       "id": "ai-email-assistant",
       "title": "AI Email Assistant",
       "description": "Developed Gmail add-on using OpenAI APIs to generate context-aware replies with tone customization. Added speech-based input via Web Speech API and deployed backend inference on AWS Lambda.",
-      "image": "✉️",
       "tags": ["Next.js", "Google Apps Script", "OpenAI API", "AWS Lambda", "Web Speech API"],
       "github": "https://github.com/rupeshdev18/ai-email-assistant",
       "live": "#"

@@ -61,7 +61,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
           <p>&copy; {currentYear} Rupesh Yadav. All rights reserved.</p>
-          <p className="mt-2">Designed & Built with ❤️ using React & Framer Motion</p>
+          {/* <p className="mt-2">Designed & Built with ❤️ using React & Framer Motion</p> */}
         </div>
       </div>
     </footer>

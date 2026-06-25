@@ -32,12 +32,6 @@ const Blog = ({ darkMode }) => {
               }}
               whileHover={{ y: -8, scale: 1.02 }}
             >
-              <Link to={`/blog/${post.id}`}>
-                <div className="h-40 bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center text-5xl cursor-pointer select-none">
-                  {post.image}
-                </div>
-              </Link>
-
               <div className="p-6 flex-1 flex flex-col">
                 <span className="inline-block px-3 py-1 bg-teal-50 dark:bg-teal-950/30 text-teal-800 dark:text-teal-300 rounded-full text-xs font-semibold mb-2 w-fit">
                   {post.category}

@@ -6,7 +6,6 @@ export const blogPosts = [
     date: "Mar 15, 2026",
     readTime: "8 min read",
     category: "Backend Architecture",
-    image: "⚙️",
     content: `
 When building enterprise-grade Jira plugins using Atlassian Forge, one of the most critical challenges developers face is strict API rate limiting. During a recent project at Tecunique, I was tasked with reliably processing over 60,000 Jira issues for a synchronization task. 
 
@@ -87,7 +86,6 @@ By combining Exponential Backoff + Jitter with persistent cursor tracking, the s
     date: "Feb 28, 2026",
     readTime: "10 min read",
     category: "Database Design",
-    image: "🗄️",
     content: `
 Building a multi-tenant SaaS application requires making a fundamental architectural decision early on: **How do we isolate tenant data?**
 
@@ -162,7 +160,6 @@ When a user authenticates, their entire permission graph for their specific tena
     date: "Jan 10, 2026",
     readTime: "12 min read",
     category: "AI/ML",
-    image: "🧠",
     content: `
 The modern job search is incredibly tedious. Candidates spend hours re-typing the exact same information into hundreds of slightly different Applicant Tracking Systems (ATS). 
 
