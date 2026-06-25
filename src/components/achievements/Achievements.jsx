@@ -21,7 +21,7 @@ const Achievements = () => {
         </motion.h2>
 
         {/* Achievements Grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
           initial="hidden"
           whileInView="visible"
@@ -42,7 +42,7 @@ const Achievements = () => {
               whileHover={{ y: -5, scale: 1.02 }}
             >
               <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${item.icon === 'aws' ? 'bg-[#ff9900]' : 'bg-teal-500'}`}></div>
-              
+
               <div className={`flex-shrink-0 w-16 h-16 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-slate-800 shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 text-4xl ${item.icon === 'aws' ? 'text-[#ff9900]' : 'text-teal-500'}`}>
                 {item.icon === "aws" ? <FaAws /> : <FaTrophy />}
               </div>

@@ -43,26 +43,26 @@ const LoadingSpinner = () => (
 const App = () => {
   return (
     <AnimatePresence mode="wait">
-        <motion.div 
-          key="content" 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
-          className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-50 min-h-screen transition-colors duration-300 flex flex-col justify-between"
-        >
-          <NavBar />
-          <div className="flex-grow">
-            <Suspense fallback={<LoadingSpinner />}>
-              <ErrorBoundary>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/blog/:id" element={<BlogPost />} />
-                  <Route path="/project/:id" element={<ProjectDetail />} />
-                </Routes>
-              </ErrorBoundary>
-            </Suspense>
-          </div>
-          <Footer />
-        </motion.div>
+      <motion.div
+        key="content"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-50 min-h-screen transition-colors duration-300 flex flex-col justify-between"
+      >
+        <NavBar />
+        <div className="flex-grow">
+          <Suspense fallback={<LoadingSpinner />}>
+            <ErrorBoundary>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/project/:id" element={<ProjectDetail />} />
+              </Routes>
+            </ErrorBoundary>
+          </Suspense>
+        </div>
+        <Footer />
+      </motion.div>
     </AnimatePresence>
   );
 };

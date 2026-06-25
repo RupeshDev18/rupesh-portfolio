@@ -12,7 +12,7 @@ const Experience = ({ darkMode }) => {
           Work <span className="text-teal-600 dark:text-cyan-400">Experience</span>
         </motion.h2>
 
-        <motion.div 
+        <motion.div
           className="space-y-8"
           initial="hidden"
           whileInView="visible"
@@ -23,9 +23,9 @@ const Experience = ({ darkMode }) => {
           }}
         >
           {experiences.map((exp, idx) => (
-            <motion.div 
-              key={idx} 
-              className="relative pl-8 border-l-2 border-teal-500 pb-8" 
+            <motion.div
+              key={idx}
+              className="relative pl-8 border-l-2 border-teal-500 pb-8"
               variants={{
                 hidden: { opacity: 0, x: -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, type: "spring", stiffness: 50 } }
@@ -33,7 +33,7 @@ const Experience = ({ darkMode }) => {
             >
               <div className="absolute left-[-17px] top-0 w-8 h-8 bg-teal-500 rounded-full border-4 border-white dark:border-slate-950"></div>
 
-              <motion.div 
+              <motion.div
                 className="bg-white dark:bg-slate-900/60 dark:backdrop-blur-md p-6 rounded-lg shadow-md hover:shadow-xl border border-gray-100 dark:border-teal-500/20 dark:hover:border-cyan-400/40 dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] transition-all duration-300"
                 whileHover={{ x: 5, scale: 1.01 }}
               >

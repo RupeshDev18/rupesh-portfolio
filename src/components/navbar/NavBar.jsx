@@ -32,11 +32,10 @@ const NavBar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrollPosition > 0
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollPosition > 0
           ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-lg shadow-sm py-4 border-b border-gray-100 dark:border-slate-800"
           : "bg-transparent py-6"
-      }`}
+        }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}

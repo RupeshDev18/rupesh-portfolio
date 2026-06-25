@@ -1,135 +1,137 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { experiences, educations } from "../../data/data";
+import { FiBriefcase, FiBookOpen } from "react-icons/fi";
+
 const Resume = () => {
-  // State to manage the current section for Experience and Education
-  const [activeExperience, setActiveExperience] = useState(0);
-  const [activeEducation, setActiveEducation] = useState(0);
+  const [activeTab, setActiveTab] = useState("experience"); // 'experience' or 'education'
 
-  // Function to handle dot click and change active section for Experience
-  const handleExperienceDotClick = (index) => {
-    setActiveExperience(index);
-  };
-
-  // Function to handle dot click and change active section for Education
-  const handleEducationDotClick = (index) => {
-    setActiveEducation(index);
-  };
+  const activeData = activeTab === "experience" ? experiences : educations;
 
   return (
-    <div id="resume" className="container m-auto mt-16">
-      {/* Heading */}
-      <div data-aos="fade-up" className="relative mb-5">
-        <h3 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">
-          Resume
-        </h3>
-        <span className="h-[1.1px] right-0 absolute w-[92%] bg-gray-300 block"></span>
-      </div>
-      <div data-aos="fade-up" className="left flex-1 w-full">
-        <p className="text-gray-700 font-medium w-[100%]">
-          Here are my experiences and qualifications.
+    <div id="resume" className="max-w-5xl mx-auto py-24 px-6">
+      {/* Header */}
+      <motion.div 
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-[36px] font-bold text-gray-900 dark:text-white mb-4">
+          My <span className="text-teal-600 dark:text-cyan-400">Resume</span>
+        </h2>
+        <p className="text-[16px] text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Here is a detailed breakdown of my professional experience and educational background.
         </p>
+      </motion.div>
+
+      {/* Tabs */}
+      <div className="flex justify-center mb-16 relative z-20">
+        <div className="flex p-1.5 bg-gray-100/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl shadow-inner border border-gray-200/50 dark:border-slate-800/50">
+          <button
+            onClick={() => setActiveTab("experience")}
+            className={`flex items-center gap-3 px-8 py-3.5 rounded-xl text-[16px] font-bold transition-all duration-300 ${
+              activeTab === "experience" 
+                ? "bg-white dark:bg-slate-800 text-teal-600 dark:text-cyan-400 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] scale-105" 
+                : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-slate-800/50"
+            }`}
+          >
+            <FiBriefcase className="text-xl" /> Experience
+          </button>
+          <button
+            onClick={() => setActiveTab("education")}
+            className={`flex items-center gap-3 px-8 py-3.5 rounded-xl text-[16px] font-bold transition-all duration-300 ${
+              activeTab === "education" 
+                ? "bg-white dark:bg-slate-800 text-teal-600 dark:text-cyan-400 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] scale-105" 
+                : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-200/50 dark:hover:bg-slate-800/50"
+            }`}
+          >
+            <FiBookOpen className="text-xl" /> Education
+          </button>
+        </div>
       </div>
 
-      {/* Experience and Education Sections Side by Side */}
-      <div className="card-wrapper w-[90%] sm:w-full mt-5 flex md:flex-col sm:gap-5 mx-auto gap-40">
-        {/* Experience Section */}
-        <div className="w-[35%] sm:w-full md:w-full mr-10 sm:mr-0">
-          {" "}
-          {/* Added responsive margin */}
-          <fieldset
-            data-aos="zoom-in"
-            className="w-full p-5 py-12 sm:py-8 sm:w-full sm:p-2"
+      {/* Timeline List */}
+      <div className="relative pl-8 md:pl-0">
+        {/* Vertical Line for Desktop (Centered) */}
+        <div className="absolute left-[31px] md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-teal-500/30 to-transparent hidden md:block"></div>
+        {/* Vertical Line for Mobile (Left) */}
+        <div className="absolute left-[15px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-teal-500/30 to-transparent md:hidden"></div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-12"
           >
-            <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-teal-650 dark:text-cyan-400">
-              Experience
-            </legend>
-
-            {/* Display the active experience */}
-            <div className="relative">
-              {/* Design */}
-              <div className="design flex absolute left-[-150px] top-1/2 items-center rotate-[90deg] sm:left-[-160px]">
-                <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
-                <div className="line w-[230px] bg-gray-300 h-[2px] sm:w-[250px]"></div>
-                <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
-              </div>
-              <div className="flex flex-col gap-1 sm:gap-1 border-2 border-teal-500/30 dark:border-teal-500/20 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(13,148,136,0.05)] p-3 rounded-lg bg-white dark:bg-slate-900/60">
-                <h1 className="text-[1.4rem] font-semibold sm:text-xl">
-                  {experiences[activeExperience].title}
-                </h1>
-                <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">
-                  {experiences[activeExperience].company}
-                </span>
-                <span className="text-[.9rem] font-semibold text-teal-600 dark:text-cyan-400 sm:text-base">
-                  {experiences[activeExperience].period}
-                </span>
-                <p className="text-[.9rem] text-justify break-words text-gray-500">
-                  {experiences[activeExperience].description}
-                </p>
-              </div>
-            </div>
-          </fieldset>
-          {/* Dots for Experience Section */}
-          <div className="flex justify-center mt-5">
-            {experiences.map((_, index) => (
-              <button
-                key={index}
-                className={`mx-2 w-3 h-3 rounded-full ${
-                  index === activeExperience ? "bg-teal-500" : "bg-gray-300 dark:bg-slate-700"
+            {activeData.map((item, index) => (
+              <div 
+                key={index} 
+                className={`relative flex flex-col md:flex-row items-center justify-between w-full group ${
+                  index % 2 === 0 ? "md:flex-row-reverse" : ""
                 }`}
-                onClick={() => handleExperienceDotClick(index)}
-              ></button>
-            ))}
-          </div>
-        </div>
+              >
+                {/* Timeline Dot (Desktop) */}
+                <div className="hidden md:block absolute left-1/2 -ml-3 top-1/2 -mt-3 w-6 h-6 rounded-full bg-teal-50 dark:bg-slate-900 border-4 border-teal-500 shadow-lg z-10 group-hover:scale-125 group-hover:bg-teal-500 transition-all duration-300"></div>
+                {/* Timeline Dot (Mobile) */}
+                <div className="md:hidden absolute left-[-24px] top-8 w-6 h-6 rounded-full bg-teal-50 dark:bg-slate-900 border-4 border-teal-500 shadow-lg z-10 group-hover:scale-125 group-hover:bg-teal-500 transition-all duration-300"></div>
 
-        {/* Education Section */}
-        <div className="w-[35%] sm:w-full md:w-full">
-          <fieldset
-            data-aos="zoom-in"
-            className="w-full p-5 py-12 sm:py-8 sm:w-full sm:p-2"
-          >
-            <legend className="w-auto ml-[50%] translate-x-[-50%] border-2 border-gray-200 rounded-3xl py-1 px-8 font-semibold text-xl text-teal-650 dark:text-cyan-400">
-              Education
-            </legend>
+                {/* Content Card */}
+                <div className="w-full md:w-[45%]">
+                  <motion.div 
+                    className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-slate-800 hover:shadow-2xl hover:border-teal-400/50 transition-all duration-500 relative overflow-hidden"
+                    whileHover={{ y: -5 }}
+                  >
+                    {/* Subtle gradient glow inside card */}
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-teal-400/10 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-teal-400/20 transition-all duration-500"></div>
 
-            {/* Display the active education */}
-            <div className="relative">
-              {/* Design */}
-              <div className="design flex absolute left-[-150px] top-1/2 items-center rotate-[90deg] sm:left-[-160px]">
-                <div className="c1 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
-                <div className="line w-[230px] bg-gray-300 h-[2px] sm:w-[250px]"></div>
-                <div className="c2 w-[12px] h-[12px] rounded-full bg-white border-2 border-teal-500"></div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-6 relative z-10">
+                      <span className="text-[13px] font-bold text-teal-700 dark:text-cyan-300 bg-teal-50 dark:bg-teal-900/40 px-4 py-1.5 rounded-full border border-teal-100 dark:border-teal-800/50 shadow-sm flex items-center gap-2">
+                         <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></span>
+                        {item.period}
+                      </span>
+                      {item.location && (
+                        <span className="text-[13px] font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">
+                          {item.location}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <h3 className="text-[22px] font-bold text-gray-900 dark:text-white mb-2 relative z-10">
+                      {item.title}
+                    </h3>
+                    <h4 className="text-[16px] font-bold text-teal-600 dark:text-cyan-400 mb-5 relative z-10 flex items-center gap-2">
+                      {activeTab === "experience" ? <FiBriefcase className="text-sm" /> : <FiBookOpen className="text-sm" />}
+                      {item.company || item.school}
+                    </h4>
+                    
+                    <p className="text-[16px] text-gray-600 dark:text-gray-400 leading-relaxed font-medium relative z-10">
+                      {item.description}
+                    </p>
+
+                    {item.highlights && item.highlights.length > 0 && (
+                      <ul className="mt-6 space-y-3 list-none relative z-10">
+                        {item.highlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-[16px] text-gray-700 dark:text-gray-300 font-medium bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl border border-gray-100/50 dark:border-slate-700/50">
+                            <span className="text-teal-500 mt-1.5 w-2 h-2 rounded-full shrink-0 bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.5)]"></span>
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </motion.div>
+                </div>
+
+                {/* Empty Space for the other side */}
+                <div className="hidden md:block w-[45%]"></div>
               </div>
-              <div className="flex flex-col gap-1 sm:gap-1 border-2 border-teal-500/30 dark:border-teal-500/20 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(13,148,136,0.05)] p-3 rounded-lg bg-white dark:bg-slate-900/60">
-                <h1 className="text-[1.4rem] font-semibold sm:text-xl">
-                  {educations[activeEducation].title}
-                </h1>
-                <span className="text-[.9rem] font-semibold text-gray-500 sm:text-base">
-                  {educations[activeEducation].school}
-                </span>
-                <span className="text-[.9rem] font-semibold text-teal-600 dark:text-cyan-400 sm:text-base">
-                  {educations[activeEducation].period}
-                </span>
-                <p className="text-[.9rem] text-justify text-gray-500">
-                  {educations[activeEducation].description}
-                </p>
-              </div>
-            </div>
-          </fieldset>
-
-          {/* Dots for Education Section */}
-          <div className="flex justify-center mt-5">
-            {educations.map((_, index) => (
-              <button
-                key={index}
-                className={`mx-2 w-3 h-3 rounded-full ${
-                  index === activeEducation ? "bg-teal-500" : "bg-gray-300 dark:bg-slate-700"
-                }`}
-                onClick={() => handleEducationDotClick(index)}
-              ></button>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
