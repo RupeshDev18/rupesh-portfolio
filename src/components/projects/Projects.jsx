@@ -67,24 +67,9 @@ const Projects = ({ darkMode }) => {
                 </div>
 
                 <div className="flex gap-4 mt-auto pt-2">
-                  {project.challenge ? (
-                    <Link to={`/project/${project.id}`} className="flex items-center gap-2 px-6 py-2 w-full justify-center bg-teal-600 hover:bg-teal-700 text-white rounded text-sm font-bold transition-all shadow-md hover:shadow-lg">
-                      View Case Study <FiArrowRight />
-                    </Link>
-                  ) : (
-                    <>
-                      {project.github !== "#" && (
-                        <motion.a href={project.github} className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-slate-800 rounded hover:bg-teal-500 hover:text-white dark:hover:bg-teal-500 text-sm font-semibold transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                          <FiGithub /> Code
-                        </motion.a>
-                      )}
-                      {project.live !== "#" && (
-                        <motion.a href={project.live} className="flex items-center gap-2 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded text-sm font-semibold transition-colors" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                          <FiExternalLink /> Live
-                        </motion.a>
-                      )}
-                    </>
-                  )}
+                  <Link to={`/project/${project.id}`} className="flex items-center gap-2 px-6 py-2 w-full justify-center bg-teal-600 hover:bg-teal-700 text-white rounded text-sm font-bold transition-all shadow-md hover:shadow-lg">
+                    View Case Study <FiArrowRight />
+                  </Link>
                 </div>
               </div>
             </motion.div>

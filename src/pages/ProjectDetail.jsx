@@ -66,19 +66,6 @@ const ProjectDetail = () => {
           >
             <FiArrowLeft /> Back to Projects
           </RouterLink>
-          
-          <div className="flex gap-4">
-            {project.github !== "#" && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-slate-800 rounded hover:bg-teal-500 hover:text-white dark:hover:bg-teal-500 text-sm font-semibold transition-colors">
-                <FiGithub /> Code
-              </a>
-            )}
-            {project.live !== "#" && (
-              <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded text-sm font-semibold transition-colors">
-                <FiExternalLink /> Live
-              </a>
-            )}
-          </div>
         </motion.div>
 
         {/* Project Header */}
