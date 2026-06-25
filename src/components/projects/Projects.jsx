@@ -11,7 +11,7 @@ const Projects = ({ darkMode }) => {
   return (
     <section id="projects" className="py-20 px-6 bg-white dark:bg-slate-950 dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950">
       <div className="max-w-6xl mx-auto">
-        <motion.h2 className="text-4xl md:text-5xl font-bold mb-12 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+        <motion.h2 className="text-[36px] font-bold mb-12 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
           Featured <span className="text-teal-600 dark:text-cyan-400">Projects</span>
         </motion.h2>
 
@@ -40,7 +40,7 @@ const Projects = ({ darkMode }) => {
                 onClick={() => project.imagePath && setSelectedImage(new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href)}
               >
                 {/* Client Project Badge */}
-                <div className="absolute top-3 right-3 z-30 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-xl flex items-center gap-1.5">
+                <div className="absolute top-3 right-3 z-30 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[13px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-xl flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Client Project
                 </div>
 
@@ -55,12 +55,12 @@ const Projects = ({ darkMode }) => {
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{project.description}</p>
+                <h3 className="text-[22px] font-bold mb-2 text-gray-900 dark:text-white">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-[16px] mb-4">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
-                    <span key={i} className="px-2 py-1 bg-teal-50 dark:bg-teal-950/20 text-teal-800 dark:text-teal-300 rounded text-xs font-semibold">
+                    <span key={i} className="px-2 py-1 bg-teal-50 dark:bg-teal-950/20 text-teal-800 dark:text-teal-300 rounded text-[13px] font-semibold">
                       {tag}
                     </span>
                   ))}

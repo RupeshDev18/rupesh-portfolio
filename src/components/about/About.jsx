@@ -13,7 +13,7 @@ const About = ({ darkMode }) => {
     <section id="about" className="py-24 px-6 bg-gradient-to-br from-green-50 via-white to-blue-50 dark:bg-slate-950 dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950 border-t border-gray-150 dark:border-slate-900 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-800 dark:text-gray-100"
+          className="text-[36px] font-bold mb-4 text-center text-gray-800 dark:text-gray-100"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -23,7 +23,7 @@ const About = ({ darkMode }) => {
         </motion.h2>
 
         <motion.p
-          className="text-center text-gray-650 dark:text-gray-300 mb-16 max-w-2xl mx-auto text-lg font-semibold"
+          className="text-center text-[16px] text-gray-650 dark:text-gray-300 mb-16 max-w-2xl mx-auto font-semibold"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -96,25 +96,25 @@ const About = ({ darkMode }) => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Who I Am</h3>
+            <h3 className="text-[22px] font-bold text-gray-800 dark:text-gray-100 mb-2">Who I Am</h3>
             <ul className="space-y-3 mb-6">
-              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+              <li className="flex items-center gap-3 text-[16px] text-gray-700 dark:text-gray-300 font-bold">
                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Full Stack Engineer
               </li>
-              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+              <li className="flex items-center gap-3 text-[16px] text-gray-700 dark:text-gray-300 font-bold">
                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> AWS Certified Solutions Architect
               </li>
-              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+              <li className="flex items-center gap-3 text-[16px] text-gray-700 dark:text-gray-300 font-bold">
                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> React + Node.js
               </li>
-              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+              <li className="flex items-center gap-3 text-[16px] text-gray-700 dark:text-gray-300 font-bold">
                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> Multi-Tenant SaaS Specialist
               </li>
-              <li className="flex items-center gap-3 text-lg md:text-xl text-gray-700 dark:text-gray-300 font-bold">
+              <li className="flex items-center gap-3 text-[16px] text-gray-700 dark:text-gray-300 font-bold">
                 <span className="w-2 h-2 bg-teal-500 rounded-full"></span> PostgreSQL & AWS
               </li>
             </ul>
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-semibold">
+            <p className="text-[16px] text-gray-600 dark:text-gray-400 leading-relaxed font-semibold">
               I specialize in architecting scalable backend systems and high-performance frontends that process thousands of records efficiently and securely.
             </p>
           </motion.div>
@@ -138,7 +138,7 @@ const About = ({ darkMode }) => {
               <div className="text-4xl font-extrabold text-teal-600 dark:text-cyan-400 mb-2">
                 {stat.number}{stat.suffix}
               </div>
-              <div className="text-gray-800 dark:text-gray-200 text-sm font-extrabold tracking-wide uppercase">{stat.label}</div>
+              <div className="text-[13px] text-gray-800 dark:text-gray-200 font-extrabold tracking-wide uppercase">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

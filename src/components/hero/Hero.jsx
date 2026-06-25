@@ -48,27 +48,27 @@ const Hero = ({ darkMode }) => {
             </span>
           </motion.div>
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 leading-tight"
+            className="text-[40px] md:text-[56px] font-bold text-gray-800 dark:text-gray-100 leading-tight"
             variants={itemVariants}
           >
             Hi, I'm {portfolioData.name.split(' ')[0]}
           </motion.h2>
 
           {/* Typewriter Effect */}
-          <motion.div className="min-h-[4.5rem] sm:min-h-[3rem] md:h-12 flex items-center" variants={itemVariants}>
+          <motion.div className="min-h-[4.5rem] sm:min-h-[3rem] md:h-12 flex items-center mb-2" variants={itemVariants}>
             <Typewriter
               options={{
                 strings: portfolioData.typewriterKeywords,
                 autoStart: true,
                 loop: true,
-                wrapperClassName: "text-teal-600 dark:text-cyan-400 text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight",
-                cursorClassName: "text-teal-600 dark:text-cyan-400 text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight",
+                wrapperClassName: "text-teal-600 dark:text-cyan-400 text-[28px] md:text-[40px] font-extrabold leading-tight",
+                cursorClassName: "text-teal-600 dark:text-cyan-400 text-[28px] md:text-[40px] font-extrabold leading-tight",
               }}
             />
           </motion.div>
 
           <motion.p
-            className="text-lg md:text-xl font-semibold text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed"
+            className="text-[16px] font-medium text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed"
             variants={itemVariants}
           >
             {portfolioData.summary}
@@ -95,7 +95,7 @@ const Hero = ({ darkMode }) => {
             <img
               src={profileImg}
               alt="Rupesh Yadav"
-              className="h-[350px] md:h-[480px] w-auto object-contain select-none pointer-events-none z-10 dark:mix-blend-screen"
+              className="h-[400px] md:h-[570px] w-auto object-contain select-none pointer-events-none z-10 dark:mix-blend-screen"
             />
             {/* Smooth bottom fade to blend the image into the background */}
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-transparent dark:from-slate-950 dark:to-transparent z-20 pointer-events-none"></div>

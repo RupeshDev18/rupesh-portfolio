@@ -8,7 +8,7 @@ const Skills = ({ darkMode }) => {
   return (
     <section id="skills" className="py-20 px-6 bg-white dark:bg-slate-950 dark:bg-gradient-to-br dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950">
       <div className="max-w-6xl mx-auto">
-        <motion.h2 className="text-4xl md:text-5xl font-bold mb-12 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+        <motion.h2 className="text-[36px] font-bold mb-12 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
           My <span className="text-teal-600 dark:text-cyan-400">Skills</span>
         </motion.h2>
 
@@ -32,7 +32,7 @@ const Skills = ({ darkMode }) => {
               }}
               whileHover={{ y: -5, scale: 1.02 }}
             >
-              <h3 className="text-xl font-bold mb-6 text-teal-600 dark:text-cyan-400">{category.category}</h3>
+              <h3 className="text-[22px] font-bold mb-6 text-teal-600 dark:text-cyan-400">{category.category}</h3>
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, idx) => {
                   const isExpert = skill.level >= 90;
@@ -49,8 +49,8 @@ const Skills = ({ darkMode }) => {
                       <span className={`w-2 h-2 rounded-full inline-block ${
                         isExpert ? "bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" : "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"
                       }`}></span>
-                      <span className="font-semibold text-sm">{skill.name}</span>
-                      <span className="text-[10px] uppercase font-bold text-gray-450 dark:text-slate-500 bg-gray-100 dark:bg-slate-900 px-1.5 py-0.5 rounded ml-1">
+                      <span className="font-semibold text-[16px]">{skill.name}</span>
+                      <span className="text-[13px] uppercase font-bold text-gray-450 dark:text-slate-500 bg-gray-100 dark:bg-slate-900 px-1.5 py-0.5 rounded ml-1">
                         {tag}
                       </span>
                     </motion.div>

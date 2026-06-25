@@ -34,7 +34,7 @@ const Recommendations = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100 flex items-center justify-center gap-3">
+          <h2 className="text-[36px] font-bold mb-10 text-center text-gray-800 dark:text-gray-100 flex items-center justify-center gap-3">
             <FiMessageSquare className="text-teal-500" /> Recommendations
           </h2>
           <motion.div 
@@ -55,11 +55,11 @@ const Recommendations = () => {
                   "
                 </div>
                 {test.badge && (
-                  <div className="inline-block px-3 py-1 mb-4 rounded-full bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold uppercase tracking-wide self-start">
+                  <div className="inline-block px-3 py-1 mb-4 rounded-full bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-[13px] font-bold uppercase tracking-wide self-start">
                     {test.badge}
                   </div>
                 )}
-                <p className="text-gray-700 dark:text-gray-300 italic mb-6 relative z-10 leading-relaxed flex-grow">
+                <p className="text-gray-700 dark:text-gray-300 italic mb-6 relative z-10 text-[16px] leading-relaxed flex-grow">
                   "{test.text}"
                 </p>
                 <div className="flex items-center gap-4 mt-auto">
@@ -67,8 +67,8 @@ const Recommendations = () => {
                     {test.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">{test.name}</h4>
-                    <span className="text-sm font-semibold text-teal-600 dark:text-cyan-400 block">
+                    <h4 className="text-[22px] font-bold text-gray-900 dark:text-white">{test.name}</h4>
+                    <span className="text-[13px] font-semibold text-teal-600 dark:text-cyan-400 block">
                       {test.role}
                     </span>
                   </div>

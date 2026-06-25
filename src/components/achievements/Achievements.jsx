@@ -11,7 +11,7 @@ const Achievements = () => {
     <section id="achievements" className="py-24 px-6 bg-white dark:bg-slate-950 border-t border-gray-150 dark:border-slate-900">
       <div className="max-w-6xl mx-auto">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-16 text-center text-gray-800 dark:text-gray-100"
+          className="text-[36px] font-bold mb-16 text-center text-gray-800 dark:text-gray-100"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -47,10 +47,10 @@ const Achievements = () => {
                 {item.icon === "aws" ? <FaAws /> : <FaTrophy />}
               </div>
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 leading-tight whitespace-pre-line">
+                <h3 className="text-[22px] font-bold text-gray-800 dark:text-gray-100 mb-2 leading-tight whitespace-pre-line">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm md:text-base">
+                <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-[16px]">
                   {item.description}
                 </p>
               </div>

@@ -35,11 +35,11 @@ const Home = () => {
       <SEO />
       <Hero />
       <About />
-      <Achievements />
-      <Recommendations />
-      <Skills />
       <Experience />
       <Projects />
+      <Recommendations />
+      <Achievements />
+      <Skills />
       <Blog />
       <Contact />
     </div>
