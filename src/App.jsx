@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // Lazy load page components
 const Home = lazy(() => import("./pages/Home"));
@@ -40,20 +41,8 @@ const LoadingSpinner = () => (
 );
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <AnimatePresence mode="wait">
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
         <motion.div 
           key="content" 
           initial={{ opacity: 0 }} 
@@ -63,16 +52,17 @@ const App = () => {
           <NavBar />
           <div className="flex-grow">
             <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/blog/:id" element={<BlogPost />} />
-                <Route path="/project/:id" element={<ProjectDetail />} />
-              </Routes>
+              <ErrorBoundary>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/blog/:id" element={<BlogPost />} />
+                  <Route path="/project/:id" element={<ProjectDetail />} />
+                </Routes>
+              </ErrorBoundary>
             </Suspense>
           </div>
           <Footer />
         </motion.div>
-      )}
     </AnimatePresence>
   );
 };

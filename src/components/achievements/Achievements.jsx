@@ -62,26 +62,26 @@ const Achievements = () => {
             {testimonials.map((test, idx) => (
               <div
                 key={idx}
-                className="p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 relative"
+                className="p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 relative flex flex-col h-full"
               >
                 <div className="absolute top-4 right-6 text-6xl text-teal-100 dark:text-teal-900/30 font-serif leading-none select-none">
                   "
                 </div>
                 {test.badge && (
-                  <div className="inline-block px-3 py-1 mb-4 rounded-full bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold uppercase tracking-wide">
+                  <div className="inline-block px-3 py-1 mb-4 rounded-full bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold uppercase tracking-wide self-start">
                     {test.badge}
                   </div>
                 )}
-                <p className="text-gray-700 dark:text-gray-300 italic mb-6 relative z-10 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 italic mb-6 relative z-10 leading-relaxed flex-grow">
                   "{test.text}"
                 </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                <div className="flex items-center gap-4 mt-auto">
+                  <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xl shrink-0">
                     {test.name.charAt(0)}
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 dark:text-white">{test.name}</h4>
-                    <span className="text-sm font-semibold text-teal-600 dark:text-cyan-400">
+                    <span className="text-sm font-semibold text-teal-600 dark:text-cyan-400 block">
                       {test.role}
                     </span>
                   </div>

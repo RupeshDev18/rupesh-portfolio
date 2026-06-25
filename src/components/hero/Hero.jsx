@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { AiFillTwitterCircle, AiFillGithub, AiFillInstagram } from "react-icons/ai";
-import { FaFacebook, FaLinkedinIn, FaPlay } from "react-icons/fa";
-import { FiEye } from "react-icons/fi";
+import { FaPlay } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
-import resumePDF from "../../assets/Resume.pdf";
 import profileImg from "../../assets/profilepic2.webp";
 import circleImg from "../../assets/Full Stack Developer2.png";
-import { GitHub, LinkedIn, Instagram, Twitter, Facebook } from "../../data/data";
 import portfolioData from "../../data/data.json";
+import SocialLinks from "./SocialLinks";
+import HeroActions from "./HeroActions";
+import ResumeModal from "./ResumeModal";
 
 const Hero = ({ darkMode }) => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -76,90 +75,11 @@ const Hero = ({ darkMode }) => {
           </motion.p>
 
           {/* Action Buttons */}
-          <motion.div className="flex flex-wrap items-center gap-3" variants={itemVariants}>
-            <motion.button
-              onClick={() => setIsResumeModalOpen(true)}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white rounded-lg font-bold text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)] hover:shadow-[0_0_25px_rgba(20,184,166,0.5)] transition-all flex items-center gap-2"
-            >
-              View Resume <FiEye />
-            </motion.button>
-            {/* <motion.a
-              href={resumePDF}
-              download="Resume.pdf"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-5 py-2.5 bg-gray-900 dark:bg-slate-800 text-white rounded-lg font-bold text-sm hover:bg-gray-800 dark:hover:bg-slate-700 transition-all flex items-center gap-2 shadow-md"
-              title="Download PDF"
-            >
-              Download <FiDownload />
-            </motion.a> */}
-            <motion.a
-              href="#contact"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-gray-300 dark:border-teal-500/50 text-gray-900 dark:text-white rounded-lg font-bold text-sm hover:bg-gray-50 dark:hover:bg-teal-900/20 transition-all flex items-center gap-2"
-            >
-              Contact Me
-            </motion.a>
-          </motion.div>
+          <HeroActions setIsResumeModalOpen={setIsResumeModalOpen} itemVariants={itemVariants} />
 
           {/* Outline Circular Social Links */}
           <motion.div className="flex items-center gap-4 mt-4" variants={itemVariants}>
-            <ul className="flex gap-4">
-              <li>
-                <a
-                  href={GitHub}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-black dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white transition-all text-xl hover:scale-110"
-                >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={LinkedIn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-black dark:border-gray-700 flex items-center justify-center hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 text-black dark:text-white transition-all text-xl hover:scale-110"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={Instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-black dark:border-gray-700 flex items-center justify-center hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 text-black dark:text-white transition-all text-xl hover:scale-110"
-                >
-                  <AiFillInstagram />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={Facebook}
-                  className="w-10 h-10 rounded-full border border-black dark:border-gray-700 flex items-center justify-center hover:bg-blue-800 hover:text-white dark:hover:bg-blue-800 text-black dark:text-white transition-all text-xl hover:scale-110"
-                >
-                  <FaFacebook />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={Twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-black dark:border-gray-700 flex items-center justify-center hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 text-black dark:text-white transition-all text-xl hover:scale-110"
-                >
-                  <AiFillTwitterCircle />
-                </a>
-              </li>
-            </ul>
+            <SocialLinks />
           </motion.div>
         </motion.div>
 
@@ -211,36 +131,7 @@ const Hero = ({ darkMode }) => {
       */}
 
       {/* Resume Modal */}
-      {isResumeModalOpen && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
-          onClick={() => setIsResumeModalOpen(false)}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.2 }}
-            className="relative max-w-5xl w-full h-[90vh]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setIsResumeModalOpen(false)}
-              className="absolute -top-12 right-0 text-white hover:text-teal-400 text-4xl font-black p-2 drop-shadow-md z-[110]"
-            >
-              &times;
-            </button>
-            <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl bg-white dark:bg-slate-900 border border-slate-700">
-              <iframe
-                src={resumePDF}
-                title="Resume PDF"
-                className="w-full h-full"
-                frameBorder="0"
-              />
-            </div>
-          </motion.div>
-        </div>
-      )}
+      <ResumeModal isResumeModalOpen={isResumeModalOpen} setIsResumeModalOpen={setIsResumeModalOpen} />
     </section>
   );
 };
