@@ -74,7 +74,7 @@ const Contact = ({ darkMode }) => {
 
           {/* Contact Form */}
           <motion.div
-            className="lg:col-span-7 bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md p-8 rounded-lg border border-gray-150 dark:border-teal-500/20 shadow-md"
+            className="lg:col-span-7 bg-gray-50/50 dark:bg-slate-900/60 dark:backdrop-blur-md p-8 rounded-lg border border-gray-200 dark:border-teal-500/20 shadow-md"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}

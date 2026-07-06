@@ -23,7 +23,7 @@ const About = ({ darkMode }) => {
         </motion.h2>
 
         <motion.p
-          className="text-center text-[16px] text-gray-650 dark:text-gray-300 mb-16 max-w-2xl mx-auto font-semibold"
+          className="text-center text-[16px] text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto font-semibold"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}

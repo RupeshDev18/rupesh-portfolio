@@ -25,7 +25,7 @@ const Blog = ({ darkMode }) => {
           {blogPosts.map((post, idx) => (
             <motion.article
               key={idx}
-              className="bg-white dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg overflow-hidden border border-gray-150 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] flex flex-col transition-all duration-300"
+              className="bg-white dark:bg-slate-900/60 dark:backdrop-blur-md rounded-lg overflow-hidden border border-gray-200 dark:border-teal-500/20 dark:hover:border-cyan-400/40 hover:shadow-lg dark:hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] flex flex-col transition-all duration-300"
               variants={{
                 hidden: { opacity: 0, y: 40 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 50 } }

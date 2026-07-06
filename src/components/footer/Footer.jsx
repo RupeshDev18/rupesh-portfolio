@@ -2,9 +2,20 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiTwitter, FiMail } from "react-icons/fi";
 import portfolioData from "../../data/data.json";
+import { useLocation, Link as RouterLink } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const quickLinks = [
+    { name: "Home", to: "home" },
+    { name: "About", to: "about" },
+    { name: "Projects", to: "projects" },
+    { name: "Blog", to: "blog" },
+  ];
 
   const socials = [
     { icon: <FiGithub />, label: "GitHub", link: portfolioData.socials.github },
@@ -31,10 +42,28 @@ const Footer = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><a href="#home" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">Home</a></li>
-              <li><a href="#about" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">About</a></li>
-              <li><a href="#projects" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">Projects</a></li>
-              <li><a href="#blog" className="hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300">Blog</a></li>
+              {quickLinks.map((link) => (
+                <li key={link.to}>
+                  {isHome ? (
+                    <ScrollLink
+                      to={link.to}
+                      smooth={true}
+                      duration={500}
+                      offset={-80}
+                      className="cursor-pointer hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300"
+                    >
+                      {link.name}
+                    </ScrollLink>
+                  ) : (
+                    <RouterLink
+                      to={`/#${link.to}`}
+                      className="cursor-pointer hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300"
+                    >
+                      {link.name}
+                    </RouterLink>
+                  )}
+                </li>
+              ))}
             </ul>
           </motion.div>
 

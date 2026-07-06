@@ -42,14 +42,14 @@ const Skills = ({ darkMode }) => {
                   return (
                     <motion.div
                       key={idx}
-                      className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-950 rounded-lg border border-gray-150 dark:border-teal-950/40 shadow-sm text-gray-850 dark:text-gray-200 cursor-default"
+                      className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-950 rounded-lg border border-gray-200 dark:border-teal-950/40 shadow-sm text-gray-800 dark:text-gray-200 cursor-default"
                       whileHover={{ scale: 1.05, y: -2, borderColor: "#0d9488" }}
                       transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
                       <span className={`w-2 h-2 rounded-full inline-block ${isExpert ? "bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" : "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"
                         }`}></span>
                       <span className="font-semibold text-[16px]">{skill.name}</span>
-                      <span className="text-[13px] uppercase font-bold text-gray-450 dark:text-slate-500 bg-gray-100 dark:bg-slate-900 px-1.5 py-0.5 rounded ml-1">
+                      <span className="text-[13px] uppercase font-bold text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-900 px-1.5 py-0.5 rounded ml-1">
                         {tag}
                       </span>
                     </motion.div>

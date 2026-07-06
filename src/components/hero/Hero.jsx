@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import profileImg from "../../assets/profilepic2.webp";
@@ -131,7 +131,11 @@ const Hero = ({ darkMode }) => {
       */}
 
       {/* Resume Modal */}
-      <ResumeModal isResumeModalOpen={isResumeModalOpen} setIsResumeModalOpen={setIsResumeModalOpen} />
+      <AnimatePresence>
+        {isResumeModalOpen && (
+          <ResumeModal isResumeModalOpen={isResumeModalOpen} setIsResumeModalOpen={setIsResumeModalOpen} />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
