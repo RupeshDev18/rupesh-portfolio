@@ -40,6 +40,96 @@ const CodeBlock = ({ code, language }) => {
   );
 };
 
+// Helper function to parse inline markdown formatting (bold, inline code, and links)
+const parseInline = (text) => {
+  let parts = [{ type: "text", content: text }];
+
+  // 1. Parse bold: **text**
+  parts = parts.flatMap((part) => {
+    if (part.type !== "text") return part;
+    const subparts = [];
+    const boldRegex = /\*\*([^*]+)\*\*/g;
+    let lastIndex = 0;
+    let match;
+    while ((match = boldRegex.exec(part.content)) !== null) {
+      if (match.index > lastIndex) {
+        subparts.push({ type: "text", content: part.content.substring(lastIndex, match.index) });
+      }
+      subparts.push({ type: "bold", content: match[1] });
+      lastIndex = boldRegex.lastIndex;
+    }
+    if (lastIndex < part.content.length) {
+      subparts.push({ type: "text", content: part.content.substring(lastIndex) });
+    }
+    return subparts;
+  });
+
+  // 2. Parse inline code: `text`
+  parts = parts.flatMap((part) => {
+    if (part.type !== "text") return part;
+    const subparts = [];
+    const codeRegex = /`([^`]+)`/g;
+    let lastIndex = 0;
+    let match;
+    while ((match = codeRegex.exec(part.content)) !== null) {
+      if (match.index > lastIndex) {
+        subparts.push({ type: "text", content: part.content.substring(lastIndex, match.index) });
+      }
+      subparts.push({ type: "inline-code", content: match[1] });
+      lastIndex = codeRegex.lastIndex;
+    }
+    if (lastIndex < part.content.length) {
+      subparts.push({ type: "text", content: part.content.substring(lastIndex) });
+    }
+    return subparts;
+  });
+
+  // 3. Parse links: [text](url)
+  parts = parts.flatMap((part) => {
+    if (part.type !== "text") return part;
+    const subparts = [];
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let lastIndex = 0;
+    let match;
+    while ((match = linkRegex.exec(part.content)) !== null) {
+      if (match.index > lastIndex) {
+        subparts.push({ type: "text", content: part.content.substring(lastIndex, match.index) });
+      }
+      subparts.push({ type: "link", content: match[1], url: match[2] });
+      lastIndex = linkRegex.lastIndex;
+    }
+    if (lastIndex < part.content.length) {
+      subparts.push({ type: "text", content: part.content.substring(lastIndex) });
+    }
+    return subparts;
+  });
+
+  return parts.map((part, idx) => {
+    switch (part.type) {
+      case "bold":
+        return (
+          <strong key={idx} className="font-extrabold text-gray-900 dark:text-white">
+            {part.content}
+          </strong>
+        );
+      case "inline-code":
+        return (
+          <code key={idx} className="px-1.5 py-0.5 font-mono text-[13px] text-teal-600 dark:text-cyan-450 bg-gray-100 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded font-bold">
+            {part.content}
+          </code>
+        );
+      case "link":
+        return (
+          <a key={idx} href={part.url} target="_blank" rel="noopener noreferrer" className="text-teal-600 dark:text-cyan-400 underline hover:text-blue-500 font-bold">
+            {part.content}
+          </a>
+        );
+      default:
+        return part.content;
+    }
+  });
+};
+
 const HandbookDetail = () => {
   const { id } = useParams();
   const [activeId, setActiveId] = useState("");
@@ -142,7 +232,7 @@ const HandbookDetail = () => {
                   <tr>
                     {tableHeader.map((cell, idx) => (
                       <th key={idx} className="px-5 py-3 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-slate-400">
-                        {cell.trim()}
+                        {parseInline(cell.trim())}
                       </th>
                     ))}
                   </tr>
@@ -153,7 +243,7 @@ const HandbookDetail = () => {
                   <tr key={rowIdx} className="hover:bg-gray-50/50 dark:hover:bg-slate-900/30 transition-colors">
                     {row.map((cell, idx) => (
                       <td key={idx} className="px-5 py-4 text-sm text-gray-700 dark:text-gray-300 font-semibold">
-                        {cell.trim()}
+                        {parseInline(cell.trim())}
                       </td>
                     ))}
                   </tr>
@@ -170,6 +260,16 @@ const HandbookDetail = () => {
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
+
+      // Horizontal Rule divider
+      if (line.trim() === "---") {
+        flushList(i - 1);
+        flushTable(i - 1);
+        parsedElements.push(
+          <hr key={`hr-${i}`} className="my-10 border-gray-200 dark:border-slate-800" />
+        );
+        continue;
+      }
 
       // Code blocks selector
       if (line.trim().startsWith("```")) {
@@ -218,7 +318,7 @@ const HandbookDetail = () => {
       // Lists selector
       if (line.startsWith("- ")) {
         listItems.push(
-          <li key={`li-${i}`}>{line.replace("- ", "")}</li>
+          <li key={`li-${i}`}>{parseInline(line.replace("- ", ""))}</li>
         );
       } else {
         flushList(i - 1);
@@ -228,15 +328,15 @@ const HandbookDetail = () => {
           const headingId = text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
           parsedElements.push(
             <h3 key={`h3-${i}`} id={headingId} className="text-xl font-bold mt-8 mb-4 text-gray-900 dark:text-white scroll-mt-24">
-              {text}
+              {parseInline(text)}
             </h3>
           );
         } else if (line.startsWith("## ")) {
           const text = line.replace("## ", "").trim();
           const headingId = text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
           parsedElements.push(
-            <h2 key={`h2-${i}`} id={headingId} className="text-2xl font-extrabold mt-12 mb-6 text-gray-900 dark:text-white border-b pb-2 border-gray-250 dark:border-slate-800 scroll-mt-24">
-              {text}
+            <h2 key={`h2-${i}`} id={headingId} className="text-2xl font-extrabold mt-12 mb-6 text-gray-900 dark:text-white border-b pb-2 border-gray-200 dark:border-slate-800 scroll-mt-24">
+              {parseInline(text)}
             </h2>
           );
         } else if (line.trim() !== "") {
@@ -244,13 +344,13 @@ const HandbookDetail = () => {
           if (line.includes("⭐")) {
             parsedElements.push(
               <div key={`star-${i}`} className="p-4 bg-amber-500/10 border-l-4 border-amber-500 text-amber-800 dark:text-amber-300 rounded-r-lg text-sm font-bold my-4">
-                {line}
+                {parseInline(line)}
               </div>
             );
           } else {
             parsedElements.push(
               <p key={`p-${i}`} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-base md:text-lg">
-                {line}
+                {parseInline(line)}
               </p>
             );
           }
