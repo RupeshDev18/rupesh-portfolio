@@ -12,7 +12,18 @@ const getDynamicRoutes = () => {
     const blogDataFile = fs.readFileSync('./src/data/blogData.js', 'utf-8');
     const blogRoutes = [...blogDataFile.matchAll(/id:\s*["']([^"']+)["']/g)].map(m => `/blog/${m[1]}`);
 
-    return [...projectRoutes, ...blogRoutes];
+    const cheatsheetDataFile = fs.readFileSync('./src/data/cheatsheetsData.js', 'utf-8');
+    const cheatsheetBlocks = cheatsheetDataFile.split(/\{\s*id:/);
+    const cheatsheetRoutes = [];
+    cheatsheetBlocks.slice(1).forEach(block => {
+      const idMatch = block.match(/^\s*["']([^"']+)["']/);
+      const isComingSoon = block.includes("isComingSoon: true");
+      if (idMatch && !isComingSoon) {
+        cheatsheetRoutes.push(`/handbook/${idMatch[1]}`);
+      }
+    });
+
+    return ['/handbook', ...projectRoutes, ...blogRoutes, ...cheatsheetRoutes];
   } catch (error) {
     console.error("Failed to gather dynamic sitemap routes:", error);
     return [];

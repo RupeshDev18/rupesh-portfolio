@@ -9,6 +9,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 const Home = lazy(() => import("./pages/Home"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const Handbook = lazy(() => import("./pages/Handbook"));
+const HandbookDetail = lazy(() => import("./pages/HandbookDetail"));
 
 const LoadingSpinner = () => (
   <motion.div
@@ -57,6 +59,8 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
                 <Route path="/project/:id" element={<ProjectDetail />} />
+                <Route path="/handbook" element={<Handbook />} />
+                <Route path="/handbook/:id" element={<HandbookDetail />} />
               </Routes>
             </ErrorBoundary>
           </Suspense>

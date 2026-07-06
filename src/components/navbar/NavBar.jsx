@@ -77,6 +77,16 @@ const NavBar = () => {
               </RouterLink>
             );
           })}
+          <RouterLink
+            to="/handbook"
+            className={`cursor-pointer font-bold text-sm tracking-wider transition-all duration-300 pb-1 ${
+              location.pathname.startsWith("/handbook")
+                ? "text-teal-600 dark:text-cyan-400 border-b-2 border-teal-600 dark:border-cyan-400"
+                : "text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-cyan-400"
+            }`}
+          >
+            HANDBOOK
+          </RouterLink>
         </div>
 
         <div className="flex items-center space-x-4">
@@ -157,6 +167,17 @@ const NavBar = () => {
                   </RouterLink>
                 );
               })}
+              <RouterLink
+                to="/handbook"
+                className={`cursor-pointer font-extrabold text-sm tracking-wider transition-colors duration-300 py-1 ${
+                  location.pathname.startsWith("/handbook")
+                    ? "text-teal-600 dark:text-cyan-400 pl-4 border-l-4 border-teal-600 dark:border-cyan-400"
+                    : "text-black dark:text-white hover:text-teal-600 dark:hover:text-cyan-400"
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                HANDBOOK
+              </RouterLink>
               <div className="pt-2 border-t border-gray-200 dark:border-gray-800">
                 {isHome ? (
                   <Link

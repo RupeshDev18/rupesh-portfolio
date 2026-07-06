@@ -15,6 +15,7 @@ const Footer = () => {
     { name: "About", to: "about" },
     { name: "Projects", to: "projects" },
     { name: "Blog", to: "blog" },
+    { name: "Handbook", to: "/handbook", isPage: true },
   ];
 
   const socials = [
@@ -44,7 +45,14 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400 text-sm">
               {quickLinks.map((link) => (
                 <li key={link.to}>
-                  {isHome ? (
+                  {link.isPage ? (
+                    <RouterLink
+                      to={link.to}
+                      className="cursor-pointer hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300"
+                    >
+                      {link.name}
+                    </RouterLink>
+                  ) : isHome ? (
                     <ScrollLink
                       to={link.to}
                       smooth={true}
