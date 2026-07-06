@@ -66,7 +66,7 @@ public class Application {
 - \`@EnableAutoConfiguration\` — enables auto-config
 - \`@ComponentScan\` — scans current package and sub-packages
 
-### 3.1 Spring Boot Auto Configuration
+### 3.1 Spring Boot Auto Configuration ⭐⭐⭐⭐⭐ (NEW)
 \`@EnableAutoConfiguration\` tells Spring Boot to guess and configure beans based on the jars present on the classpath. Conceptually (not implementation-level):
 
 - Older Spring Boot (≤2.x) used \`META-INF/spring.factories\` to list all auto-configuration classes.
@@ -75,7 +75,7 @@ public class Application {
 
 You just need to explain **why** it exists (convention over configuration) and **how** Spring decides what to configure — you don't need to reproduce Spring's internal source.
 
-### 3.2 Component Scan
+### 3.2 Component Scan (NEW)
 \`@ComponentScan\` tells Spring which packages to scan for \`@Component\`, \`@Service\`, \`@Repository\`, \`@Controller\`, etc.
 
 - By default, \`@SpringBootApplication\` scans the package it's in **and all sub-packages**.
@@ -104,7 +104,7 @@ Starters are pre-packaged dependency bundles for specific features. Instead of m
 | spring-boot-starter-actuator | Monitoring and health checks |
 | spring-boot-starter-validation | Bean validation |
 
-### 4.1 Spring Boot Starter Internals
+### 4.1 Spring Boot Starter Internals (NEW)
 Interviewers like to check you understand starters aren't magic — they're just **curated dependency + auto-config bundles**.
 
 \`spring-boot-starter-web\` pulls in, and auto-configures:
@@ -165,7 +165,7 @@ private UserRepository userRepository;
 | Setter | Partial | No | Optional use |
 | Field | No | No | No |
 
-### 5.1 Bean Lifecycle
+### 5.1 Bean Lifecycle ⭐⭐⭐⭐⭐ (NEW)
 Every bean goes through: **Instantiation → Dependency Injection → \`@PostConstruct\` → ready for use → \`@PreDestroy\` (on context shutdown)**.
 
 \`\`\`java
@@ -205,7 +205,7 @@ public class ConnectionManager implements InitializingBean, DisposableBean {
 
 \`@PostConstruct\`/\`@PreDestroy\` are preferred today since they don't couple your class to Spring interfaces.
 
-### 5.2 Bean Scopes
+### 5.2 Bean Scopes ⭐⭐⭐⭐⭐ (NEW)
 
 | Scope | Behavior |
 |---|---|
@@ -213,7 +213,7 @@ public class ConnectionManager implements InitializingBean, DisposableBean {
 | **Prototype** | New instance every time the bean is requested |
 | **Request** | One instance per HTTP request (web apps only) |
 | **Session** | One instance per HTTP session (web apps only) |
-| **Application** | One instance per \`ServletContext\` (shared across the whole web app) |
+| **Application** | One instance per \`ServletContext\` (shared across the whole web app, similar to singleton but at the servlet-context level) |
 
 \`\`\`java
 @Component
@@ -223,7 +223,7 @@ public class ReportGenerator { }
 
 Common gotcha asked in interviews: injecting a **prototype** bean into a **singleton** bean only creates it once, because the singleton is only constructed once — you need \`ObjectProvider\`/\`@Lookup\` to get a fresh prototype bean on every call.
 
-### 5.3 @Qualifier vs @Primary
+### 5.3 @Qualifier vs @Primary ⭐⭐⭐⭐⭐ (NEW)
 Used when multiple beans implement the same interface and Spring doesn't know which one to inject.
 
 \`\`\`java
@@ -253,7 +253,7 @@ public class CheckoutService {
 
 Rule of thumb: \`@Primary\` = default choice, \`@Qualifier\` = explicit override, and \`@Qualifier\` wins when both are present at an injection point.
 
-### 5.4 Circular Dependency
+### 5.4 Circular Dependency (NEW)
 Happens when Bean A depends on Bean B, and Bean B depends on Bean A.
 
 **Constructor Injection catches it immediately** — at startup, Spring throws \`BeanCurrentlyInCreationException\` because it can't fully construct either bean without the other already existing.
@@ -270,7 +270,7 @@ public class BService {
 }
 \`\`\`
 
-**Field Injection hides it** — because fields are set *after* the bean is constructed (via reflection), Spring can create both beans first as \"empty shells\" and inject into each other afterward, so the circular reference silently works. This is one of the strongest arguments interviewers expect for preferring constructor injection: it surfaces design problems early instead of masking them.
+**Field Injection hides it** — because fields are set *after* the bean is constructed (via reflection), Spring can create both beans first as "empty shells" and inject into each other afterward, so the circular reference silently works. This is one of the strongest arguments interviewers expect for preferring constructor injection: it surfaces design problems early instead of masking them.
 
 ### Beans
 A Bean is any Java object created and managed by the Spring IoC container. You register beans using stereotype annotations or \`@Bean\` inside a \`@Configuration\` class.
@@ -351,7 +351,7 @@ java -jar app.jar --spring.profiles.active=prod
 
 Create separate files per environment: \`application-dev.properties\`, \`application-prod.properties\`, \`application-test.properties\`.
 
-### 6.1 Environment Variables: @ConfigurationProperties vs @Value
+### 6.1 Environment Variables: @ConfigurationProperties vs @Value (NEW)
 
 \`\`\`java
 // @Value — good for a single, one-off property
@@ -379,16 +379,16 @@ jwt.expiration=86400000
 | Best for | single property | grouped/nested properties |
 | Type safety | manual per field | binds to POJO automatically |
 | SpEL support | Yes | No |
-| Relaxed binding | No | Yes |
+| Relaxed binding (\`kebab-case\`, \`camelCase\`, \`UPPER_CASE\` env vars all map together) | No | Yes |
 
-### 6.2 Profiles in Real Projects
+### 6.2 Profiles in Real Projects (NEW)
 In real companies, environments usually go: **dev → sit (system integration testing) → uat (user acceptance testing) → prod.**
 
 - Each environment has its own \`application-{profile}.properties\` (DB URLs, external API endpoints, log levels, feature flags).
 - Secrets (DB passwords, API keys) are **never** hardcoded even in profile files — they come from environment variables, a vault (HashiCorp Vault, AWS Secrets Manager), or CI/CD pipeline secrets, and are referenced as \`\${DB_PASSWORD}\`.
 - Config server patterns (e.g. Spring Cloud Config) are used in larger microservice setups so config isn't baked into each service's jar.
 
-### 6.3 Spring Boot Properties — Quick Recap
+### 6.3 Spring Boot Properties — Quick Recap (NEW)
 - \`application.properties\` / \`application.yml\` — main config file(s), YAML is preferred for hierarchical/nested config.
 - Environment variables — override file-based config, used for anything environment-specific or secret.
 - Secrets — should never live in git; injected at runtime via env vars or a secrets manager.
@@ -482,7 +482,7 @@ public User create(@RequestBody UserRequest request) { }
 | 404 | Not Found | Resource missing |
 | 500 | Server Error | Unexpected failure |
 
-### 7.1 ResponseEntity Deep Dive
+### 7.1 ResponseEntity Deep Dive (NEW)
 \`ResponseEntity<T>\` lets you control status code, headers, and body together instead of just returning a POJO.
 
 \`\`\`java
@@ -500,7 +500,7 @@ ResponseEntity.ok()
 
 Interviewers want to hear: \`ResponseEntity\` gives you fine-grained control the plain return type doesn't — status code, headers, and body, all explicit.
 
-### 7.2 DTO Mapping
+### 7.2 DTO Mapping (NEW)
 Never expose your JPA \`@Entity\` directly in the API — it leaks DB structure, causes lazy-loading serialization issues, and tightly couples your API contract to your schema.
 
 **Flow:** \`Entity ↔ DTO ↔ Controller\` — the DTO is the contract exposed to clients; the Entity stays internal to the persistence layer.
@@ -529,11 +529,11 @@ UserDto dto = modelMapper.map(user, UserDto.class);
 
 | | MapStruct | ModelMapper | Manual |
 |---|---|---|---|
-| Performance | Fastest | Slower (reflection) | Fastest |
+| Performance | Fastest (compile-time) | Slower (reflection) | Fastest |
 | Boilerplate | Low | Lowest | High |
-| Debuggability | Easy | Harder | Easiest |
+| Debuggability | Easy (generated code visible) | Harder | Easiest |
 
-### 7.3 API Versioning
+### 7.3 API Versioning (NEW)
 Needed once an API has external consumers and you must change the contract without breaking them.
 
 \`\`\`java
@@ -548,9 +548,9 @@ Needed once an API has external consumers and you must change the contract witho
 @GetMapping(value = "/users", headers = "X-API-Version=2")
 \`\`\`
 
-URI versioning is simpler and more common in practice; header versioning is considered more \"RESTful\" since the resource URL doesn't change.
+URI versioning is simpler and more common in practice; header versioning is considered more "RESTful" since the resource URL doesn't change.
 
-### 7.4 File Upload
+### 7.4 File Upload (NEW)
 \`\`\`java
 @PostMapping("/upload")
 public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
@@ -637,26 +637,26 @@ public class GlobalExceptionHandler {
 }
 \`\`\`
 
-### 8.1 Optional
-\`Optional<T>\` avoids \`NullPointerException\` by making \"value might be absent\" explicit in the type system.
+### 8.1 Optional (NEW)
+\`Optional<T>\` avoids \`NullPointerException\` by making "value might be absent" explicit in the type system.
 
 \`\`\`java
 Optional<User> userOpt = userRepository.findById(id);
 
-userOpt.map(User::getName);                          // transform if present
-userOpt.orElse(new User());                            // default value
-userOpt.orElseGet(() -> buildDefaultUser());            // lazy default
+userOpt.map(User::getName);                          // transform if present, else empty Optional
+userOpt.orElse(new User());                            // default value if empty
+userOpt.orElseGet(() -> buildDefaultUser());            // lazy default — only computed if empty
 userOpt.orElseThrow(() -> new ResourceNotFoundException("User not found")); // throw if empty
 \`\`\`
 
 | Method | Behavior |
 |---|---|
 | \`map()\` | Applies a function if a value is present, otherwise returns empty |
-| \`orElse(x)\` | Returns \`x\` if empty — **\`x\` is always evaluated eagerly** |
-| \`orElseGet(supplier)\` | Returns supplier's result if empty — evaluated **lazily** |
-| \`orElseThrow()\` | Throws exception if empty |
+| \`orElse(x)\` | Returns \`x\` if empty — **\`x\` is always evaluated eagerly**, even if not needed |
+| \`orElseGet(supplier)\` | Returns supplier's result if empty — only evaluated **lazily**, when needed |
+| \`orElseThrow()\` | Throws the given exception if empty |
 
-Common interview gotcha: \`orElse()\` always evaluates its argument — prefer \`orElseGet()\` when the default is expensive to compute.
+Common interview gotcha: \`orElse()\` always evaluates its argument (e.g. \`orElse(new User())\` constructs a \`User\` every time, even when the Optional has a value) — prefer \`orElseGet()\` when the default is expensive to compute.
 
 ---
 
@@ -727,15 +727,15 @@ page.getTotalPages();    // total pages
 page.getTotalElements(); // total count
 \`\`\`
 
-### 9.1 Pagination Response: Page vs Slice vs Sort
+### 9.1 Pagination Response: Page vs Slice vs Sort (NEW)
 
 | Type | Knows total count? | Extra query? | Use when |
 |---|---|---|---|
-| \`Page<T>\` | Yes | Yes (COUNT query) | You need \"page 3 of 20\" UI |
-| \`Slice<T>\` | No | No extra query | Infinite scroll / \"load more\" |
-| \`Sort\` | N/A | N/A | Ordering |
+| \`Page<T>\` | Yes (\`getTotalElements\`, \`getTotalPages\`) | Yes — runs an extra \`COUNT\` query | You need "page 3 of 20" style UI |
+| \`Slice<T>\` | No — only knows if there's a next page (\`hasNext()\`) | No extra count query | Infinite scroll / "load more" UIs where total count is unnecessary overhead |
+| \`Sort\` | N/A | N/A | Standalone or combined with \`Pageable\` to define ordering |
 
-\`Slice\` is cheaper than \`Page\` because it skips the count query — pick \`Slice\` when you don't need the total count.
+\`Slice\` is cheaper than \`Page\` because it skips the count query — pick \`Slice\` when you genuinely don't need the total.
 
 ### Entity Relationships
 
@@ -799,32 +799,34 @@ private List<Order> orders;
 private User user;
 \`\`\`
 
-### 9.2 N+1 Query Problem
-Happens when you fetch a list of entities (1 query), then accessing a **LAZY** relationship on each one triggers a separate query per entity (N queries) — 1 + N total queries.
+### 9.2 N+1 Query Problem ⭐⭐⭐⭐⭐ (NEW)
+Happens when you fetch a list of entities (1 query), then accessing a **LAZY** relationship on each one triggers a separate query per entity (N queries) — 1 + N total queries instead of 1.
 
 \`\`\`java
 List<User> users = userRepository.findAll();   // 1 query
 for (User u : users) {
-    u.getOrders().size();                       // N additional queries!
+    u.getOrders().size();                       // N additional queries — one per user!
 }
 \`\`\`
 
 **Fixes:**
 
 \`\`\`java
-// JOIN FETCH in JPQL
+// JOIN FETCH in JPQL — pulls the association in the same query
 @Query("SELECT u FROM User u JOIN FETCH u.orders")
 List<User> findAllWithOrders();
 \`\`\`
 
 \`\`\`java
-// @EntityGraph
+// @EntityGraph — declarative, tells Spring which associations to eagerly load for this query only
 @EntityGraph(attributePaths = {"orders"})
 List<User> findAll();
 \`\`\`
 
-### 9.3 Specifications
-Used for building **dynamic queries** where filters are optional/combinable at runtime.
+Both solve it by collapsing what would be N+1 queries into 1 or 2. This is one of the most commonly asked JPA questions at any experience level.
+
+### 9.3 Specifications (NEW)
+Used for building **dynamic queries** where filters are optional/combinable at runtime (e.g. a search endpoint with many optional filter params) — very common in enterprise CRUD apps.
 
 \`\`\`java
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> { }
@@ -837,10 +839,15 @@ public class UserSpecifications {
         return (root, query, cb) -> age == null ? null : cb.greaterThanOrEqualTo(root.get("age"), age);
     }
 }
+
+// Usage — combine filters dynamically, skipping nulls
+Specification<User> spec = Specification.where(UserSpecifications.hasName(name))
+                                          .and(UserSpecifications.hasMinAge(minAge));
+List<User> results = userRepository.findAll(spec);
 \`\`\`
 
-### 9.4 Auditing
-Automatically tracks who created/modified a record and when.
+### 9.4 Auditing (NEW)
+Automatically tracks who created/modified a record and when, without manual code in every service method.
 
 \`\`\`java
 @Configuration
@@ -858,30 +865,37 @@ public class Order {
 }
 \`\`\`
 
-### 9.5 Hibernate: save() vs persist() vs merge() vs saveAndFlush()
+Combine with \`@CreatedBy\`/\`@LastModifiedBy\` and an \`AuditorAware\` bean to also capture the current user.
+
+### 9.5 Hibernate: save() vs persist() vs merge() vs saveAndFlush() (NEW)
 
 | Method | Returns | Behavior |
 |---|---|---|
-| \`persist()\` | void | Adds entity to context; INSERT may be delayed; throws if ID exists |
-| \`save()\` | generated ID | Similar to persist but returns key; Hibernate-specific |
-| \`merge()\` | managed copy | For detached entities — copies state onto managed entity |
-| \`saveAndFlush()\` | saved entity | Saves and immediately runs SQL INSERT/UPDATE |
+| \`persist()\` | void | Adds entity to persistence context; INSERT may be delayed until flush; throws if entity already has an ID mapped to an existing row |
+| \`save()\` (Hibernate-specific, not JPA standard) | generated ID | Similar to persist but returns the identifier; can also insert |
+| \`merge()\` | the managed entity | Used for **detached** entities — copies state onto a managed entity (or creates one) and returns that managed copy; doesn't affect the object you passed in |
+| \`saveAndFlush()\` (Spring Data) | saved entity | Saves **and immediately flushes** to the DB — forces the SQL to run right away instead of waiting for transaction commit |
 
-### 9.6 Fetch vs Load — findById() vs getReference()
+Rule of thumb: use \`save()\`/\`persist()\` for new entities, \`merge()\` when working with a detached entity (e.g. one that came from a different session/deserialized from a DTO), and \`saveAndFlush()\` when you need the DB write to happen immediately (e.g. before a native query in the same transaction).
+
+### 9.6 Fetch vs Load — findById() vs getReference() (NEW)
 
 \`\`\`java
 User user = userRepository.findById(id).orElseThrow();
-// Hits the DB immediately, returns fully loaded entity.
+// Equivalent to EntityManager.find() — hits the DB immediately, returns a fully initialized entity (or empty).
 
 User userRef = userRepository.getReferenceById(id);
-// Returns a lazy PROXY without hitting the DB initially.
+// Equivalent to EntityManager.getReference() — returns a lazy PROXY without hitting the DB.
+// Throws EntityNotFoundException only when a field is actually accessed, if the row doesn't exist.
 \`\`\`
+
+Use \`getReference()\`/\`getReferenceById()\` when you just need to **set a foreign key reference** (e.g. \`order.setUser(userRepository.getReferenceById(userId))\`) without needing the actual user data — saves a SELECT query.
 
 ---
 
 ## 10. Transaction Management
 
-Transactions ensure that a group of database operations either all succeed or all fail together.
+Transactions ensure that a group of database operations either all succeed or all fail together, maintaining data integrity. Spring Boot provides declarative transaction management through the \`@Transactional\` annotation.
 
 \`\`\`java
 @Service
@@ -909,7 +923,10 @@ public class OrderService {
 | REQUIRED | Join existing or create new (default) |
 | REQUIRES_NEW | Always creates new, suspends existing |
 | NESTED | Runs in nested transaction |
-| MANDATORY | Must have existing transaction |
+| MANDATORY | Must have existing transaction or throws |
+| NEVER | Must not have transaction or throws |
+| SUPPORTS | Runs in transaction if one exists |
+| NOT_SUPPORTED | Suspends existing, runs non-transactionally |
 
 **Isolation Levels:**
 
@@ -920,80 +937,133 @@ public class OrderService {
 | REPEATABLE_READ | No | No | Yes |
 | SERIALIZABLE | No | No | No |
 
-### 10.1 Optimistic vs Pessimistic Locking
+### 10.1 Optimistic vs Pessimistic Locking (NEW)
+Both solve the same problem — two transactions trying to modify the same row concurrently — with different tradeoffs.
 
-**Optimistic Locking** — assumes conflicts are rare; checks \`@Version\` column at commit time.
+**Optimistic Locking** — assumes conflicts are rare; checks a version number at commit time.
 \`\`\`java
 @Entity
 public class Product {
     @Version
     private Long version;
+    // ...
 }
 \`\`\`
+When two transactions read the same row and both try to update it, the second commit fails with \`OptimisticLockException\` because the \`version\` column no longer matches — no DB-level lock is held while reading.
 
-**Pessimistic Locking** — assumes conflicts are likely; locks the row at read time.
+**Pessimistic Locking** — assumes conflicts are likely; locks the row at read time so nobody else can touch it until you're done.
 \`\`\`java
 @Lock(LockModeType.PESSIMISTIC_WRITE)
 @Query("SELECT p FROM Product p WHERE p.id = :id")
 Product findByIdForUpdate(@Param("id") Long id);
 \`\`\`
 
+| | Optimistic | Pessimistic |
+|---|---|---|
+| Mechanism | \`@Version\` column check | DB row lock (\`SELECT ... FOR UPDATE\`) |
+| Best for | Low contention, high concurrency | High contention (e.g. inventory/stock updates) |
+| Cost | Cheap, but requires retry logic on failure | Higher — blocks other transactions |
+
 ---
 
 ## 11. Async Processing
 
-\`@Async\` allows methods to run in a separate thread so the caller doesn't wait for completion.
+\`@Async\` allows methods to run in a separate thread so the caller doesn't wait for completion. It is useful for sending emails, notifications, or any long-running task that doesn't need to block the main request.
 
 \`\`\`java
 @Configuration
 @EnableAsync
 public class AsyncConfig {
+
     @Bean(name = "taskExecutor")
     public Executor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(5);
         executor.setMaxPoolSize(10);
         executor.setQueueCapacity(100);
+        executor.setThreadNamePrefix("Async-");
         executor.initialize();
         return executor;
     }
 }
+
+@Service
+public class EmailService {
+
+    @Async("taskExecutor")
+    public CompletableFuture<String> sendEmail(String to, String content) {
+        return CompletableFuture.completedFuture("Sent");
+    }
+}
 \`\`\`
 
-### 11.1 Scheduling
+### 11.1 Scheduling (NEW)
+For recurring background jobs (cleanup tasks, report generation, polling) — different from \`@Async\`, which is for one-off offloaded work.
 
 \`\`\`java
-@Scheduled(cron = "0 0 1 * * *") // every day at 1 AM
-public void generateDailyReport() { }
+@Configuration
+@EnableScheduling
+public class SchedulingConfig { }
 
-@Scheduled(fixedRate = 5000) // 5s from START of previous run
-public void pollQueue() { }
+@Component
+public class ReportJob {
 
-@Scheduled(fixedDelay = 5000) // 5s from END of previous run
-public void syncData() { }
+    @Scheduled(cron = "0 0 1 * * *") // every day at 1 AM
+    public void generateDailyReport() { }
+
+    @Scheduled(fixedRate = 5000) // runs every 5 seconds, measured from START of previous run
+    public void pollQueue() { }
+
+    @Scheduled(fixedDelay = 5000) // runs every 5 seconds, measured from END of previous run
+    public void syncData() { }
+}
 \`\`\`
+
+| Attribute | Timing measured from |
+|---|---|
+| \`fixedRate\` | Start of the previous execution — can overlap if the task runs longer than the rate |
+| \`fixedDelay\` | End of the previous execution — guarantees no overlap |
+| \`cron\` | Standard cron expression — most flexible for specific schedules |
 
 ---
 
 ## 12. Spring Security
 
-Spring Security intercepts every incoming request through a filter chain before it reaches your controllers.
+Spring Security intercepts every incoming request through a filter chain before it reaches your controllers. It handles authentication (who are you?) and authorization (what can you do?) in a structured, extensible way.
 
 \`\`\`java
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .sessionManagement(s ->
+                s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-            );
+            )
+            .authenticationProvider(authenticationProvider())
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
     }
 }
 \`\`\`
@@ -1002,21 +1072,86 @@ public class SecurityConfig {
 
 ## 13. JWT Authentication
 
-JWT is a stateless authentication mechanism where the server issues a signed token after login.
+JWT (JSON Web Token) is a stateless authentication mechanism where the server issues a signed token after login. The client stores the token and sends it with every request — no session storage needed on the server.
+
+\`\`\`
+eyJhbGciOiJIUzI1NiJ9  ← Header (algorithm)
+.eyJzdWIiOiJqb2huIn0  ← Payload (user data, expiry)
+.SflKxwRJSMeKKF2QT4f  ← Signature (tamper-proof)
+\`\`\`
+
+Never store passwords or secrets in the payload — it is Base64 encoded, not encrypted.
 
 \`\`\`java
 @Service
 public class JwtService {
+
     @Value("\${jwt.secret}")
     private String secret;
+
+    private Key getSigningKey() {
+        return Keys.hmacShaKeyFor(secret.getBytes());
+    }
 
     public String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 86400000))
-                .signWith(Keys.hmacShaKeyFor(secret.getBytes()), SignatureAlgorithm.HS256)
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public String extractUsername(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey()).build()
+                .parseClaimsJws(token).getBody().getSubject();
+    }
+
+    public boolean isTokenValid(String token, String username) {
+        return username.equals(extractUsername(token)) && !isExpired(token);
+    }
+}
+\`\`\`
+
+\`\`\`java
+@Component
+@RequiredArgsConstructor
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    private final JwtService jwtService;
+    private final UserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain chain)
+                                    throws ServletException, IOException {
+
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        String token = authHeader.substring(7);
+        String username = jwtService.extractUsername(token);
+
+        if (username != null &&
+            SecurityContextHolder.getContext().getAuthentication() == null) {
+
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+            if (jwtService.isTokenValid(token, userDetails.getUsername())) {
+                UsernamePasswordAuthenticationToken authToken =
+                    new UsernamePasswordAuthenticationToken(
+                        userDetails, null, userDetails.getAuthorities());
+                authToken.setDetails(
+                    new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+            }
+        }
+        chain.doFilter(request, response);
     }
 }
 \`\`\`
@@ -1025,7 +1160,7 @@ public class JwtService {
 
 ## 14. CORS Configuration
 
-CORS is a browser security restriction that blocks frontend apps on a different origin from calling your backend.
+CORS is a browser security restriction that blocks frontend apps on a different origin from calling your backend. The server must explicitly tell the browser which origins, methods, and headers are allowed.
 
 \`\`\`java
 @Bean
@@ -1034,53 +1169,254 @@ public CorsConfigurationSource corsConfigurationSource() {
     config.setAllowedOrigins(List.of("http://localhost:3000"));
     config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
     config.setAllowedHeaders(List.of("*"));
+    config.setAllowCredentials(true);
+
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", config);
     return source;
 }
+
+// Wire it in SecurityFilterChain
+http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 \`\`\`
 
 ---
 
 ## 15. Logging with @Slf4j
 
-Spring Boot uses SLF4J with Logback by default.
+Spring Boot uses SLF4J with Logback by default. The \`@Slf4j\` annotation from Lombok auto-generates a logger instance so you can start logging immediately without boilerplate.
+
+**Log Levels (lowest to highest priority):**
+
+| Level | Use For |
+|---|---|
+| TRACE | Extremely detailed diagnostic info |
+| DEBUG | Variable values, method flow |
+| INFO | Business events, app startup |
+| WARN | Recoverable issues, deprecated usage |
+| ERROR | Failures, exceptions |
 
 \`\`\`java
-log.info("Processing payment for order: {}", request.getOrderId());
-log.error("Payment failed: {}", e.getMessage(), e);
+@Slf4j
+@Service
+public class PaymentService {
+
+    public PaymentResult process(PaymentRequest request) {
+        log.info("Processing payment for order: {}", request.getOrderId());
+        log.debug("Payment amount: {}", request.getAmount());
+
+        try {
+            PaymentResult result = gateway.charge(request);
+            log.info("Payment successful, transaction: {}", result.getTransactionId());
+            return result;
+        } catch (PaymentGatewayException e) {
+            log.error("Payment failed for order {}: {}", request.getOrderId(), e.getMessage(), e);
+            throw e;
+        }
+    }
+}
 \`\`\`
+
+\`\`\`properties
+logging.level.root=INFO
+logging.level.com.example=DEBUG
+logging.level.org.hibernate.SQL=DEBUG
+logging.file.name=logs/application.log
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+\`\`\`
+
+**Best practices:**
+- Always use parameterized logging \`log.info("User: {}", name)\` not string concatenation
+- Never log passwords, tokens, or card numbers
+- Always include the exception object in \`log.error()\` for stack trace
+- Use DEBUG and TRACE only — never INFO — for internal flow details
 
 ---
 
 ## 16. Testing
 
+Spring Boot provides excellent testing support out of the box. Following the testing pyramid — many unit tests, some integration tests, few end-to-end tests — gives you fast feedback with reliable coverage.
+
 ### Unit Testing with Mockito
+
 \`\`\`java
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
-    @Mock private UserRepository userRepository;
-    @InjectMocks private UserService userService;
+
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
+    @InjectMocks
+    private UserService userService;
+
+    @Test
+    void shouldCreateUserSuccessfully() {
+        UserRequest request = new UserRequest("john", "pass", "john@example.com");
+        User saved = new User(1L, "john", "encodedPass", "john@example.com");
+
+        when(passwordEncoder.encode("pass")).thenReturn("encodedPass");
+        when(userRepository.save(any(User.class))).thenReturn(saved);
+
+        User result = userService.createUser(request);
+
+        assertThat(result.getId()).isEqualTo(1L);
+        verify(userRepository, times(1)).save(any(User.class));
+    }
+
+    @Test
+    void shouldThrowWhenUserNotFound() {
+        when(userRepository.findById(99L)).thenReturn(Optional.empty());
+
+        assertThatThrownBy(() -> userService.getById(99L))
+            .isInstanceOf(ResourceNotFoundException.class);
+    }
 }
 \`\`\`
 
 ### Controller Testing with MockMvc
+
 \`\`\`java
 @WebMvcTest(UserController.class)
 class UserControllerTest {
-    @Autowired private MockMvc mockMvc;
-    @MockBean private UserService userService;
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private UserService userService;
+
+    @Test
+    void shouldReturnUser() throws Exception {
+        User user = new User(1L, "john", "john@example.com");
+        when(userService.getById(1L)).thenReturn(user);
+
+        mockMvc.perform(get("/api/users/1"))
+               .andExpect(status().isOk())
+               .andExpect(jsonPath("$.name").value("john"));
+    }
 }
 \`\`\`
 
+### Repository Testing with @DataJpaTest
+
+\`\`\`java
+@DataJpaTest
+class UserRepositoryTest {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private TestEntityManager entityManager;
+
+    @Test
+    void shouldFindByEmail() {
+        entityManager.persist(new User(null, "john", "john@example.com"));
+        entityManager.flush();
+
+        Optional<User> found = userRepository.findByEmail("john@example.com");
+        assertThat(found).isPresent();
+    }
+}
+\`\`\`
+
+**Testing annotations summary:**
+
+| Annotation | Loads | Use For |
+|---|---|---|
+| @SpringBootTest | Full context | Integration tests |
+| @WebMvcTest | Web layer only | Controller tests |
+| @DataJpaTest | JPA layer only | Repository tests |
+| @ExtendWith(MockitoExtension.class) | Nothing | Pure unit tests |
+
 ---
 
-## 17. Spring Security Actuator & Caching
+## 17. Spring Boot Actuator
 
-### 17.1 Production Topics
-- **Connection Pool**: HikariCP is default. Tuned max/min connections.
-- **Actuator Endpoints**: \`/actuator/health\`, \`/actuator/metrics\`, \`/actuator/loggers\`.
+Actuator exposes production-ready endpoints for health checks, metrics, and application info. It is essential for monitoring applications in production environments and integrates easily with tools like Prometheus and Grafana.
 
-### 17.2 Caching Abstraction
-Caching stores results of expensive computations. Spring Boot supports Redis, Ehcache, Caffeine, and ConcurrentMap.
+\`\`\`properties
+management.endpoints.web.exposure.include=health,info,metrics,env,loggers
+management.endpoint.health.show-details=always
+info.app.name=My Application
+info.app.version=1.0.0
+\`\`\`
+
+**Common Endpoints:**
+
+| Endpoint | Description |
+|---|---|
+| /actuator/health | App and dependency health status |
+| /actuator/info | App version and metadata |
+| /actuator/metrics | JVM, CPU, request metrics |
+| /actuator/env | All environment properties |
+| /actuator/loggers | View and change log levels at runtime |
+| /actuator/beans | All registered Spring beans |
+| /actuator/mappings | All request mapping paths |
+| /actuator/threaddump | Current thread states |
+
+### 17.1 Production Topics (NEW)
+Baseline production knowledge interviewers probe for at 2 YOE:
+
+- **Connection Pool** — reusing a fixed set of DB connections instead of opening/closing one per request (expensive). **HikariCP** is Spring Boot's default connection pool — fast and lightweight.
+  \`\`\`properties
+  spring.datasource.hikari.maximum-pool-size=10
+  spring.datasource.hikari.minimum-idle=5
+  spring.datasource.hikari.connection-timeout=30000
+  \`\`\`
+- **Thread Pool / Tomcat Threads** — the embedded Tomcat server uses a thread pool to handle concurrent requests; each request occupies a thread until it completes.
+  \`\`\`properties
+  server.tomcat.threads.max=200
+  server.tomcat.threads.min-spare=10
+  \`\`\`
+- Know that connection pool size and thread pool size need to be tuned together — if you have more concurrent requests needing DB access than available connections, requests queue up waiting for a connection even if there are free threads.
+
+---
+
+## 18. Spring Boot DevTools
+
+Spring Boot DevTools enhances the development experience by providing automatic restarts, live reload, and development-time optimizations. It should never be used in production — it's strictly a development dependency.
+
+\`\`\`xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <scope>runtime</scope>
+    <optional>true</optional>
+</dependency>
+\`\`\`
+
+| Feature | What It Does | Developer Benefit |
+|---|---|---|
+| Automatic Restart | Restarts app when classpath files change | Instant feedback after code changes |
+| LiveReload | Triggers browser refresh automatically | See UI changes immediately |
+| Cache Disabling | Turns off template/thymeleaf caching | Templates update without restart |
+| Property Defaults | Sets dev-friendly defaults | No manual config needed |
+| Remote Debugging | Optional remote update support | Debug deployed apps |
+
+---
+
+## 19. Caching ⭐⭐⭐⭐⭐ (NEW)
+
+Caching stores the result of expensive operations (database queries, API calls, computations) so repeated requests return instantly without re-executing the underlying logic. Spring Boot integrates with multiple cache providers through a unified abstraction layer.
+
+\`\`\`java
+@Configuration
+@EnableCaching
+public class CacheConfig { }
+\`\`\`
+
+**Core Caching Annotations:**
+
+| Annotation | Behavior |
+|---|---|
+| @Cacheable | Returns cached result if exists, otherwise executes and caches |
+| @CachePut | Always executes and updates the cache |
+| @CacheEvict | Removes entry (or all entries) from cache |
+| @Caching | Groups multiple cache annotations on one method |
 
 \`\`\`java
 @Service
@@ -1088,8 +1424,7 @@ public class ProductService {
 
     @Cacheable(value = "products", key = "#id")
     public Product getById(Long id) {
-        return productRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
     }
 
     @CachePut(value = "products", key = "#product.id")
@@ -1104,17 +1439,130 @@ public class ProductService {
 }
 \`\`\`
 
+Cache providers:
+
+| Provider | Best For | Dependency |
+|---|---|---|
+| ConcurrentHashMap | Dev/testing only | Built-in (default) |
+| Caffeine | Single-instance apps, high performance | spring-boot-starter-cache + caffeine |
+| Redis | Distributed apps, multiple instances | spring-boot-starter-data-redis |
+| EhCache | JVM-local, rich config | ehcache |
+
+\`\`\`properties
+spring.cache.type=redis
+spring.data.redis.host=localhost
+spring.data.redis.port=6379
+spring.cache.redis.time-to-live=600000
+\`\`\`
+
+Best practices:
+- Always set a TTL — unbounded caches grow until OutOfMemoryError
+- Use Redis in any multi-instance deployment — in-memory caches are per-JVM and go out of sync
+- Cache at the service layer, never the controller or repository layer
+- Keep cached objects serializable
+- Use @CacheEvict on every write operation that modifies cached data
+
 ---
 
-## 18. Spring Boot DevTools
-Provides automatic restarts, live reload, and cache disabling for development.
+## 20. API Documentation with Swagger / OpenAPI ⭐⭐⭐⭐⭐ (NEW)
+
+Springdoc OpenAPI auto-generates interactive API documentation from your existing controller annotations. It requires zero extra configuration to get started.
+
+\`\`\`xml
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.3.0</version>
+</dependency>
+\`\`\`
+
+- Swagger UI: \`http://localhost:8080/swagger-ui.html\`
+- OpenAPI JSON: \`http://localhost:8080/v3/api-docs\`
+
+\`\`\`java
+requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+\`\`\`
 
 ---
 
-## 19. Microservices & Interview Tips
-- **Eureka Server**: Registry where microservices register themselves.
-- **Gateway**: Single entry point routing requests to services.
-- **Feign Client**: Declarative REST client mapping interfaces directly to HTTP calls.
+## 21. Build and Deployment ⭐⭐⭐⭐⭐ (NEW)
+
+Spring Boot packages the entire application — including the embedded server — into a single executable JAR. This makes deployment simple and consistent across all environments.
+
+\`\`\`bash
+# Maven
+mvn clean package
+mvn clean package -DskipTests
+
+# Gradle
+gradle clean build
+gradle clean build -x test
+\`\`\`
+
+\`\`\`bash
+java -jar target/app.jar
+java -jar target/app.jar --spring.profiles.active=prod
+java -jar target/app.jar --server.port=9090
+java -Xmx512m -Xms256m -jar target/app.jar
+\`\`\`
+
+\`\`\`dockerfile
+FROM openjdk:17-jdk-slim
+COPY target/app.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+\`\`\`
+
+\`\`\`bash
+docker build -t myapp .
+docker run -p 8080:8080 -e DB_PASSWORD=secret myapp
+\`\`\`
+
+### 21.1 Spring Boot Version Changes: 2 → 3 (NEW)
+
+The single biggest breaking change interviewers ask about:
+
+- **javax.* → jakarta.*** — Spring Boot 3 moved to Jakarta EE 9+, so all \`javax.persistence.*\`, \`javax.validation.*\`, \`javax.servlet.*\` imports became \`jakarta.persistence.*\`, \`jakarta.validation.*\`, \`jakarta.servlet.*\`. This breaks every entity, DTO, and filter class on upgrade.
+- Minimum Java version bumped from Java 8 to Java 17.
+- Spring Framework 6 underneath, with native/GraalVM image support improvements (Spring Native).
+- Third-party libraries had to release Jakarta-compatible versions — a common real-world upgrade pain point (e.g. old Lombok/MapStruct/JPA library versions breaking).
+
+---
+
+## Quick Reference — Most Used Annotations ⭐⭐⭐⭐⭐ (NEW)
+
+| Annotation | Purpose |
+|---|---|
+| @SpringBootApplication | Bootstrap the application |
+| @RestController | REST controller, returns JSON |
+| @RequestMapping | Base URL mapping |
+| @GetMapping / @PostMapping etc. | HTTP method mapping |
+| @PathVariable | Extract from URL path |
+| @RequestParam | Extract from query string |
+| @RequestBody | Bind JSON body to object |
+| @Valid | Trigger bean validation |
+| @Service | Business logic bean |
+| @Repository | Data access bean |
+| @Component | Generic bean |
+| @Autowired | Inject dependency |
+| @Value | Inject config property |
+| @ConfigurationProperties | Bind grouped config to a POJO |
+| @Entity | JPA entity (maps to table) |
+| @Transactional | Transaction boundary |
+| @Version | Optimistic locking column |
+| @Async | Run in separate thread |
+| @Scheduled | Run on a schedule/cron |
+| @Slf4j | Auto-generate logger |
+| @RestControllerAdvice | Global exception handler |
+| @ExceptionHandler | Handle specific exception |
+| @Configuration | Bean definition class |
+| @Bean | Register method return as bean |
+| @Profile | Activate in specific profile |
+| @Qualifier / @Primary | Resolve bean injection ambiguity |
+| @PostConstruct / @PreDestroy | Bean lifecycle hooks |
+| @DataJpaTest | Slice test for JPA layer |
+| @WebMvcTest | Slice test for web layer |
+| @MockBean | Spring-aware mock in tests |
 `
   },
   {
