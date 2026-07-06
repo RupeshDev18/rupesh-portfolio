@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiMail, FiMapPin, FiPhone, FiLinkedin, FiFileText, FiCalendar } from "react-icons/fi";
 import portfolioData from "../../data/data.json";
 
 const Contact = ({ darkMode }) => {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,7 +15,9 @@ const Contact = ({ darkMode }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
+    setIsSubmitted(true);
     setFormData({ name: "", email: "", subject: "", message: "" });
+    setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   const contactInfo = [
@@ -81,6 +84,19 @@ const Contact = ({ darkMode }) => {
             viewport={{ once: true }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
+              <AnimatePresence>
+                {isSubmitted && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0, y: -10 }}
+                    animate={{ opacity: 1, height: "auto", y: 0 }}
+                    exit={{ opacity: 0, height: 0, y: -10 }}
+                    className="p-4 bg-teal-50 dark:bg-teal-950/40 text-teal-800 dark:text-teal-300 rounded-lg border border-teal-200 dark:border-teal-500/30 text-sm font-bold flex items-center gap-2 overflow-hidden shadow-sm"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                    Thank you! Your message has been sent successfully.
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[13px] font-medium mb-2 text-gray-900 dark:text-white">Name</label>

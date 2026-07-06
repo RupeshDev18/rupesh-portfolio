@@ -45,12 +45,25 @@ const BlogPost = () => {
     const parsedElements = [];
     let inCodeBlock = false;
     let codeContent = [];
+    let listItems = [];
+
+    const flushList = (index) => {
+      if (listItems.length > 0) {
+        parsedElements.push(
+          <ul key={`ul-${index}`} className="list-disc pl-6 mb-4 space-y-2 text-gray-700 dark:text-gray-300">
+            {listItems}
+          </ul>
+        );
+        listItems = [];
+      }
+    };
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
 
       // Code blocks selector
       if (line.trim().startsWith("```")) {
+        flushList(i - 1);
         if (inCodeBlock) {
           // Closing code block
           inCodeBlock = false;
@@ -91,33 +104,37 @@ const BlogPost = () => {
         continue;
       }
 
-      // Check for headings
-      if (line.startsWith("### ")) {
-        parsedElements.push(
-          <h3 key={`h3-${i}`} className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">
-            {line.replace("### ", "")}
-          </h3>
+      // Check for headings or list items
+      if (line.startsWith("- ")) {
+        listItems.push(
+          <li key={`li-${i}`}>{line.replace("- ", "")}</li>
         );
-      } else if (line.startsWith("## ")) {
-        parsedElements.push(
-          <h2 key={`h2-${i}`} className="text-3xl font-extrabold mt-10 mb-6 text-gray-900 dark:text-white border-b pb-2 border-gray-200 dark:border-slate-800">
-            {line.replace("## ", "")}
-          </h2>
-        );
-      } else if (line.startsWith("- ")) {
-        parsedElements.push(
-          <ul key={`ul-${i}`} className="list-disc pl-6 mb-4 space-y-2 text-gray-700 dark:text-gray-300">
-            <li>{line.replace("- ", "")}</li>
-          </ul>
-        );
-      } else if (line.trim() !== "") {
-        parsedElements.push(
-          <p key={`p-${i}`} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
-            {line}
-          </p>
-        );
+      } else {
+        flushList(i - 1);
+
+        if (line.startsWith("### ")) {
+          parsedElements.push(
+            <h3 key={`h3-${i}`} className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">
+              {line.replace("### ", "")}
+            </h3>
+          );
+        } else if (line.startsWith("## ")) {
+          parsedElements.push(
+            <h2 key={`h2-${i}`} className="text-3xl font-extrabold mt-10 mb-6 text-gray-900 dark:text-white border-b pb-2 border-gray-200 dark:border-slate-800">
+              {line.replace("## ", "")}
+            </h2>
+          );
+        } else if (line.trim() !== "") {
+          parsedElements.push(
+            <p key={`p-${i}`} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
+              {line}
+            </p>
+          );
+        }
       }
     }
+
+    flushList(lines.length);
 
     return parsedElements;
   };
