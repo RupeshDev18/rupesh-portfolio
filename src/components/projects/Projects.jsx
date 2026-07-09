@@ -40,9 +40,11 @@ const Projects = ({ darkMode }) => {
                 onClick={() => project.imagePath && setSelectedImage(new URL(`../../assets/projects/${project.imagePath}`, import.meta.url).href)}
               >
                 {/* Client Project Badge */}
-                <div className="absolute top-3 right-3 z-30 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[13px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-xl flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Client Project
-                </div>
+                {project.isClient && (
+                  <div className="absolute top-3 right-3 z-30 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[13px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-xl flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Client Project
+                  </div>
+                )}
 
                 {project.imagePath && (
                   <>

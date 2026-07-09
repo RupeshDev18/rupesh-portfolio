@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
 import Hero from "../components/hero/Hero";
-import About from "../components/about/About";
 import Achievements from "../components/achievements/Achievements";
 import Recommendations from "../components/recommendations/Recommendations";
 import Skills from "../components/skills/Skills";
@@ -34,12 +33,11 @@ const Home = () => {
     <div>
       <SEO />
       <Hero />
-      <About />
+      <Skills />
       <Experience />
       <Projects />
       <Recommendations />
       <Achievements />
-      <Skills />
       <Blog />
       <Contact />
     </div>

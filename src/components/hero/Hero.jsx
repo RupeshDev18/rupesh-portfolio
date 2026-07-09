@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPlay } from "react-icons/fa";
+import { FaPlay, FaAws } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import profileImg from "../../assets/profilepic2.webp";
 import circleImg from "../../assets/Full Stack Developer2.png";
@@ -11,6 +11,12 @@ import ResumeModal from "./ResumeModal";
 
 const Hero = ({ darkMode }) => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const stats = [
+    { number: "60K+", label: "Issues Processed" },
+    { number: "87%", label: "Branch Coverage" },
+    { number: "11", label: "Production POCs" },
+    { number: "AWS", label: "Certified SAA", isAws: true },
+  ];
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -81,6 +87,27 @@ const Hero = ({ darkMode }) => {
           <motion.div className="flex items-center gap-4 mt-4" variants={itemVariants}>
             <SocialLinks />
           </motion.div>
+
+          {/* Stats for Mobile/Tablet (visible below lg) */}
+          <motion.div 
+            className="grid grid-cols-2 gap-4 mt-8 lg:hidden border-t border-gray-200/50 dark:border-slate-800/50 pt-6"
+            variants={itemVariants}
+          >
+            {stats.map((stat, i) => (
+              <div key={i} className="flex flex-col">
+                {stat.isAws ? (
+                  <FaAws className="text-3xl text-[#ff9900] mb-1" />
+                ) : (
+                  <span className="text-2xl font-black text-teal-600 dark:text-cyan-400">
+                    {stat.number}
+                  </span>
+                )}
+                <span className="text-[10px] uppercase font-bold tracking-wider text-gray-500 dark:text-slate-400 leading-tight">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
 
         {/* Right Column (Cutout profile photo & spinning play badge) */}
@@ -90,7 +117,7 @@ const Hero = ({ darkMode }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="relative w-fit max-w-full flex items-end justify-center">
+          <div className="relative w-fit max-w-full flex items-end justify-center lg:mb-20">
             {/* Cut-out Photo overlapping background circle */}
             <img
               src={profileImg}
@@ -130,12 +157,30 @@ const Hero = ({ darkMode }) => {
       </div>
       */}
 
-      {/* Resume Modal */}
       <AnimatePresence>
         {isResumeModalOpen && (
           <ResumeModal isResumeModalOpen={isResumeModalOpen} setIsResumeModalOpen={setIsResumeModalOpen} />
         )}
       </AnimatePresence>
+      {/* Minimal Stats Bar at the bottom of Hero (visible only on desktop) */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200/20 dark:border-slate-800/20 py-6 px-6 hidden lg:block z-20">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-left">
+          {stats.map((stat, i) => (
+            <div key={i} className="flex items-center gap-4">
+              {stat.isAws ? (
+                <FaAws className="text-4xl text-[#ff9900]" />
+              ) : (
+                <span className="text-3xl font-black text-teal-600 dark:text-cyan-400">
+                  {stat.number}
+                </span>
+              )}
+              <span className="text-[11px] uppercase font-bold tracking-wider text-gray-600 dark:text-slate-400 max-w-[120px] leading-tight">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

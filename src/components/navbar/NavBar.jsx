@@ -22,13 +22,10 @@ const NavBar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", to: "home" },
-    { name: "About", to: "about" },
+    { name: "Skills", to: "skills" },
     { name: "Experience", to: "experience" },
     { name: "Projects", to: "projects" },
-    { name: "Skills", to: "skills" },
     { name: "Blog", to: "blog" },
-    { name: "Contact", to: "contact" },
   ];
 
   return (
@@ -42,7 +39,14 @@ const NavBar = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <RouterLink to="/">
+        <RouterLink 
+          to="/"
+          onClick={() => {
+            if (isHome) {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+        >
           <motion.div
             className="text-3xl font-extrabold text-gray-800 dark:text-gray-100 cursor-pointer select-none"
             whileHover={{ scale: 1.05 }}
