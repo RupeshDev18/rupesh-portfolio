@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FiSearch, FiBookOpen, FiTerminal, FiDatabase, FiCpu, FiCode, FiArrowRight } from "react-icons/fi";
+import { FiSearch, FiBookOpen, FiTerminal, FiDatabase, FiCpu, FiCode, FiArrowRight, FiCheckSquare } from "react-icons/fi";
 import { cheatsheets } from "../data/cheatsheetsData";
 import SEO from "../components/seo/SEO";
 
@@ -9,7 +9,7 @@ const Handbook = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const categories = ["All", "Backend Development", "Frontend Development"];
+  const categories = ["All", "Backend Development", "Frontend Development", "Testing & DevOps"];
 
   const filteredCheatsheets = cheatsheets.filter((sheet) => {
     const matchesSearch =
@@ -29,6 +29,8 @@ const Handbook = () => {
         return <FiTerminal className="text-3xl text-green-500" />;
       case "python":
         return <FiDatabase className="text-3xl text-blue-500" />;
+      case "playwright":
+        return <FiCheckSquare className="text-3xl text-orange-500" />;
       default:
         return <FiBookOpen className="text-3xl text-teal-500" />;
     }
