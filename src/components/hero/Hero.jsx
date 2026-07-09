@@ -88,21 +88,21 @@ const Hero = ({ darkMode }) => {
             <SocialLinks />
           </motion.div>
 
-          {/* Stats for Mobile/Tablet (visible below lg) */}
+          {/* Unified Responsive Stats Grid */}
           <motion.div 
-            className="grid grid-cols-2 gap-4 mt-8 lg:hidden border-t border-gray-200/50 dark:border-slate-800/50 pt-6"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 border-t border-gray-200/30 dark:border-slate-800/30 pt-6 w-full"
             variants={itemVariants}
           >
             {stats.map((stat, i) => (
-              <div key={i} className="flex flex-col">
+              <div key={i} className="flex flex-col text-left">
                 {stat.isAws ? (
-                  <FaAws className="text-3xl text-[#ff9900] mb-1" />
+                  <FaAws className="text-3xl md:text-4xl text-[#ff9900] mb-1.5" />
                 ) : (
-                  <span className="text-2xl font-black text-teal-600 dark:text-cyan-400">
+                  <span className="text-2xl md:text-3xl font-black text-teal-600 dark:text-cyan-400 mb-0.5">
                     {stat.number}
                   </span>
                 )}
-                <span className="text-[10px] uppercase font-bold tracking-wider text-gray-500 dark:text-slate-400 leading-tight">
+                <span className="text-[10px] md:text-[11px] uppercase font-bold tracking-wider text-gray-500 dark:text-slate-400 leading-tight">
                   {stat.label}
                 </span>
               </div>
@@ -117,7 +117,7 @@ const Hero = ({ darkMode }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="relative w-fit max-w-full flex items-end justify-center lg:mb-20">
+          <div className="relative w-fit max-w-full flex items-end justify-center">
             {/* Cut-out Photo overlapping background circle */}
             <img
               src={profileImg}
@@ -142,45 +142,11 @@ const Hero = ({ darkMode }) => {
         </motion.div>
       </div>
 
-      {/* Down Bouncy Arrow */}
-      {/*
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
-        <Link to="skills" smooth={true} duration={500} offset={-80}>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="cursor-pointer"
-          >
-            <FiArrowDown className="text-3xl text-teal-600 dark:text-cyan-400 hover:text-black dark:hover:text-white transition-colors" />
-          </motion.div>
-        </Link>
-      </div>
-      */}
-
       <AnimatePresence>
         {isResumeModalOpen && (
           <ResumeModal isResumeModalOpen={isResumeModalOpen} setIsResumeModalOpen={setIsResumeModalOpen} />
         )}
       </AnimatePresence>
-      {/* Minimal Stats Bar at the bottom of Hero (visible only on desktop) */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200/20 dark:border-slate-800/20 py-6 px-6 hidden lg:block z-20">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-left">
-          {stats.map((stat, i) => (
-            <div key={i} className="flex items-center gap-4">
-              {stat.isAws ? (
-                <FaAws className="text-4xl text-[#ff9900]" />
-              ) : (
-                <span className="text-3xl font-black text-teal-600 dark:text-cyan-400">
-                  {stat.number}
-                </span>
-              )}
-              <span className="text-[11px] uppercase font-bold tracking-wider text-gray-600 dark:text-slate-400 max-w-[120px] leading-tight">
-                {stat.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };
