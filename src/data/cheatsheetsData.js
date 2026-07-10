@@ -1,7 +1,8 @@
-import springBootContent from '../assets/spring-boot-cheatsheet.md?raw';
-import reactNextjsContent from '../assets/react-cheatsheet.md?raw';
-import nodejsExpressContent from '../assets/node-cheatsheet.md?raw';
-import testingPlaywrightContent from '../assets/test-playwright.md?raw';
+import springBootContent from '../assets/cheatsheets/spring-boot-cheatsheet.md?raw';
+import reactNextjsContent from '../assets/cheatsheets/react-cheatsheet.md?raw';
+import nodejsExpressContent from '../assets/cheatsheets/node-cheatsheet.md?raw';
+import testingPlaywrightContent from '../assets/cheatsheets/test-playwright.md?raw';
+import awsContent from '../assets/cheatsheets/aws.md?raw';
 
 export const cheatsheets = [
   {
@@ -43,5 +44,15 @@ export const cheatsheets = [
     readTime: "20 min read",
     icon: "playwright",
     content: testingPlaywrightContent
+  },
+  {
+    id: "aws-cloud",
+    title: "AWS Cloud Cheat Sheet",
+    description: "Comprehensive AWS engineering guide covering IAM, VPC, EC2, ECS, EKS, Lambda, S3, RDS, Aurora, DynamoDB, CI/CD, and production architectures.",
+    category: "Testing & DevOps",
+    yoe: "Junior-Senior",
+    readTime: "45 min read",
+    icon: "aws",
+    content: awsContent
   }
 ];

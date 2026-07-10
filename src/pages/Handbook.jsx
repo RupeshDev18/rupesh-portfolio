@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FiSearch, FiBookOpen, FiTerminal, FiDatabase, FiCpu, FiCode, FiArrowRight, FiCheckSquare } from "react-icons/fi";
+import { FiSearch, FiBookOpen, FiTerminal, FiDatabase, FiCpu, FiCode, FiArrowRight, FiCheckSquare, FiCloud } from "react-icons/fi";
 import { cheatsheets } from "../data/cheatsheetsData";
 import SEO from "../components/seo/SEO";
 
@@ -31,6 +31,8 @@ const Handbook = () => {
         return <FiDatabase className="text-3xl text-blue-500" />;
       case "playwright":
         return <FiCheckSquare className="text-3xl text-orange-500" />;
+      case "aws":
+        return <FiCloud className="text-3xl text-[#ff9900]" />;
       default:
         return <FiBookOpen className="text-3xl text-teal-500" />;
     }
