@@ -40,7 +40,7 @@ const CodeBlock = ({ code, language }) => {
   );
 };
 
-// Helper function to parse inline markdown formatting (bold, inline code, and links)
+// Helper function to parse inline markdown formatting (bold, italics, inline code, and links)
 const parseInline = (text) => {
   let parts = [{ type: "text", content: text }];
 
@@ -57,6 +57,27 @@ const parseInline = (text) => {
       }
       subparts.push({ type: "bold", content: match[1] });
       lastIndex = boldRegex.lastIndex;
+    }
+    if (lastIndex < part.content.length) {
+      subparts.push({ type: "text", content: part.content.substring(lastIndex) });
+    }
+    return subparts;
+  });
+
+  // 1.5 Parse italic: _text_ or *text*
+  parts = parts.flatMap((part) => {
+    if (part.type !== "text") return part;
+    const subparts = [];
+    const italicRegex = /_([^_]+)_|\*([^*]+)\*/g;
+    let lastIndex = 0;
+    let match;
+    while ((match = italicRegex.exec(part.content)) !== null) {
+      if (match.index > lastIndex) {
+        subparts.push({ type: "text", content: part.content.substring(lastIndex, match.index) });
+      }
+      const content = match[1] || match[2];
+      subparts.push({ type: "italic", content: content });
+      lastIndex = italicRegex.lastIndex;
     }
     if (lastIndex < part.content.length) {
       subparts.push({ type: "text", content: part.content.substring(lastIndex) });
@@ -111,6 +132,12 @@ const parseInline = (text) => {
           <strong key={idx} className="font-extrabold text-gray-900 dark:text-white">
             {part.content}
           </strong>
+        );
+      case "italic":
+        return (
+          <em key={idx} className="italic text-gray-800 dark:text-gray-200">
+            {part.content}
+          </em>
         );
       case "inline-code":
         return (
@@ -323,7 +350,15 @@ const HandbookDetail = () => {
       } else {
         flushList(i - 1);
 
-        if (line.startsWith("### ")) {
+        if (line.startsWith("# ")) {
+          const text = line.replace("# ", "").trim();
+          const headingId = text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+          parsedElements.push(
+            <h1 key={`h1-${i}`} id={headingId} className="text-3xl md:text-4xl font-black mt-12 mb-6 text-gray-900 dark:text-white scroll-mt-24 border-b pb-3 border-gray-200 dark:border-slate-800">
+              {parseInline(text)}
+            </h1>
+          );
+        } else if (line.startsWith("### ")) {
           const text = line.replace("### ", "").trim();
           const headingId = text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
           parsedElements.push(
@@ -338,6 +373,13 @@ const HandbookDetail = () => {
             <h2 key={`h2-${i}`} id={headingId} className="text-2xl font-extrabold mt-12 mb-6 text-gray-900 dark:text-white border-b pb-2 border-gray-200 dark:border-slate-800 scroll-mt-24">
               {parseInline(text)}
             </h2>
+          );
+        } else if (line.trim().startsWith("> ")) {
+          const text = line.trim().replace(/^>\s*/, "");
+          parsedElements.push(
+            <blockquote key={`quote-${i}`} className="p-4 bg-gray-50 dark:bg-slate-900/50 border-l-4 border-teal-500 dark:border-cyan-400 text-gray-700 dark:text-gray-300 rounded-r-lg text-base md:text-lg my-4 italic">
+              {parseInline(text)}
+            </blockquote>
           );
         } else if (line.trim() !== "") {
           // Detect bold callout stars (⭐⭐⭐)
