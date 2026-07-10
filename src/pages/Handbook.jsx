@@ -29,6 +29,8 @@ const Handbook = () => {
         return <FiTerminal className="text-3xl text-green-500" />;
       case "python":
         return <FiDatabase className="text-3xl text-blue-500" />;
+      case "postgres":
+        return <FiDatabase className="text-3xl text-[#336791]" />;
       case "playwright":
         return <FiCheckSquare className="text-3xl text-orange-500" />;
       case "aws":

@@ -3,6 +3,7 @@ import reactNextjsContent from '../assets/cheatsheets/react-cheatsheet.md?raw';
 import nodejsExpressContent from '../assets/cheatsheets/node-cheatsheet.md?raw';
 import testingPlaywrightContent from '../assets/cheatsheets/test-playwright.md?raw';
 import awsContent from '../assets/cheatsheets/aws.md?raw';
+import postgresContent from '../assets/cheatsheets/postgres.md?raw';
 
 export const cheatsheets = [
   {
@@ -54,5 +55,15 @@ export const cheatsheets = [
     readTime: "45 min read",
     icon: "aws",
     content: awsContent
+  },
+  {
+    id: "postgresql",
+    title: "PostgreSQL Engineering Handbook",
+    description: "Comprehensive PostgreSQL reference covering database design, indexing strategies, query planning, MVCC, transaction isolation, locks, and performance tuning.",
+    category: "Backend Development",
+    yoe: "Junior-Senior",
+    readTime: "40 min read",
+    icon: "postgres",
+    content: postgresContent
   }
 ];
