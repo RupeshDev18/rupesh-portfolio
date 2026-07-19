@@ -32,10 +32,10 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 bg-gradient-to-b from-slate-50 via-teal-50/10 to-slate-50 dark:from-slate-950 dark:via-teal-950/10 dark:to-slate-950 text-slate-800 dark:text-slate-100 relative overflow-hidden transition-colors duration-300">
+    <section id="projects" className="py-24 px-4 sm:px-6 bg-gradient-to-b from-slate-50 via-indigo-50/10 to-slate-50 dark:from-slate-950 dark:via-blue-950/10 dark:to-slate-950 text-slate-800 dark:text-slate-100 relative overflow-hidden transition-colors duration-300">
       {/* Background Radial Lights */}
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-teal-500/10 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/10 dark:bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-indigo-500/10 dark:bg-sky-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-sky-500/10 dark:bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
@@ -46,11 +46,11 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-500/10 border border-teal-200 dark:border-teal-500/30 text-teal-700 dark:text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-4">
             <FiFolder className="w-3.5 h-3.5" /> Engineering Portfolio
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
-            Featured <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 dark:from-teal-400 dark:via-cyan-400 dark:to-emerald-400 bg-clip-text text-transparent">Showcase</span>
+            Featured <span className="bg-gradient-to-r from-indigo-600 via-sky-600 to-emerald-600 dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400 bg-clip-text text-transparent">Showcase</span>
           </h2>
           <p className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             Full-stack platforms, multi-tenant SaaS architectures, distributed scrapers, and AI systems built for production scale.
@@ -66,9 +66,9 @@ const Projects = () => {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <div className="group relative bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 hover:border-teal-500/50 dark:hover:border-teal-500/40 rounded-3xl p-6 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-[0_0_40px_rgba(20,184,166,0.15)] overflow-hidden">
+            <div className="group relative bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/40 rounded-3xl p-6 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] overflow-hidden">
               {/* Glowing Top Highlight Bar */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-teal-500 via-cyan-400 to-emerald-500" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-500 via-sky-400 to-blue-500" />
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Left Spotlight Details (7 Cols) */}
@@ -76,8 +76,8 @@ const Projects = () => {
                   <div>
                     {/* Top Badges */}
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-300 text-xs font-bold uppercase tracking-wider">
-                        <FiZap className="w-3.5 h-3.5 text-teal-500" /> Flagship Spotlight
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-600 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider">
+                        <FiZap className="w-3.5 h-3.5 text-indigo-500" /> Flagship Spotlight
                       </span>
                       {flagshipProject.isClient && (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
@@ -87,7 +87,7 @@ const Projects = () => {
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-300 transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
                       {flagshipProject.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
@@ -97,11 +97,11 @@ const Projects = () => {
                     {/* Impact Benchmarks */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                       <div className="bg-slate-50 dark:bg-slate-950/70 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <div className="text-lg font-bold text-teal-600 dark:text-cyan-400">200+</div>
+                        <div className="text-lg font-bold text-indigo-600 dark:text-sky-400">200+</div>
                         <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Multi-Tenant Orgs</div>
                       </div>
                       <div className="bg-slate-50 dark:bg-slate-950/70 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <div className="text-lg font-bold text-teal-600 dark:text-cyan-400">&lt;100ms</div>
+                        <div className="text-lg font-bold text-indigo-600 dark:text-sky-400">&lt;100ms</div>
                         <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">P99 RBAC Latency</div>
                       </div>
                       <div className="bg-slate-50 dark:bg-slate-950/70 p-3 rounded-xl border border-slate-200 dark:border-slate-800 col-span-2 sm:col-span-1">
@@ -115,7 +115,7 @@ const Projects = () => {
                       {flagshipProject.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 rounded-md bg-teal-50 dark:bg-teal-950/50 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-500/30 text-[11px] font-bold uppercase tracking-wide"
+                          className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-[11px] font-bold uppercase tracking-wide"
                         >
                           {tag}
                         </span>
@@ -127,7 +127,7 @@ const Projects = () => {
                   <div className="flex flex-wrap items-center gap-4 pt-2">
                     <Link
                       to={`/project/${flagshipProject.id}`}
-                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400 text-white dark:text-slate-950 font-bold text-sm transition-all shadow-lg shadow-teal-600/20 group/btn"
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white dark:text-slate-950 font-bold text-sm transition-all shadow-lg shadow-indigo-600/20 group/btn"
                     >
                       View Full Case Study <FiArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
@@ -165,7 +165,7 @@ const Projects = () => {
                         </div>
                       </>
                     ) : (
-                      <div className="w-full h-64 bg-gradient-to-br from-teal-500 to-cyan-700 flex items-center justify-center text-white font-bold">
+                      <div className="w-full h-64 bg-gradient-to-br from-indigo-500 to-sky-700 flex items-center justify-center text-white font-bold">
                         {flagshipProject.title}
                       </div>
                     )}
@@ -179,7 +179,7 @@ const Projects = () => {
         {/* 2. Secondary Projects Filter Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <FiCheckCircle className="text-teal-600 dark:text-teal-400" /> Additional Engineering Solutions
+            <FiCheckCircle className="text-indigo-600 dark:text-indigo-400" /> Additional Engineering Solutions
           </h3>
 
           <div className="flex items-center gap-2 flex-wrap">
@@ -192,11 +192,10 @@ const Projects = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-300 ${
-                  activeCategory === cat.id
-                    ? "bg-teal-600 dark:bg-teal-500 text-white dark:text-slate-950 shadow-md shadow-teal-600/20"
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-300 ${activeCategory === cat.id
+                    ? "bg-indigo-600 dark:bg-indigo-500 text-white dark:text-slate-950 shadow-md shadow-indigo-600/20"
                     : "bg-white dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:text-slate-900 dark:hover:text-slate-200"
-                }`}
+                  }`}
               >
                 {cat.label}
               </button>
@@ -224,7 +223,7 @@ const Projects = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ y: -8 }}
-                className="group flex flex-col h-full bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 hover:border-teal-500/50 dark:hover:border-teal-500/40 shadow-sm hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(20,184,166,0.12)] transition-all duration-300"
+                className="group flex flex-col h-full bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/40 shadow-sm hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(99,102,241,0.12)] transition-all duration-300"
               >
                 {/* Screenshot Header */}
                 <div
@@ -251,7 +250,7 @@ const Projects = () => {
                       </div>
                     </>
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-teal-500 to-cyan-700 flex items-center justify-center text-white font-bold p-4 text-center">
+                    <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-sky-700 flex items-center justify-center text-white font-bold p-4 text-center">
                       {project.title}
                     </div>
                   )}
@@ -260,7 +259,7 @@ const Projects = () => {
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow justify-between">
                   <div>
-                    <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-300 transition-colors leading-snug">
+                    <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors leading-snug">
                       {project.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed line-clamp-3">
@@ -272,7 +271,7 @@ const Projects = () => {
                       {project.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 bg-teal-50 dark:bg-teal-950/40 text-teal-800 dark:text-teal-300 rounded text-[11px] font-semibold border border-teal-200 dark:border-teal-500/20"
+                          className="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 rounded text-[11px] font-semibold border border-indigo-200 dark:border-indigo-500/20"
                         >
                           {tag}
                         </span>
@@ -284,7 +283,7 @@ const Projects = () => {
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-3 mt-auto">
                     <Link
                       to={`/project/${project.id}`}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400 text-white dark:text-slate-950 text-xs font-bold transition-all shadow-md"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white dark:text-slate-950 text-xs font-bold transition-all shadow-md"
                     >
                       Case Study <FiArrowRight />
                     </Link>

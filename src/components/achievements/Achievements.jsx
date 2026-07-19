@@ -19,18 +19,18 @@ const Achievements = () => {
 
   const getMetricIcon = (index) => {
     switch (index) {
-      case 0: return <FiCpu className="w-5 h-5 text-teal-600 dark:text-teal-400" />;
-      case 1: return <FaShieldAlt className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />;
+      case 0: return <FiCpu className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
+      case 1: return <FaShieldAlt className="w-5 h-5 text-sky-600 dark:text-sky-400" />;
       case 2: return <FiTrendingUp className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
       case 3: return <FiLayers className="w-5 h-5 text-amber-600 dark:text-amber-400" />;
-      default: return <FiActivity className="w-5 h-5 text-teal-600 dark:text-teal-400" />;
+      default: return <FiActivity className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
     }
   };
 
   return (
     <section id="achievements" className="py-24 px-4 sm:px-6 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 relative overflow-hidden transition-colors duration-300">
       {/* Background Radial Lights */}
-      <div className="absolute top-1/3 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -42,11 +42,11 @@ const Achievements = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/30 text-sky-700 dark:text-sky-400 text-xs font-semibold uppercase tracking-wider mb-4">
             <FiAward className="w-3.5 h-3.5" /> Proof of Excellence
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
-            Certifications & <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 dark:from-teal-400 dark:via-cyan-400 dark:to-emerald-400 bg-clip-text text-transparent">Engineering Impact</span>
+            Certifications & <span className="bg-gradient-to-r from-indigo-600 via-sky-600 to-emerald-600 dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400 bg-clip-text text-transparent">Engineering Impact</span>
           </h2>
           <p className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             Quantifiable production engineering metrics, verified cloud architecture credentials, and national academic merit.
@@ -64,7 +64,7 @@ const Achievements = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-                <FiActivity className="text-teal-600 dark:text-teal-400" /> Key Impact Benchmarks
+                <FiActivity className="text-indigo-600 dark:text-indigo-400" /> Key Impact Benchmarks
               </h3>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-slate-200 dark:from-slate-800 to-transparent" />
             </div>
@@ -75,12 +75,12 @@ const Achievements = () => {
                   key={idx}
                   whileHover={{ y: -5, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 hover:border-teal-500/50 dark:hover:border-teal-500/40 rounded-2xl p-5 relative overflow-hidden group shadow-sm hover:shadow-md"
+                  className="bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/40 rounded-2xl p-5 relative overflow-hidden group shadow-sm hover:shadow-md"
                 >
                   <div className="absolute top-0 right-0 p-4 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
                     {getMetricIcon(idx)}
                   </div>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-transparent bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-400 dark:to-cyan-300 bg-clip-text mb-1 tracking-tight">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-transparent bg-gradient-to-r from-indigo-600 to-sky-600 dark:from-indigo-400 dark:to-sky-300 bg-clip-text mb-1 tracking-tight">
                     {metric.value}
                   </div>
                   <div className="text-sm font-semibold text-slate-900 dark:text-slate-200 mb-1">
@@ -89,7 +89,7 @@ const Achievements = () => {
                   <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                     {metric.context}
                   </div>
-                  <div className="mt-3 inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-teal-700 dark:text-teal-400">
+                  <div className="mt-3 inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-indigo-700 dark:text-indigo-400">
                     {metric.metricType}
                   </div>
                 </motion.div>
@@ -128,18 +128,17 @@ const Achievements = () => {
                 }}
                 whileHover={{ y: -6 }}
                 onClick={() => setSelectedCredential(item)}
-                className="group cursor-pointer relative bg-slate-50/90 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(13,148,136,0.15)]"
+                className="group cursor-pointer relative bg-slate-50/90 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(99,102,241,0.15)]"
               >
                 {/* Colored Highlight Strip */}
-                <div className={`absolute top-0 left-0 bottom-0 w-1.5 rounded-l-2xl ${isAws ? "bg-amber-500" : "bg-teal-500"}`} />
+                <div className={`absolute top-0 left-0 bottom-0 w-1.5 rounded-l-2xl ${isAws ? "bg-amber-500" : "bg-indigo-500"}`} />
 
                 <div>
                   {/* Top Bar: Category Pill & Status */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
-                      isAws ? "bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20" : "bg-teal-50 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 border border-teal-200 dark:border-teal-500/20"
-                    }`}>
-                      {isAws ? <FaAws className="w-4 h-4 text-[#ff9900]" /> : <FaTrophy className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />}
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${isAws ? "bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20" : "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20"
+                      }`}>
+                      {isAws ? <FaAws className="w-4 h-4 text-[#ff9900]" /> : <FaTrophy className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />}
                       {item.status || "Credential"}
                     </span>
 
@@ -149,11 +148,11 @@ const Achievements = () => {
                   </div>
 
                   {/* Title & Issuer */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-300 transition-colors mb-2 leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors mb-2 leading-snug">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs text-teal-700 dark:text-teal-400 font-semibold mb-4">
+                  <p className="text-xs text-indigo-700 dark:text-indigo-400 font-semibold mb-4">
                     Issued by: {item.issuer || "Official Exam Board"}
                   </p>
 
@@ -177,7 +176,7 @@ const Achievements = () => {
                 </div>
 
                 {/* Footer Drawer Trigger */}
-                <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-slate-500 dark:text-slate-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between text-xs font-medium text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   <span className="flex items-center gap-1.5">
                     <FiCheckCircle className="text-emerald-600 dark:text-emerald-400" /> Click to view verification proof
                   </span>
@@ -213,13 +212,12 @@ const Achievements = () => {
 
               {/* Modal Header */}
               <div className="flex items-center gap-3 mb-4">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${
-                  selectedCredential.icon === "aws" ? "bg-amber-50 dark:bg-amber-500/10 text-[#ff9900] border border-amber-200 dark:border-amber-500/20" : "bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-200 dark:border-teal-500/20"
-                }`}>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${selectedCredential.icon === "aws" ? "bg-amber-50 dark:bg-amber-500/10 text-[#ff9900] border border-amber-200 dark:border-amber-500/20" : "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20"
+                  }`}>
                   {selectedCredential.icon === "aws" ? <FaAws /> : <FaTrophy />}
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 uppercase tracking-wider block">
+                  <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block">
                     Official Verification Drawer
                   </span>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
@@ -236,7 +234,7 @@ const Achievements = () => {
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-slate-200 dark:border-slate-800/60">
                   <span className="text-slate-500 dark:text-slate-400">Credential ID:</span>
-                  <span className="font-mono text-teal-700 dark:text-teal-300 font-semibold">{selectedCredential.credentialId || "VERIFIED-RECORD"}</span>
+                  <span className="font-mono text-indigo-700 dark:text-indigo-300 font-semibold">{selectedCredential.credentialId || "VERIFIED-RECORD"}</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-slate-200 dark:border-slate-800/60">
                   <span className="text-slate-500 dark:text-slate-400">Status & Validity:</span>
@@ -245,7 +243,7 @@ const Achievements = () => {
                 {selectedCredential.percentile && (
                   <div className="flex justify-between items-center py-1 border-b border-slate-200 dark:border-slate-800/60">
                     <span className="text-slate-500 dark:text-slate-400">National Percentile:</span>
-                    <span className="font-semibold text-cyan-600 dark:text-cyan-300">{selectedCredential.percentile}</span>
+                    <span className="font-semibold text-sky-600 dark:text-sky-300">{selectedCredential.percentile}</span>
                   </div>
                 )}
               </div>
@@ -273,7 +271,7 @@ const Achievements = () => {
                   href={selectedCredential.verificationUrl || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-teal-600 hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400 text-white dark:text-slate-950 font-bold text-xs sm:text-sm transition-colors shadow-lg shadow-teal-600/20"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white dark:text-slate-950 font-bold text-xs sm:text-sm transition-colors shadow-lg shadow-indigo-600/20"
                 >
                   Verify Official Credential <FaExternalLinkAlt className="w-3 h-3" />
                 </a>

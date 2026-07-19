@@ -1,15 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import portfolioData from "../../data/data.json";
-import { 
-  FaReact, FaNodeJs, FaAws, FaDocker, FaHtml5, FaBolt, FaBrain 
+import {
+  FaReact, FaNodeJs, FaAws, FaDocker, FaHtml5, FaBolt, FaBrain
 } from "react-icons/fa";
-import { 
-  SiNextdotjs, SiTailwindcss, SiTypescript, SiFastapi, SiNestjs, SiPrisma, 
-  SiPostgresql, SiMongodb, SiOpenai, SiGithubactions 
+import {
+  SiNextdotjs, SiTailwindcss, SiTypescript, SiFastapi, SiNestjs, SiPrisma,
+  SiPostgresql, SiMongodb, SiOpenai, SiGithubactions
 } from "react-icons/si";
-import { 
-  TbApi, TbShieldLock, TbComponents 
+import {
+  TbApi, TbShieldLock, TbComponents
 } from "react-icons/tb";
 
 const Skills = ({ darkMode }) => {
@@ -17,26 +17,26 @@ const Skills = ({ darkMode }) => {
 
   const getSkillIcon = (name) => {
     const lowercaseName = name.toLowerCase();
-    
+
     if (lowercaseName.includes("react")) return <FaReact className="text-[#61dafb] text-lg" />;
     if (lowercaseName.includes("next.js")) return <SiNextdotjs className="text-black dark:text-white text-lg" />;
     if (lowercaseName.includes("tailwind")) return <SiTailwindcss className="text-[#38bdf8] text-lg" />;
     if (lowercaseName.includes("shadcn")) return <TbComponents className="text-[#3b82f6] text-lg" />;
     if (lowercaseName.includes("html") || lowercaseName.includes("css")) return <FaHtml5 className="text-[#e34f26] text-lg" />;
     if (lowercaseName.includes("typescript")) return <SiTypescript className="text-[#3178c6] text-lg" />;
-    
+
     if (lowercaseName.includes("node")) return <FaNodeJs className="text-[#339933] text-lg" />;
     if (lowercaseName.includes("fastapi")) return <SiFastapi className="text-[#009688] text-lg" />;
     if (lowercaseName.includes("nestjs")) return <SiNestjs className="text-[#e0234e] text-lg" />;
     if (lowercaseName.includes("prisma")) return <SiPrisma className="text-[#2d3748] dark:text-[#a5b4fc] text-lg" />;
     if (lowercaseName.includes("rest") || lowercaseName.includes("grpc")) return <TbApi className="text-teal-500 text-lg" />;
     if (lowercaseName.includes("event-driven")) return <FaBolt className="text-yellow-500 text-lg" />;
-    
+
     if (lowercaseName.includes("aws")) return <FaAws className="text-[#ff9900] text-lg" />;
     if (lowercaseName.includes("docker")) return <FaDocker className="text-[#2496ed] text-lg" />;
     if (lowercaseName.includes("ci/cd")) return <SiGithubactions className="text-[#2088ff] text-lg" />;
     if (lowercaseName.includes("iam") || lowercaseName.includes("security")) return <TbShieldLock className="text-red-500 text-lg" />;
-    
+
     if (lowercaseName.includes("postgres")) return <SiPostgresql className="text-[#4169e1] text-lg" />;
     if (lowercaseName.includes("mongodb") || lowercaseName.includes("sqlite")) return <SiMongodb className="text-[#47a248] text-lg" />;
     if (lowercaseName.includes("llm") || lowercaseName.includes("openai")) return <SiOpenai className="text-[#10a37f] text-lg" />;

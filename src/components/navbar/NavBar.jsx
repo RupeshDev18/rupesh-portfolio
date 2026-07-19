@@ -31,15 +31,15 @@ const NavBar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollPosition > 0
-          ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-lg shadow-sm py-4 border-b border-gray-100 dark:border-slate-800"
-          : "bg-transparent py-6"
+        ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-lg shadow-sm py-4 border-b border-gray-100 dark:border-slate-800"
+        : "bg-transparent py-6"
         }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <RouterLink 
+        <RouterLink
           to="/"
           onClick={() => {
             if (isHome) {
@@ -83,11 +83,10 @@ const NavBar = () => {
           })}
           <RouterLink
             to="/handbook"
-            className={`cursor-pointer font-bold text-sm tracking-wider transition-all duration-300 pb-1 ${
-              location.pathname.startsWith("/handbook")
+            className={`cursor-pointer font-bold text-sm tracking-wider transition-all duration-300 pb-1 ${location.pathname.startsWith("/handbook")
                 ? "text-teal-600 dark:text-cyan-400 border-b-2 border-teal-600 dark:border-cyan-400"
                 : "text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-cyan-400"
-            }`}
+              }`}
           >
             HANDBOOK
           </RouterLink>
@@ -173,11 +172,10 @@ const NavBar = () => {
               })}
               <RouterLink
                 to="/handbook"
-                className={`cursor-pointer font-extrabold text-sm tracking-wider transition-colors duration-300 py-1 ${
-                  location.pathname.startsWith("/handbook")
+                className={`cursor-pointer font-extrabold text-sm tracking-wider transition-colors duration-300 py-1 ${location.pathname.startsWith("/handbook")
                     ? "text-teal-600 dark:text-cyan-400 pl-4 border-l-4 border-teal-600 dark:border-cyan-400"
                     : "text-black dark:text-white hover:text-teal-600 dark:hover:text-cyan-400"
-                }`}
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 HANDBOOK

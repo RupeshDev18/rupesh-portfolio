@@ -89,7 +89,7 @@ const Hero = ({ darkMode }) => {
           </motion.div>
 
           {/* Unified Responsive Stats Grid */}
-          <motion.div 
+          <motion.div
             className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 border-t border-gray-200/30 dark:border-slate-800/30 pt-6 w-full"
             variants={itemVariants}
           >
