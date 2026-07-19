@@ -24,19 +24,19 @@ const Handbook = () => {
       case "spring":
         return <FiCpu className="text-3xl text-emerald-500" />;
       case "react":
-        return <FiCode className="text-3xl text-cyan-400" />;
+        return <FiCode className="text-3xl text-[#38bdf8]" />;
       case "node":
         return <FiTerminal className="text-3xl text-green-500" />;
       case "python":
         return <FiDatabase className="text-3xl text-blue-500" />;
       case "postgres":
-        return <FiDatabase className="text-3xl text-[#336791]" />;
+        return <FiDatabase className="text-3xl text-[#4169e1]" />;
       case "playwright":
         return <FiCheckSquare className="text-3xl text-orange-500" />;
       case "aws":
-        return <FiCloud className="text-3xl text-[#ff9900]" />;
+        return <FiCloud className="text-3xl text-[#FCA311]" />;
       default:
-        return <FiBookOpen className="text-3xl text-teal-500" />;
+        return <FiBookOpen className="text-3xl text-[#FCA311]" />;
     }
   };
 
@@ -58,7 +58,7 @@ const Handbook = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 pt-28 pb-20 px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#14213D] text-slate-900 dark:text-slate-100 pt-28 pb-20 px-6 transition-colors duration-300">
       <SEO 
         title="Developer Handbooks & Cheatsheets" 
         description="Comprehensive developer handbooks and cheatsheets for interviews and daily reference. Covering Spring Boot, React, Node.js, and more."
@@ -71,11 +71,14 @@ const Handbook = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-600 bg-clip-text text-transparent">
-            Handbooks & Cheatsheets
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCA311]/15 text-[#14213D] dark:text-[#FCA311] border border-[#FCA311]/30 text-xs font-bold uppercase tracking-wider mb-4">
+            Knowledge Repository
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black mb-4 text-[#14213D] dark:text-white">
+            Handbooks & <span className="text-[#FCA311]">Cheatsheets</span>
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium">
-            Compiled learning notes, architecture reference guides, and interview cheatsheets for modern frameworks.
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
+            Compiled learning notes, architecture reference guides, and interview cheatsheets for modern software engineering stacks.
           </p>
         </motion.div>
 
@@ -84,14 +87,14 @@ const Handbook = () => {
           {/* Search Box */}
           <div className="relative w-full md:max-w-md">
             <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-              <FiSearch className="text-gray-450 dark:text-slate-500 text-lg" />
+              <FiSearch className="text-slate-400 dark:text-slate-500 text-lg" />
             </span>
             <input
               type="text"
               placeholder="Search handbooks (e.g. Spring, React)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-200 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900/50 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500/50 dark:focus:ring-cyan-400/50 focus:border-teal-500 dark:focus:border-cyan-400 text-gray-900 dark:text-white transition-all shadow-sm"
+              className="w-full pl-10 pr-4 py-3 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FCA311] text-slate-900 dark:text-white transition-all shadow-xs"
             />
           </div>
 
@@ -103,8 +106,8 @@ const Handbook = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
                   selectedCategory === cat
-                    ? "bg-teal-600 dark:bg-cyan-500 text-white dark:text-slate-950 shadow-md shadow-teal-500/10 dark:shadow-cyan-400/10 scale-105"
-                    : "bg-gray-100 dark:bg-slate-900 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-slate-800 hover:text-gray-800 dark:hover:text-gray-200"
+                    ? "bg-[#14213D] dark:bg-[#FCA311] text-[#FCA311] dark:text-[#14213D] shadow-md scale-105"
+                    : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:text-slate-900 dark:hover:text-slate-200"
                 }`}
               >
                 {cat}
@@ -126,21 +129,21 @@ const Handbook = () => {
                 <motion.div
                   key={sheet.id}
                   variants={cardVariants}
-                  className="p-8 bg-gray-50/30 dark:bg-slate-900/30 backdrop-blur-md rounded-2xl border border-gray-100 dark:border-slate-800/40 relative flex flex-col h-full opacity-60 overflow-hidden select-none"
+                  className="p-8 bg-white/40 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-800 relative flex flex-col h-full opacity-60 overflow-hidden select-none"
                 >
-                  <div className="absolute top-4 right-6 bg-gray-200 dark:bg-slate-800 text-gray-500 dark:text-gray-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  <div className="absolute top-4 right-6 bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     Coming Soon
                   </div>
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 bg-gray-100 dark:bg-slate-800/80 rounded-xl flex items-center justify-center border border-gray-200/50 dark:border-slate-700/50">
+                    <div className="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center border border-slate-200 dark:border-slate-700">
                       {getIcon(sheet.icon)}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-400 dark:text-slate-500">{sheet.title}</h3>
-                      <span className="text-xs text-gray-400 dark:text-slate-650 font-semibold">{sheet.category}</span>
+                      <h3 className="text-xl font-bold text-slate-400 dark:text-slate-500">{sheet.title}</h3>
+                      <span className="text-xs text-slate-400 dark:text-slate-500 font-semibold">{sheet.category}</span>
                     </div>
                   </div>
-                  <p className="text-gray-400 dark:text-slate-550 leading-relaxed font-medium flex-grow text-sm md:text-[15px]">
+                  <p className="text-slate-400 dark:text-slate-500 leading-relaxed font-medium flex-grow text-sm md:text-[15px]">
                     {sheet.description}
                   </p>
                 </motion.div>
@@ -151,39 +154,35 @@ const Handbook = () => {
               <motion.div
                 key={sheet.id}
                 variants={cardVariants}
-                whileHover={{ y: -6, scale: 1.015 }}
-                className="group p-8 bg-white dark:bg-slate-900/60 dark:backdrop-blur-md rounded-2xl border border-gray-100 dark:border-teal-500/20 hover:border-teal-400 dark:hover:border-cyan-400/40 shadow-sm hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col h-full transition-all duration-300 relative"
+                whileHover={{ y: -6 }}
+                className="group p-8 bg-white dark:bg-slate-900 border-t-4 border-t-[#14213D] dark:border-t-[#FCA311] border-x border-b border-slate-200 dark:border-slate-800 rounded-2xl relative flex flex-col h-full transition-all duration-300 shadow-sm hover:shadow-xl"
               >
-                {/* Active Badge */}
-                <div className="absolute top-4 right-6 bg-teal-50 dark:bg-teal-950/30 text-teal-800 dark:text-teal-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-teal-100 dark:border-teal-900/50">
-                  {sheet.yoe}
-                </div>
-
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 bg-teal-50 dark:bg-teal-950/40 rounded-xl flex items-center justify-center border border-teal-100 dark:border-teal-900/50 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-slate-50 dark:bg-slate-950 rounded-xl flex items-center justify-center border border-slate-200 dark:border-slate-800 shadow-xs">
                     {getIcon(sheet.icon)}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#FCA311] transition-colors">
                       {sheet.title}
                     </h3>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">
-                      {sheet.category}
-                    </span>
+                    <span className="text-xs text-[#14213D] dark:text-[#FCA311] font-bold">{sheet.category}</span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed font-semibold flex-grow text-sm md:text-[15px] mb-8">
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-medium mb-8 flex-grow text-sm md:text-[15px]">
                   {sheet.description}
                 </p>
 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-slate-800/80">
-                  <span className="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase">{sheet.readTime}</span>
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between mt-auto">
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    {sheet.sections ? `${sheet.sections.length} Topic Sections` : "Comprehensive Guide"}
+                  </span>
+
                   <Link
                     to={`/handbook/${sheet.id}`}
-                    className="inline-flex items-center gap-2 text-sm font-black text-teal-600 dark:text-cyan-400 group-hover:translate-x-1.5 transition-transform"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FCA311] hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-md group/btn"
                   >
-                    Open Handbook <FiArrowRight />
+                    Open Handbook <FiArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </motion.div>
