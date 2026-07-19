@@ -12,7 +12,7 @@ const Footer = () => {
 
   const quickLinks = [
     { name: "Home", to: "home" },
-    { name: "About", to: "about" },
+    { name: "Skills", to: "skills" },
     { name: "Projects", to: "projects" },
     { name: "Blog", to: "blog" },
     { name: "Handbook", to: "/handbook", isPage: true },
@@ -26,29 +26,29 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-12 px-6">
+    <footer className="bg-[#14213D] text-white py-14 px-6 border-t border-slate-800">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+            <h3 className="text-2xl font-extrabold text-[#FCA311] mb-2">
               {portfolioData.name}
             </h3>
-            <ul className="text-gray-400 text-sm space-y-2 mt-4">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span> AWS Certified Solutions Architect</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span> GATE 2024 AIR 7700</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span> Available for Full Stack / Backend Roles</li>
+            <ul className="text-slate-300 text-xs space-y-2 mt-4 font-medium">
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#FCA311]"></span> AWS Certified Solutions Architect</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#FCA311]"></span> GATE 2024 AIR 7700</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Available for Full Stack / Cloud Roles</li>
             </ul>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }}>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400 text-sm">
+            <h4 className="font-bold mb-4 text-[#FCA311] text-sm uppercase tracking-wider">Quick Links</h4>
+            <ul className="space-y-2 text-slate-300 text-xs font-semibold">
               {quickLinks.map((link) => (
                 <li key={link.to}>
                   {link.isPage ? (
                     <RouterLink
                       to={link.to}
-                      className="cursor-pointer hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300"
+                      className="cursor-pointer hover:text-[#FCA311] transition-colors duration-300"
                     >
                       {link.name}
                     </RouterLink>
@@ -58,14 +58,14 @@ const Footer = () => {
                       smooth={true}
                       duration={500}
                       offset={-80}
-                      className="cursor-pointer hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300"
+                      className="cursor-pointer hover:text-[#FCA311] transition-colors duration-300"
                     >
                       {link.name}
                     </ScrollLink>
                   ) : (
                     <RouterLink
                       to={`/#${link.to}`}
-                      className="cursor-pointer hover:text-teal-500 dark:hover:text-cyan-400 transition-colors duration-300"
+                      className="cursor-pointer hover:text-[#FCA311] transition-colors duration-300"
                     >
                       {link.name}
                     </RouterLink>
@@ -76,15 +76,15 @@ const Footer = () => {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}>
-            <h4 className="font-semibold mb-4">Follow Me</h4>
-            <div className="flex gap-4">
+            <h4 className="font-bold mb-4 text-[#FCA311] text-sm uppercase tracking-wider">Follow Me</h4>
+            <div className="flex gap-3">
               {socials.map((social, idx) => (
                 <motion.a
                   key={idx}
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-gray-800 hover:bg-teal-500 dark:hover:bg-cyan-400 hover:text-white dark:hover:text-black text-lg transition-colors duration-300"
+                  className="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-[#FCA311] text-slate-300 hover:text-[#FCA311] text-base transition-colors duration-300"
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   title={social.label}
@@ -96,9 +96,8 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        <div className="pt-8 text-center text-gray-400 text-sm">
+        <div className="pt-8 text-center text-slate-400 text-xs border-t border-slate-800/80">
           <p>&copy; {currentYear} Rupesh Yadav. All rights reserved.</p>
-          {/* <p className="mt-2">Designed & Built with ❤️ using React & Framer Motion</p> */}
         </div>
       </div>
     </footer>

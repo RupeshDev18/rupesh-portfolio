@@ -10,11 +10,9 @@ const Projects = () => {
 
   const projects = portfolioData.projects;
 
-  // Split flagship project (SiloamHR) from remaining projects for showcase layout
   const flagshipProject = projects.find(p => p.id === "cleardays-hrms") || projects[0];
   const secondaryProjects = projects.filter(p => p.id !== flagshipProject.id);
 
-  // Filter logic
   const filteredProjects = secondaryProjects.filter(p => {
     if (activeCategory === "all") return true;
     if (activeCategory === "saas") return p.tags.some(t => t.toLowerCase().includes("tenant") || t.toLowerCase().includes("rbac") || t.toLowerCase().includes("postgresql"));
@@ -32,10 +30,9 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 bg-gradient-to-b from-slate-50 via-indigo-50/10 to-slate-50 dark:from-slate-950 dark:via-blue-950/10 dark:to-slate-950 text-slate-800 dark:text-slate-100 relative overflow-hidden transition-colors duration-300">
-      {/* Background Radial Lights */}
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-indigo-500/10 dark:bg-sky-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-sky-500/10 dark:bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="projects" className="py-24 px-4 sm:px-6 bg-[#E5E5E5]/40 dark:bg-[#14213D] text-slate-800 dark:text-slate-100 relative overflow-hidden transition-colors duration-300">
+      {/* Background Glows */}
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#FCA311]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
@@ -46,11 +43,11 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#14213D]/10 dark:bg-[#FCA311]/10 border border-[#14213D]/20 dark:border-[#FCA311]/30 text-[#14213D] dark:text-[#FCA311] text-xs font-bold uppercase tracking-wider mb-4">
             <FiFolder className="w-3.5 h-3.5" /> Engineering Portfolio
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
-            Featured <span className="bg-gradient-to-r from-indigo-600 via-sky-600 to-emerald-600 dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400 bg-clip-text text-transparent">Showcase</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#14213D] dark:text-white mb-4">
+            Featured <span className="text-[#FCA311]">Showcase</span>
           </h2>
           <p className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             Full-stack platforms, multi-tenant SaaS architectures, distributed scrapers, and AI systems built for production scale.
@@ -66,18 +63,15 @@ const Projects = () => {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <div className="group relative bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/40 rounded-3xl p-6 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] overflow-hidden">
-              {/* Glowing Top Highlight Bar */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-500 via-sky-400 to-blue-500" />
-
+            <div className="group relative bg-white dark:bg-slate-900 border-t-4 border-t-[#FCA311] border-x border-b border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 transition-all duration-300 shadow-xl overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                {/* Left Spotlight Details (7 Cols) */}
+                {/* Left Spotlight Details */}
                 <div className="lg:col-span-7 flex flex-col justify-between">
                   <div>
                     {/* Top Badges */}
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-600 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider">
-                        <FiZap className="w-3.5 h-3.5 text-indigo-500" /> Flagship Spotlight
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FCA311]/15 border border-[#FCA311]/30 text-[#14213D] dark:text-[#FCA311] text-xs font-bold uppercase tracking-wider">
+                        <FiZap className="w-3.5 h-3.5 text-[#FCA311]" /> Flagship Spotlight
                       </span>
                       {flagshipProject.isClient && (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
@@ -87,7 +81,7 @@ const Projects = () => {
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-[#FCA311] transition-colors">
                       {flagshipProject.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
@@ -97,11 +91,11 @@ const Projects = () => {
                     {/* Impact Benchmarks */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                       <div className="bg-slate-50 dark:bg-slate-950/70 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <div className="text-lg font-bold text-indigo-600 dark:text-sky-400">200+</div>
+                        <div className="text-lg font-bold text-[#14213D] dark:text-[#FCA311]">200+</div>
                         <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Multi-Tenant Orgs</div>
                       </div>
                       <div className="bg-slate-50 dark:bg-slate-950/70 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <div className="text-lg font-bold text-indigo-600 dark:text-sky-400">&lt;100ms</div>
+                        <div className="text-lg font-bold text-[#14213D] dark:text-[#FCA311]">&lt;100ms</div>
                         <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">P99 RBAC Latency</div>
                       </div>
                       <div className="bg-slate-50 dark:bg-slate-950/70 p-3 rounded-xl border border-slate-200 dark:border-slate-800 col-span-2 sm:col-span-1">
@@ -110,12 +104,12 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    {/* Technology Pills */}
+                    {/* Tech Pills */}
                     <div className="flex flex-wrap gap-2 mb-8">
                       {flagshipProject.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-[11px] font-bold uppercase tracking-wide"
+                          className="px-2.5 py-1 rounded-md bg-[#FCA311]/15 text-[#14213D] dark:text-[#FCA311] border border-[#FCA311]/30 text-[11px] font-bold uppercase tracking-wide"
                         >
                           {tag}
                         </span>
@@ -127,7 +121,7 @@ const Projects = () => {
                   <div className="flex flex-wrap items-center gap-4 pt-2">
                     <Link
                       to={`/project/${flagshipProject.id}`}
-                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white dark:text-slate-950 font-bold text-sm transition-all shadow-lg shadow-indigo-600/20 group/btn"
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FCA311] hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 group/btn"
                     >
                       View Full Case Study <FiArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
@@ -145,10 +139,10 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* Right Screenshot Preview (5 Cols) */}
+                {/* Right Screenshot Preview */}
                 <div className="lg:col-span-5">
                   <div
-                    className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 group/img cursor-pointer shadow-lg"
+                    className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 group/img cursor-pointer shadow-lg p-1"
                     onClick={() => flagshipProject.imagePath && setSelectedImage(getImagePath(flagshipProject.imagePath))}
                   >
                     {flagshipProject.imagePath ? (
@@ -156,16 +150,16 @@ const Projects = () => {
                         <img
                           src={getImagePath(flagshipProject.imagePath)}
                           alt={flagshipProject.title}
-                          className="w-full h-64 sm:h-80 object-cover object-top group-hover/img:scale-105 transition-transform duration-500"
+                          className="w-full h-64 sm:h-80 object-contain rounded-xl group-hover/img:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-slate-950/30 group-hover/img:bg-slate-950/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover/img:opacity-100">
+                        <div className="absolute inset-0 bg-slate-950/30 group-hover/img:bg-slate-950/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover/img:opacity-100 rounded-xl">
                           <span className="inline-flex items-center gap-2 bg-slate-950/80 text-white text-xs px-4 py-2 rounded-full backdrop-blur-md font-bold shadow-xl border border-white/20">
-                            <FiMaximize2 className="w-3.5 h-3.5" /> Enlarge Architecture Screenshot
+                            <FiMaximize2 className="w-3.5 h-3.5" /> Enlarge Screenshot
                           </span>
                         </div>
                       </>
                     ) : (
-                      <div className="w-full h-64 bg-gradient-to-br from-indigo-500 to-sky-700 flex items-center justify-center text-white font-bold">
+                      <div className="w-full h-64 bg-[#14213D] flex items-center justify-center text-white font-bold">
                         {flagshipProject.title}
                       </div>
                     )}
@@ -176,10 +170,10 @@ const Projects = () => {
           </motion.div>
         )}
 
-        {/* 2. Secondary Projects Filter Bar */}
+        {/* 2. Secondary Filter Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <FiCheckCircle className="text-indigo-600 dark:text-indigo-400" /> Additional Engineering Solutions
+            <FiCheckCircle className="text-[#FCA311]" /> Additional Engineering Solutions
           </h3>
 
           <div className="flex items-center gap-2 flex-wrap">
@@ -192,10 +186,11 @@ const Projects = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-300 ${activeCategory === cat.id
-                    ? "bg-indigo-600 dark:bg-indigo-500 text-white dark:text-slate-950 shadow-md shadow-indigo-600/20"
-                    : "bg-white dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:text-slate-900 dark:hover:text-slate-200"
-                  }`}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+                  activeCategory === cat.id
+                    ? "bg-[#14213D] dark:bg-[#FCA311] text-[#FCA311] dark:text-[#14213D] shadow-md"
+                    : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:text-slate-900 dark:hover:text-slate-200"
+                }`}
               >
                 {cat.label}
               </button>
@@ -203,7 +198,7 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* 3. Secondary Projects Grid */}
+        {/* 3. Secondary Grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
@@ -223,11 +218,11 @@ const Projects = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ y: -8 }}
-                className="group flex flex-col h-full bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/40 shadow-sm hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(99,102,241,0.12)] transition-all duration-300"
+                className="group flex flex-col h-full bg-white dark:bg-slate-900 border-t-4 border-t-[#14213D] dark:border-t-[#FCA311] border-x border-b border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 {/* Screenshot Header */}
                 <div
-                  className={`h-48 bg-slate-900 overflow-hidden relative ${project.imagePath ? 'cursor-pointer group/img' : ''}`}
+                  className={`h-48 bg-slate-950 p-1 overflow-hidden relative ${project.imagePath ? 'cursor-pointer group/img' : ''}`}
                   onClick={() => project.imagePath && setSelectedImage(getImagePath(project.imagePath))}
                 >
                   {project.isClient && (
@@ -241,7 +236,7 @@ const Projects = () => {
                       <img
                         src={getImagePath(project.imagePath)}
                         alt={project.title}
-                        className="w-full h-full object-cover object-top group-hover/img:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-contain group-hover/img:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-slate-950/30 group-hover/img:bg-slate-950/10 transition-colors duration-300 z-20 pointer-events-none flex items-center justify-center opacity-0 group-hover/img:opacity-100">
                         <span className="bg-slate-950/80 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm font-bold shadow-lg flex items-center gap-1 border border-white/20">
@@ -250,7 +245,7 @@ const Projects = () => {
                       </div>
                     </>
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-sky-700 flex items-center justify-center text-white font-bold p-4 text-center">
+                    <div className="w-full h-full bg-[#14213D] flex items-center justify-center text-white font-bold p-4 text-center">
                       {project.title}
                     </div>
                   )}
@@ -259,7 +254,7 @@ const Projects = () => {
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-grow justify-between">
                   <div>
-                    <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors leading-snug">
+                    <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white group-hover:text-[#FCA311] transition-colors leading-snug">
                       {project.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed line-clamp-3">
@@ -271,7 +266,7 @@ const Projects = () => {
                       {project.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 rounded text-[11px] font-semibold border border-indigo-200 dark:border-indigo-500/20"
+                          className="px-2 py-0.5 bg-[#FCA311]/15 text-[#14213D] dark:text-[#FCA311] rounded text-[11px] font-semibold border border-[#FCA311]/30"
                         >
                           {tag}
                         </span>
@@ -283,7 +278,7 @@ const Projects = () => {
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-3 mt-auto">
                     <Link
                       to={`/project/${project.id}`}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white dark:text-slate-950 text-xs font-bold transition-all shadow-md"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#FCA311] hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-md"
                     >
                       Case Study <FiArrowRight />
                     </Link>

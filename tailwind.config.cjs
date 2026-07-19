@@ -7,8 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#f6c400',
-        secondary: '#ff6b6b',
+        prussian: '#14213D',
+        amberOrange: '#FCA311',
+        alabaster: '#E5E5E5',
       },
       animation: {
         blob: 'blob 7s infinite',

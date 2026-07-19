@@ -10,7 +10,7 @@ const HeroActions = ({ setIsResumeModalOpen, itemVariants }) => {
         variants={itemVariants}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="px-6 py-2.5 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white rounded-lg font-bold text-sm shadow-[0_0_15px_rgba(20,184,166,0.3)] hover:shadow-[0_0_25px_rgba(20,184,166,0.5)] transition-all flex items-center gap-2"
+        className="px-6 py-2.5 bg-[#FCA311] hover:bg-amber-400 text-slate-950 rounded-xl font-bold text-sm shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition-all flex items-center gap-2"
       >
         View Resume <FiEye />
       </motion.button>
@@ -19,7 +19,7 @@ const HeroActions = ({ setIsResumeModalOpen, itemVariants }) => {
         variants={itemVariants}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-gray-300 dark:border-teal-500/50 text-gray-900 dark:text-white rounded-lg font-bold text-sm hover:bg-gray-50 dark:hover:bg-teal-900/20 transition-all flex items-center gap-2"
+        className="px-6 py-2.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-[#14213D] dark:text-white rounded-xl font-bold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center gap-2 shadow-xs"
       >
         Contact Me
       </motion.a>

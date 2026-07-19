@@ -30,16 +30,17 @@ const NavBar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollPosition > 0
-        ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-lg shadow-sm py-4 border-b border-gray-100 dark:border-slate-800"
-        : "bg-transparent py-6"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrollPosition > 0
+          ? "bg-white/90 dark:bg-[#14213D]/90 backdrop-blur-lg shadow-sm py-4 border-b border-slate-200 dark:border-slate-800"
+          : "bg-transparent py-6"
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <RouterLink
+        <RouterLink 
           to="/"
           onClick={() => {
             if (isHome) {
@@ -48,7 +49,7 @@ const NavBar = () => {
           }}
         >
           <motion.div
-            className="text-3xl font-extrabold text-gray-800 dark:text-gray-100 cursor-pointer select-none"
+            className="text-3xl font-extrabold text-[#14213D] dark:text-white cursor-pointer select-none tracking-tight"
             whileHover={{ scale: 1.05 }}
           >
             {portfolioData.name.split(' ')[0]}
@@ -63,11 +64,11 @@ const NavBar = () => {
                 key={link.to}
                 to={link.to}
                 spy={true}
-                activeClass="text-teal-600 dark:text-cyan-400 border-b-2 border-teal-600 dark:border-cyan-400"
+                activeClass="text-[#14213D] dark:text-[#FCA311] border-b-2 border-[#14213D] dark:border-[#FCA311]"
                 smooth={true}
                 duration={500}
                 offset={-80}
-                className="cursor-pointer text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-cyan-400 font-bold text-sm tracking-wider transition-all duration-300 pb-1"
+                className="cursor-pointer text-slate-600 dark:text-slate-300 hover:text-[#FCA311] font-bold text-sm tracking-wider transition-all duration-300 pb-1"
               >
                 {linkName}
               </Link>
@@ -75,7 +76,7 @@ const NavBar = () => {
               <RouterLink
                 key={link.to}
                 to={`/#${link.to}`}
-                className="cursor-pointer text-black dark:text-white hover:text-teal-600 dark:hover:text-cyan-400 font-extrabold text-sm tracking-wider transition-colors duration-300"
+                className="cursor-pointer text-slate-900 dark:text-white hover:text-[#FCA311] font-extrabold text-sm tracking-wider transition-colors duration-300"
               >
                 {linkName}
               </RouterLink>
@@ -83,10 +84,11 @@ const NavBar = () => {
           })}
           <RouterLink
             to="/handbook"
-            className={`cursor-pointer font-bold text-sm tracking-wider transition-all duration-300 pb-1 ${location.pathname.startsWith("/handbook")
-                ? "text-teal-600 dark:text-cyan-400 border-b-2 border-teal-600 dark:border-cyan-400"
-                : "text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-cyan-400"
-              }`}
+            className={`cursor-pointer font-bold text-sm tracking-wider transition-all duration-300 pb-1 ${
+              location.pathname.startsWith("/handbook")
+                ? "text-[#14213D] dark:text-[#FCA311] border-b-2 border-[#14213D] dark:border-[#FCA311]"
+                : "text-slate-600 dark:text-slate-300 hover:text-[#FCA311]"
+            }`}
           >
             HANDBOOK
           </RouterLink>
@@ -95,18 +97,18 @@ const NavBar = () => {
         <div className="flex items-center space-x-4">
           <motion.button
             onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             {darkMode ? (
-              <FiSun className="text-teal-500 text-lg" />
+              <FiSun className="text-[#FCA311] text-lg" />
             ) : (
-              <FiMoon className="text-gray-800 text-lg" />
+              <FiMoon className="text-[#14213D] text-lg" />
             )}
           </motion.button>
 
-          {/* Solid HIRE ME CTA */}
+          {/* HIRE ME CTA */}
           <div className="hidden sm:block">
             {isHome ? (
               <Link
@@ -114,21 +116,21 @@ const NavBar = () => {
                 smooth={true}
                 duration={500}
                 offset={-80}
-                className="cursor-pointer bg-black dark:bg-white text-white dark:text-black hover:bg-teal-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-black transition-colors px-6 py-2 rounded-lg font-bold text-sm tracking-wider uppercase inline-block"
+                className="cursor-pointer bg-[#FCA311] hover:bg-amber-400 text-slate-950 transition-colors px-6 py-2 rounded-xl font-bold text-sm tracking-wider uppercase inline-block shadow-md shadow-amber-500/20"
               >
                 HIRE ME
               </Link>
             ) : (
               <RouterLink
                 to="/#contact"
-                className="cursor-pointer bg-black dark:bg-white text-white dark:text-black hover:bg-teal-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-black transition-colors px-6 py-2 rounded-lg font-bold text-sm tracking-wider uppercase inline-block"
+                className="cursor-pointer bg-[#FCA311] hover:bg-amber-400 text-slate-950 transition-colors px-6 py-2 rounded-xl font-bold text-sm tracking-wider uppercase inline-block shadow-md shadow-amber-500/20"
               >
                 HIRE ME
               </RouterLink>
             )}
           </div>
 
-          <button className="md:hidden text-black dark:text-white" onClick={() => setIsOpen(!isOpen)}>
+          <button className="md:hidden text-slate-900 dark:text-white" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
           </button>
         </div>
@@ -137,7 +139,7 @@ const NavBar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden bg-gray-50/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-gray-200 dark:border-slate-800"
+            className="md:hidden bg-white/95 dark:bg-[#14213D]/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -150,11 +152,11 @@ const NavBar = () => {
                     key={link.to}
                     to={link.to}
                     spy={true}
-                    activeClass="text-teal-600 dark:text-cyan-400 pl-4 border-l-4 border-teal-600 dark:border-cyan-400"
+                    activeClass="text-[#FCA311] pl-4 border-l-4 border-[#FCA311]"
                     smooth={true}
                     duration={500}
                     offset={-80}
-                    className="cursor-pointer text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-cyan-400 font-bold text-sm tracking-wider transition-all duration-300 py-1"
+                    className="cursor-pointer text-slate-600 dark:text-slate-300 hover:text-[#FCA311] font-bold text-sm tracking-wider transition-all duration-300 py-1"
                     onClick={() => setIsOpen(false)}
                   >
                     {linkName}
@@ -163,7 +165,7 @@ const NavBar = () => {
                   <RouterLink
                     key={link.to}
                     to={`/#${link.to}`}
-                    className="cursor-pointer text-black dark:text-white hover:text-teal-600 dark:hover:text-cyan-400 font-extrabold text-sm tracking-wider transition-colors duration-300"
+                    className="cursor-pointer text-slate-900 dark:text-white hover:text-[#FCA311] font-extrabold text-sm tracking-wider transition-colors duration-300"
                     onClick={() => setIsOpen(false)}
                   >
                     {linkName}
@@ -172,22 +174,23 @@ const NavBar = () => {
               })}
               <RouterLink
                 to="/handbook"
-                className={`cursor-pointer font-extrabold text-sm tracking-wider transition-colors duration-300 py-1 ${location.pathname.startsWith("/handbook")
-                    ? "text-teal-600 dark:text-cyan-400 pl-4 border-l-4 border-teal-600 dark:border-cyan-400"
-                    : "text-black dark:text-white hover:text-teal-600 dark:hover:text-cyan-400"
-                  }`}
+                className={`cursor-pointer font-extrabold text-sm tracking-wider transition-colors duration-300 py-1 ${
+                  location.pathname.startsWith("/handbook")
+                    ? "text-[#FCA311] pl-4 border-l-4 border-[#FCA311]"
+                    : "text-slate-900 dark:text-white hover:text-[#FCA311]"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 HANDBOOK
               </RouterLink>
-              <div className="pt-2 border-t border-gray-200 dark:border-gray-800">
+              <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
                 {isHome ? (
                   <Link
                     to="contact"
                     smooth={true}
                     duration={500}
                     offset={-80}
-                    className="cursor-pointer bg-black dark:bg-white text-white dark:text-black hover:bg-teal-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-black transition-colors px-6 py-2 rounded-lg font-bold text-sm tracking-wider uppercase text-center block w-full"
+                    className="cursor-pointer bg-[#FCA311] hover:bg-amber-400 text-slate-950 transition-colors px-6 py-2 rounded-xl font-bold text-sm tracking-wider uppercase text-center block w-full shadow-md"
                     onClick={() => setIsOpen(false)}
                   >
                     HIRE ME
@@ -195,7 +198,7 @@ const NavBar = () => {
                 ) : (
                   <RouterLink
                     to="/#contact"
-                    className="cursor-pointer bg-black dark:bg-white text-white dark:text-black hover:bg-teal-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-black transition-colors px-6 py-2 rounded-lg font-bold text-sm tracking-wider uppercase text-center block w-full"
+                    className="cursor-pointer bg-[#FCA311] hover:bg-amber-400 text-slate-950 transition-colors px-6 py-2 rounded-xl font-bold text-sm tracking-wider uppercase text-center block w-full shadow-md"
                     onClick={() => setIsOpen(false)}
                   >
                     HIRE ME
