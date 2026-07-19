@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaAws } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
-import profileImg from "../../assets/profile.png";
-import circleImg from "../../assets/Full Stack Developer2.png";
+import profileImg from "../../assets/profilepic2.webp";
 import portfolioData from "../../data/data.json";
 import SocialLinks from "./SocialLinks";
 import HeroActions from "./HeroActions";
@@ -115,30 +114,32 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Right Column Profile Graphic */}
+        {/* Right Column (Restored Original Cutout Profile Photo) */}
         <motion.div 
           className="md:col-span-5 flex justify-center items-center relative"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96 flex justify-center items-center">
-            <img 
-              src={circleImg} 
-              alt="Full Stack Developer" 
-              className="absolute w-full h-full object-contain animate-spin-slow opacity-80"
+          <div className="relative w-fit max-w-full flex items-end justify-center lg:mb-20">
+            {/* Cut-out Photo */}
+            <img
+              src={profileImg}
+              alt={portfolioData.name}
+              className="h-[400px] md:h-[570px] w-auto object-contain select-none pointer-events-none z-10 dark:mix-blend-screen"
             />
-            <img 
-              src={profileImg} 
-              alt={portfolioData.name} 
-              className="w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover object-bottom z-10 border-4 border-white dark:border-slate-800 shadow-2xl bg-[#FCA311]" 
-            />
+            {/* Smooth bottom fade to blend into background */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50/80 via-slate-50/40 to-transparent dark:from-[#14213D] dark:to-transparent z-20 pointer-events-none" />
           </div>
         </motion.div>
       </div>
 
       {/* Resume Modal */}
-      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} isResumeModalOpen={isResumeModalOpen} setIsResumeModalOpen={setIsResumeModalOpen} />
+      <AnimatePresence>
+        {isResumeModalOpen && (
+          <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} isResumeModalOpen={isResumeModalOpen} setIsResumeModalOpen={setIsResumeModalOpen} />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
