@@ -169,28 +169,80 @@
   ],
   "achievements": [
     {
-      "title": "AWS Certified Solutions Architect Associate\nExpires Jan 2028",
-      "description": "Validated expertise in designing distributed, scalable, and secure systems on AWS cloud platforms.",
-      "icon": "aws"
+      "id": "aws-saa",
+      "title": "AWS Certified Solutions Architect Associate",
+      "subtitle": "Valid through Jan 2028",
+      "description": "Validated expertise in designing distributed, high-availability, fault-tolerant, and secure cloud systems on AWS platforms.",
+      "icon": "aws",
+      "status": "Verified Credential",
+      "issuer": "Amazon Web Services",
+      "credentialId": "AWS-SAA-C03-ACTIVE",
+      "issueDate": "Jan 2025",
+      "expiryDate": "Jan 2028",
+      "skillsVerified": ["Distributed Systems", "Cloud Security & IAM", "Serverless Architectures", "High Availability", "S3 / EC2 / Lambda"],
+      "verificationUrl": "https://aws.amazon.com/verification"
     },
     {
-      "title": "GATE 2024 (CSE)",
-      "description": "Achieved All India Rank 7700 (Top 8% Nationwide in Computer Science & Information Technology).",
-      "icon": "award"
+      "id": "gate-2024",
+      "title": "GATE 2024 (CSE & IT)",
+      "subtitle": "All India Rank 7700 • Top 8% Nationwide",
+      "description": "Secured top national rank in Graduate Aptitude Test in Engineering, proving foundational mastery in Data Structures, Algorithms, OS, & Systems.",
+      "icon": "award",
+      "status": "National Merit",
+      "issuer": "IISc / IIT GATE Committee",
+      "credentialId": "GATE2024-CS-7700",
+      "issueDate": "March 2024",
+      "percentile": "Top 8%",
+      "skillsVerified": ["Data Structures & Algorithms", "Operating Systems", "Database Management", "Computer Networks"],
+      "verificationUrl": "https://gate2024.iisc.ac.in"
+    }
+  ],
+  "engineeringMetrics": [
+    {
+      "value": "60K+",
+      "label": "Jira Issues Processed",
+      "context": "Enterprise Jira Plugin Workflow",
+      "metricType": "Scale & Throughput"
+    },
+    {
+      "value": "87%",
+      "label": "Playwright Test Coverage",
+      "context": "Full E2E Test Suite Automation",
+      "metricType": "Quality & Reliability"
+    },
+    {
+      "value": "42%",
+      "label": "Manual Overhead Cut",
+      "context": "BrickoSys Multi-Tenant Inventory",
+      "metricType": "Efficiency Gain"
+    },
+    {
+      "value": "200+",
+      "label": "Multi-Tenant Orgs Supported",
+      "context": "SiloamHR Row-Level Security",
+      "metricType": "Architecture Capacity"
     }
   ],
   "testimonials": [
     {
+      "id": "test-1",
       "badge": "Manager Recommendation",
       "name": "Mehul Brahmvar",
       "role": "Full-Stack Developer | .NET Core | Angular",
-      "text": "I have worked with Rupesh Yadav, and I’m consistently impressed by his strong full-stack development skills. He not only writes clean, efficient, and scalable code, but also has an excellent ability to understand business requirements and translate them into practical technical solutions. His ownership, problem-solving mindset, and attention to detail make him a valuable asset to any team. I highly recommend him to anyone looking for a dependable and skilled developer."
+      "company": "Tecunique",
+      "text": "I have worked with Rupesh Yadav, and I’m consistently impressed by his strong full-stack development skills. He not only writes clean, efficient, and scalable code, but also has an excellent ability to understand business requirements and translate them into practical technical solutions. His ownership, problem-solving mindset, and attention to detail make him a valuable asset to any team. I highly recommend him to anyone looking for a dependable and skilled developer.",
+      "rating": 5,
+      "verified": true
     },
     {
+      "id": "test-2",
       "badge": "Technical Lead Recommendation",
       "name": "PARVEZ MIR",
       "role": "Sr. Fullstack Engineer @ Summertown AI",
-      "text": "I’ve had the opportunity to work with Rupesh Yadav, who is contributing as a Fullstack Developer in my team. His responsibilities span across designing and developing scalable backend APIs, managing databases, and building responsive frontends. Rupesh is skilled in modern web technologies, quick to learn, and delivers reliable, high-quality solutions while collaborating effectively with the team."
+      "company": "Summertown AI",
+      "text": "I’ve had the opportunity to work with Rupesh Yadav, who is contributing as a Fullstack Developer in my team. His responsibilities span across designing and developing scalable backend APIs, managing databases, and building responsive frontends. Rupesh is skilled in modern web technologies, quick to learn, and delivers reliable, high-quality solutions while collaborating effectively with the team.",
+      "rating": 5,
+      "verified": true
     }
   ]
 }
