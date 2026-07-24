@@ -71,8 +71,8 @@ const Hero = () => {
                 strings: portfolioData.typewriterKeywords,
                 autoStart: true,
                 loop: true,
-                wrapperClassName: "text-[#14213D] dark:text-[#FCA311] text-[28px] md:text-[40px] font-extrabold leading-tight",
-                cursorClassName: "text-[#14213D] dark:text-[#FCA311] text-[28px] md:text-[40px] font-extrabold leading-tight",
+                wrapperClassName: "text-[#FCA311] text-[28px] md:text-[40px] font-extrabold leading-tight",
+                cursorClassName: "text-[#FCA311] text-[28px] md:text-[40px] font-extrabold leading-tight",
               }}
             />
           </motion.div>

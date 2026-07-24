@@ -56,7 +56,7 @@ const NavBar = () => {
           </motion.div>
         </RouterLink>
 
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8 ml-auto mr-8">
           {navLinks.map((link) => {
             const linkName = link.name.toUpperCase();
             return isHome ? (
