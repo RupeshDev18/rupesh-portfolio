@@ -151,6 +151,12 @@ Weighted matching was required because simply matching embeddings of whole docum
 ### Biggest Mistake
 Early on, we focused mainly on semantic similarity and underestimated the importance of metadata filtering. This caused some irrelevant recommendations (e.g. matching senior roles to junior candidates) even when embeddings were semantically close. Adding metadata filtering first resolved this.
 
+### Production Bug
+Initially duplicate jobs occasionally appeared because different companies exposed the same position through multiple endpoints.
+
+**Solution:**
+Normalized job titles and compared hashes before insertion.
+
 # 13. Improvements
 If I rebuilt today:
 - Experiment with newer embedding models like `text-embedding-3`.

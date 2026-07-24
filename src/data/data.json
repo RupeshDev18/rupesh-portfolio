@@ -98,13 +98,13 @@
   ],
   "projects": [
     {
-      "id": "cleardays",
+      "id": "siloamhr",
       "title": "SiloamHR: Enterprise Multi-Tenant HRMS",
       "description": "Designed scalable multi-tenant architecture using shared-database schema with row-level security supporting 200+ organizations. Architected hybrid RBAC and ABAC permission system with Redis caching achieving sub-100ms P99 latency.",
       "imagePath": "siloamHR.png",
       "isClient": true,
       "tags": ["React", "Node.js", "PostgreSQL", "Redis", "RBAC/ABAC", "AWS"],
-      "github": "https://github.com/rupeshdev18/cleardays",
+      "github": "https://github.com/rupeshdev18/siloamhr",
       "live": "https://hr-portal-web-nd7c.onrender.com"
     },
     {

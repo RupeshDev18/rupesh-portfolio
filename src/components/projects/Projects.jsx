@@ -10,7 +10,7 @@ const Projects = () => {
 
   const projects = portfolioData.projects;
 
-  const flagshipProject = projects.find(p => p.id === "cleardays") || projects[0];
+  const flagshipProject = projects.find(p => p.id === "siloamhr") || projects[0];
   const secondaryProjects = projects.filter(p => p.id !== flagshipProject.id);
 
   const filteredProjects = secondaryProjects.filter(p => {
