@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiX } from "react-icons/fi";
-import resumePDF from "../../assets/Resume.pdf";
+import resumePDF from "../../assets/RupeshYadav.pdf";
 
 const ResumeModal = ({ isOpen, onClose, isResumeModalOpen, setIsResumeModalOpen }) => {
   const active = isOpen !== undefined ? isOpen : isResumeModalOpen;
