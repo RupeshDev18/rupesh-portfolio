@@ -98,22 +98,24 @@
   ],
   "projects": [
     {
-      "id": "cleardays-hrms",
+      "id": "cleardays",
       "title": "SiloamHR: Enterprise Multi-Tenant HRMS",
       "description": "Designed scalable multi-tenant architecture using shared-database schema with row-level security supporting 200+ organizations. Architected hybrid RBAC and ABAC permission system with Redis caching achieving sub-100ms P99 latency.",
       "imagePath": "siloamHR.png",
       "isClient": true,
-      "tags": ["React 19", "Node.js", "PostgreSQL", "Redis", "RBAC/ABAC", "AWS"],
+      "tags": ["React", "Node.js", "PostgreSQL", "Redis", "RBAC/ABAC", "AWS"],
       "github": "https://github.com/rupeshdev18/cleardays",
-      "live": "https://hr-portal-web-nd7c.onrender.com",
-      "challenge": "Building a secure Human Resources Management System (HRMS) that supports 200+ distinct organizations (tenants) simultaneously. The critical challenge was ensuring absolutely zero data leakage between tenants while maintaining high-performance queries and supporting a complex hybrid RBAC (Role-Based Access Control) and ABAC (Attribute-Based Access Control) permission matrix.",
-      "solution": "I designed a multi-tenant architecture utilizing a shared-database, isolated-schema approach in PostgreSQL. This was fortified by implementing Row-Level Security (RLS) policies directly at the database layer. For the permission system, I built an event-driven Node.js backend that resolves complex ABAC policies and caches the resolved access graphs in Redis to prevent database bottlenecks.",
-      "architecture": "graph TD;\n  Client[React 19 Frontend] --> API[API Gateway];\n  API --> Auth[Auth Service / JWT];\n  API --> HR[HR Service / Node.js];\n  HR --> Cache[(Redis Cache)];\n  HR --> DB[(PostgreSQL + RLS)];\n  Auth --> DB;",
-      "results": [
-        "Sub-100ms P99 latency on permission resolution.",
-        "Successfully isolated data for 200+ distinct tenants.",
-        "Zero data-leakage vulnerability reports in external audits."
-      ]
+      "live": "https://hr-portal-web-nd7c.onrender.com"
+    },
+    {
+      "id": "brickosys",
+      "title": "BrickoSys: Inventory & Warehouse MS",
+      "description": "Built multi-tenant inventory system for Lego parts with modular APIs for stock tracking, order picking, and warehouse management. Schema-based partitioning reduced manual tracking by 42%.",
+      "imagePath": "brickosys.png",
+      "isClient": true,
+      "tags": ["React", "Node.js", "PostgreSQL", "AWS", "Tenant Isolation"],
+      "github": "https://github.com/rupeshdev18/brickosys",
+      "live": "#"
     },
     {
       "id": "lobby-network",
@@ -122,32 +124,7 @@
       "isClient": true,
       "tags": ["Next.js", "Node.js", "Python", "Web Scraping", "Resume Parsing"],
       "github": "https://github.com/rupeshdev18/lobby-network",
-      "live": "#",
-      "challenge": "Job seekers spend hundreds of hours manually entering data into Applicant Tracking Systems (ATS) like Workday. The challenge was to reliably extract unstructured data from resumes (PDF/Docx), structure it, and map it precisely to disparate, ever-changing Workday application forms to automate the application process.",
-      "solution": "I engineered a distributed web scraping infrastructure using Python and Node.js. The pipeline ingests job listings and parses them utilizing NLP techniques (stop-word removal, stemming). Simultaneously, a specialized parsing engine extracts candidate data from resumes. A matching algorithm then aligns the candidate's vector profile with job requirements and automatically populates the target ATS form fields.",
-      "architecture": "graph LR;\n  Resume[Resume PDF] --> Parser[Python Parser & NLP];\n  Scraper[Web Scraper] --> Jobs[Job Data];\n  Parser --> Engine[Matching Engine];\n  Jobs --> Engine;\n  Engine --> AutoFill[Form Auto-Fill Script];",
-      "results": [
-        "Achieved a 40% reduction in manual data entry for job seekers.",
-        "Processed and normalized over 10,000 distinct job listings.",
-        "Successfully mapped highly complex, multi-page Workday forms."
-      ]
-    },
-    {
-      "id": "brickosys-inventory",
-      "title": "BrickoSys: Inventory & Warehouse MS",
-      "description": "Built multi-tenant inventory system for Lego parts with modular APIs for stock tracking, order picking, and warehouse management. Schema-based partitioning reduced manual tracking by 42%.",
-      "imagePath": "brickosys.png",
-      "isClient": true,
-      "tags": ["React", "Node.js", "PostgreSQL", "AWS S3", "Tenant Isolation"],
-      "github": "https://github.com/rupeshdev18/brickosys",
-      "live": "#",
-      "challenge": "Managing massive, highly granular inventories (millions of individual Lego pieces) across multiple vendor warehouses. Existing solutions were too generic and resulted in a 42% manual tracking overhead.",
-      "solution": "I built a dedicated, multi-tenant inventory management system (IMS) tailored for high-granularity items. The system utilizes schema-based partitioning in PostgreSQL for tenant isolation. I developed modular RESTful APIs for real-time stock tracking, order picking routing, and warehouse zone management.",
-      "architecture": "graph TD;\n  App[React Dashboard] --> LB[AWS Application Load Balancer];\n  LB --> API[Node.js Inventory API];\n  API --> DB[(PostgreSQL Partitioned)];\n  API --> S3[(AWS S3 for Assets)];",
-      "results": [
-        "Reduced manual inventory tracking efforts by 42%.",
-        "Supported real-time concurrent updates from multiple warehouse workers."
-      ]
+      "live": "#"
     },
     {
       "id": "ai-email-assistant",
@@ -155,6 +132,22 @@
       "description": "Developed Gmail add-on using OpenAI APIs to generate context-aware replies with tone customization. Added speech-based input via Web Speech API and deployed backend inference on AWS Lambda.",
       "tags": ["Next.js", "Google Apps Script", "OpenAI API", "AWS Lambda", "Web Speech API"],
       "github": "https://github.com/rupeshdev18/ai-email-assistant",
+      "live": "#"
+    },
+    {
+      "id": "jira-plugin",
+      "title": "Jira Enterprise Workflow Plugin",
+      "description": "Architected a high-throughput Jira integration plugin processing 60K+ active issues, tracking custom workflow states, and achieving 87% Playwright end-to-end branch coverage.",
+      "tags": ["React", "Node.js", "Playwright", "Atlassian SDK", "CI/CD"],
+      "github": "https://github.com/rupeshdev18/jira-plugin",
+      "live": "#"
+    },
+    {
+      "id": "dsa-tracker",
+      "title": "Interactive DSA Tracker Dashboard",
+      "description": "Designed an interactive dashboard tracking 309+ Data Structures & Algorithms coding questions across 22 patterns, offering visual progress breakdowns, filterable stats, and search index.",
+      "tags": ["React", "Tailwind CSS", "LocalStorage", "Algorithms", "Progress Metrics"],
+      "github": "https://github.com/rupeshdev18/dsa-tracker",
       "live": "#"
     }
   ],
